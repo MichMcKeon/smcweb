@@ -43,7 +43,7 @@ showdiscount='hide';
   }
   getdiscount(){ 
 this.showdiscount='show';
-this.showprice='hide';
+
 this.showcoupon='hide';
 this.priceid = this.updateportaluserModel.New ;
 console.log('priceid',this.priceid);
@@ -57,7 +57,7 @@ this.sfportalrequestsService.getthisproductspricediscount(this.priceid)
   }
   getcoupon(){ 
     this.showdiscount='hide';
-    this.showprice='hide';
+    
     this.showcoupon='show';
     this.priceid = this.updateportaluserModel.New ;
     console.log('priceid',this.priceid);
