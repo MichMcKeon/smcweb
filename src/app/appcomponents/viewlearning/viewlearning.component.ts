@@ -48,6 +48,8 @@ this.showcoupon='hide';
 this.priceid = this.updateportaluserModel.New ;
 console.log('priceid',this.priceid);
 console.log('discount',this.showdiscount);
+console.log('price',this.showprice);
+console.log('coupon',this.showcoupon);
 
 this.sfportalrequestsService.getthisproductspricediscount(this.priceid)
     .subscribe((response:any) =>{
@@ -61,6 +63,8 @@ this.sfportalrequestsService.getthisproductspricediscount(this.priceid)
     this.showcoupon='show';
     this.priceid = this.updateportaluserModel.New ;
     console.log('priceid',this.priceid);
+    console.log('discount',this.showdiscount);
+    console.log('price',this.showprice);
     console.log('coupon',this.showcoupon);
 
     this.sfportalrequestsService.getthisproductspricediscount(this.priceid)
@@ -75,6 +79,9 @@ this.sfportalrequestsService.getthisproductspricediscount(this.priceid)
         this.showdiscount='hide';
         this.showprice='show';
         this.showcoupon='hide';
+        console.log('discount',this.showdiscount);
+console.log('price',this.showprice);
+console.log('coupon',this.showcoupon);
           }
  
    sfupdate(value:string,name:string){

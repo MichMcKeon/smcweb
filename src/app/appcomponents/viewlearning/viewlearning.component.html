@@ -91,11 +91,13 @@
                                 <li  *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c" >
                                 
                                 
-                                  <div  class="columns-price tags" >
-                                   
-                                    <ul class="price">
-                                     <input class="form-control" class="input " #coupon   placeholder="Enter coupon to unlock" type="text"  (keyup)="checkcoupon(coupon.value)"> 
-                                    
+                                 <div *ngIf="showcoupon == 'show'">
+                                    <input class="form-control" class="input " #coupon   placeholder="Enter coupon to unlock" type="text"  (keyup)="checkcoupon(coupon.value)"> 
+                                 </div>
+                                  <div   *ngIf="showdiscount == 'show'">
+                                    <div class="columns-price tags" >
+                                    <ul class="price" >
+                                      
                                      <li class="header"> 
                                         <span class="tag is-link mr-2" *ngIf="discounted.DiscountStatus__c != 'Inactive' &&  discounted.Show_Price_Status__c ">{{discounted.DiscountStatus__c}}</span>
                                         <span class="tag is-black mr-2" *ngIf="discounted.Start_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.Start_Date_Countdown__c}} days!</span>
@@ -113,7 +115,7 @@
                                      
                                    
                                       
-                                    </ul>  </div>                  
+                                    </ul>  </div>    </div>              
  </li></ul>
 </div></div></div></div>
 
