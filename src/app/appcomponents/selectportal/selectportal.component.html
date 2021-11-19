@@ -1,0 +1,82 @@
+
+  
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+ 
+<div class="content-image">
+<div class="content-headermenu" (mouseover)="updateportaltoday()">
+<ul style="margin-left:15px; margin-right:15px has-background-black">
+
+<li> <a class="has-text-black" style="padding-left:20px;padding-top:10px"><b> {{usercountry}}</b>&nbsp;  {{portaltoday  | date:'fullDate'}} &nbsp; Current Time: {{portaltoday  | date:'HH:mm:ss'}} </a></li>
+<li *ngFor="let portallink of portallinks">
+  <a class="navbar-item" href="{{portallink.Link__c}}">
+  <span class="icon is-small is-center"> <i class="{{portallink.Display_Icon__c}}"></i></span>  </a>
+
+</ul>
+</div>
+
+<div class="content-header">   
+
+  <a class="is-ghost is-pulled-left"> <img src="./assets/appheaderlogo1.png" style="width:500px">    </a>
+
+  <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+    <img src="./assets/icons/Blue_Icon_talk.png" style="width:80px" (click)="showview('chat')" >    </button>
+
+    <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+      <img src="./assets/icons/Blue_Icon_contacts.png" style="width:80px" (click)="showview('contacts')" >    </button>
+   
+      <button class="button is-ghost is-pulled-right mt-3" matTooltip="View Training / Presentation Schedule" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+        <img src="./assets/icons/Blue_Icon_calendar.png" style="width:80px" (click)="showview('calendar')" >    </button>
+
+      <button class="button is-ghost is-pulled-right mt-3" matTooltip="View available learning" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+        <img src="./assets/icons/Blue_Icon_learn1.png" style="width:80px" (click)="showview('learn')" >    </button>
+
+  <button class="button is-ghost is-pulled-right mt-3"  (click)="showview('clickshow')" matTooltip="View Why Learn" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+    <img src="./assets/icons/Blue_Icon_clickview.png" style="width:80px; "  >    </button>
+            
+  </div>
+  <div class="centered-content-clear1" *ngIf="!portalid"> 
+  <p  class="loader"></p></div>
+ 
+
+  <ng-container  *ngIf="view == 'learn'"> 
+    <app-viewlearning [user]="user"  [portal]="portal" [smc]="smc" ></app-viewlearning>    
+    </ng-container>      
+<ng-container  *ngIf="view == 'contacts'"> 
+<app-smc  [user]="user" [usergmt]="usergmt" [portalgmt]="portalgmt" [portal]="portal" [smc]="smc" (view)="showview($event)" (adminid)="portalmessageadminid($event)"></app-smc>    
+</ng-container>   
+
+<ng-container  *ngIf="view == 'calendar'">   
+<app-schedule [portal]="portal" [portalid]="portalid" [portalgmt]="portalgmt" [usergmt]="usergmt"></app-schedule>     
+</ng-container> 
+
+<ng-container  *ngIf="view == 'message'">   
+<app-portalmessages  [portalid]="portalid" [user]="user" [adminid]="adminid" ></app-portalmessages>     
+</ng-container> 
+
+<ng-container *ngIf="view == 'clickshow'">
+ <app-clickshow [thisapproute]="approute" [view]="view"></app-clickshow>
+</ng-container>
+
+
+<div name="overlaycontent" class="centered-content-clear1 is-overlay"   *ngIf="view == 'portalaccept'">
+<div class="content-image1">
+<div class="notification is-info"   *ngIf="portalprivacy" [innerHTML]="portalprivacy" >
+</div>
+
+
+<div class=" is-fullwidth mt-6">
+<div class="is-pulled-left pl-5">
+<button class="button is-ghost is-fullwidth mt-6">
+  <img src="./assets/icons/Blue_Icon_guest.png" style="width:200px" (click)="showview('clickshow');newuser()"> </button>
+<br><button class="button is-primary  is-fullwidth  has-text-weight-semibold is-size-5 is-outlined has-background-white has-text-primary" (click)="showview('clickshow');newuser()">SMC Guest Access</button>
+</div><div class="is-pulled-right pr-6">
+<button class="button is-ghost is-fullwidth mt-6 ">
+<img src="./assets/icons/Blue_Icon_user.png" style="width:200px" (click)="redirect()"> </button>
+<br><button class="button is-primary is-fullwidth  has-text-weight-semibold is-size-5 is-outlined has-background-white has-text-primary">SMC Learner Access</button>
+</div></div>
+</div></div>
+</div>
+
+<app-footer></app-footer>
+

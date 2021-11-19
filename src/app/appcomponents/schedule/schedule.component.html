@@ -1,0 +1,154 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+ 
+<div class="centered-clear mt-4 mb-4">   
+   
+    <div class="boxpanel mt-4 mb-4">
+      
+        <div  class="boxpanelheader has-text-centered title is-3">
+            <button  mat-raised-button class="button is-ghost " style="text-decoration:none"  matTooltipClass="tooltip has-background-primary has-text-white is-size-7" >
+                <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>  WHAT'S HAPPENING AT SMC   </div>
+
+                <div >
+                  <div  class="columns   has-background-white mt-3 ml-3 mr-4 "  >  
+                    
+                   <div class="column is-10  pl-3 pr-3 pb-0">
+                    {{usersportal.Display_Custom_Calendar_Message__c}}</div>
+                    <div class="column is-2 pl-3 pr-3 pb-0">
+                  <img src="./assets/image-calendar.png" style="height:auto"> 
+              </div>
+           </div><button class="button is-primary is-fullwidth is-small" >  <img src="./assets/icons/Blue_Icon_calendar.png" style="width:80px">  </button> 
+           </div>
+           <div class="is-flex has-background-info" >
+            <ul  *ngFor="let event of events">
+            <li *ngIf="event.Portal_Id__c && event.Portal_Id__c == portalid "><button class="button is-info " #showevent value="{{event.Id}}" name="{{event.Display_Name__c}}" (click)="showevents(showevent.value);showeventtype(showevent.name)">{{event.Display_Name__c}}</button></li>
+        </ul> 
+        </div>
+
+        <div *ngIf="eventtype && eventtype != ''" class="has-background-info" style="overflow-y:scroll;" >       
+          <div class="has-background-primary has-text-centered has-text-white title is-3"  >  RECURRING WEEKLY    </div>
+           <ul><button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Mondayblue.png" style="width:60px"></button>
+            <li  *ngFor="let hour of hours">
+           <table class="table is-fullwidth mr-5 has-background-info"  >
+
+   
+            <tr style="border-bottom:solid black 2px;" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+                <td  class=" has-text-left"style="width:10%"> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</td>
+        <td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+        <td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+        <td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c ">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+        <td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+
+         </tr>
+        </table>
+        </li></ul>
+
+        <ul><button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Tuesdayblue.png" style="width:60px"></button>
+          <li  *ngFor="let hour of hours">
+         <table class="table is-fullwidth mr-5 has-background-info"  >  
+      <tr style="border-bottom:solid black 2px;"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Tuesday'">
+     <td  class=" has-text-left"style="width:10%"> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</td>
+      <td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+      <td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+      <td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c ">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+      <td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+
+       </tr>
+      </table>
+      </li></ul>
+
+      <ul><button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Wednesdayblue.png" style="width:60px"></button>
+        <li  *ngFor="let hour of hours">
+       <table class="table is-fullwidth mr-5 has-background-info" >  
+    <tr style="border-bottom:solid black 2px;"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Wednesday'" >
+   <td  class=" has-text-left"style="width:10%"> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</td>
+    <td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+    <td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+    <td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c ">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+    <td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+
+     </tr>
+    </table>
+    </li></ul>
+
+    <ul><button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Thursdayblue.png" style="width:60px"></button>
+      <li  *ngFor="let hour of hours">
+     <table class="table is-fullwidth mr-5 has-background-info"  >  
+  <tr style="border-bottom:solid black 2px;"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Thursday'">
+ <td  class=" has-text-left"style="width:10%"> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</td>
+  <td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+  <td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+  <td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+  <td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+
+   </tr>
+  </table>
+  </li></ul>
+
+  <ul><button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Fridayblue.png" style="width:60px"></button>
+    <li  *ngFor="let hour of hours">
+   <table class="table is-fullwidth mr-5 has-background-info"  >  
+<tr style="border-bottom:solid black 2px;"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Friday'">
+<td  class=" has-text-left"style="width:10%"> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</td>
+<td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+<td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+<td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+<td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+
+ </tr>
+</table>
+</li></ul>
+
+<ul><button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Saturdayblue.png" style="width:60px"></button>
+  <li  *ngFor="let hour of hours">
+ <table class="table is-fullwidth mr-5 has-background-info" >  
+<tr style="border-bottom:solid black 2px;"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Saturday'" >
+<td  class=" has-text-left"style="width:10%"> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</td>
+<td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+<td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+<td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+<td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+        
+</tr>
+</table>
+</li></ul>
+
+<ul><button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Sundayblue.png" style="width:60px"></button>
+  <li  *ngFor="let hour of hours">
+ <table class="table is-fullwidth mr-5 has-background-info"  >  
+<tr style="border-bottom:solid black 2px;"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Sunday'">
+<td  class=" has-text-left"style="width:10%"> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</td>
+<td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+<td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+<td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+<td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+
+</tr>
+</table>
+</li></ul>
+
+  
+              </div>
+          
+              <div  *ngIf="eventtype && eventtype != ''" class="has-background-info" style="overflow-y:scroll;" >       
+                <div class="has-background-primary has-text-centered has-text-white title is-3 mt-4"  >   NON-RECURRING    </div>
+              <ul>  <button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Dayblank.png" style="width:60px"></button>
+    
+                  <li *ngFor="let hour of hours">
+                 <table class="table is-fullwidth  mr-5 has-background-info" >  
+              <tr style="border-bottom:solid black 2px;" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c != ''  && hour.Is_Recurring__c != 'Weekly'  && ( hour.Start_Month__c == portalmonth || hour.Start_Month__c == portalmonthnext) && hour.Start_Year__c == portalyear &&  hour.Start_Day__c > portalday ">
+                <td class="  has-text-left"style="width:10%"><span *ngIf="hour.Start_Day__c == hour.End_Day__c && hour.Start_Hour__c "> {{hour.Start_Year__c}}-{{hour.Start_Month__c}}-{{hour.Start_Day__c}} Time: {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span> <span *ngIf="hour.Start_Day__c == hour.End_Day__c && !hour.Start_Hour__c "> {{hour.Start_Year__c}}-{{hour.Start_Month__c}}-{{hour.Start_Day__c}} </span> <span *ngIf="hour.Start_Day__c != hour.End_Day__c"> {{hour.Start_Year__c}}-{{hour.Start_Month__c}}-{{hour.Start_Day__c}} until {{hour.End_Year__c}}-{{hour.End_Month__c}}-{{hour.End_Day__c}} </span> </td>
+              <td class=" has-text-primary has-text-left"style="width:20%" > {{hour.Display_Name__c}} </td> 
+              <td class="  has-text-left"style="width:50%"> {{hour.Display_Description__c}} </td> 
+              <td class="  has-text-left"style="width:20%"> <span *ngIf="hour.Presenter_Display_Name__c">Presenter: {{hour.Presenter_Display_Name__c}} </span></td> 
+            <td  class="has-text-left"style="width:10%"><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'"> {{hour.Operating_Hours_Type__c}}</span><span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span></td>
+                </tr>
+              </table>
+              </li></ul>  
+            </div>
+      
+
+
+
+          </div>
+        </div>

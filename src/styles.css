@@ -1,1 +1,344 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+
+.primary {
+    color:  #003ca6;
+}
+.link{
+    color: #4e90fe
+}
+.info{
+    color: #e2e3e7
+}
+.danger{
+    color:red
+}
+
+.Viewonly{
+    pointer-events: none;
+}
+
+.Edit{
+    pointer-events: auto;
+
+}
+.Hidden{
+    display:none; 
+} 
+
+    
+ .hide{
+    display:none;
+}
+.show{
+    display:block;
+}
+
+
+.tooltip {
+    background: #003ca6;
+    font-size:12px;
+    text-align:center;
+  }
+  
+
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 200px;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        background-image: url(/assets/Bull_Icon.png) ;
+        background-repeat: no-repeat;
+        background-size: 200px 100%;
+        background-position: center;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+.contentall{
+    
+    min-height:80vh;
+   
+ }
+ .content-image{  
+     min-height:100vh;
+ background-image: url(/assets/appbckgdblank.png) ;
+ background-repeat: repeat;
+ background-size: 100% 100%;
+ 
+ } 
+ 
+ .centered{
+     display:flex;
+     justify-content: center;
+     align-items: center;
+     width:100vw;
+    background-color:#003ca6;
+ }
+ .centered-1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  width:100%;
+  
+    overflow: auto;
+  
+}
+ 
+ .centered-clear{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100vw;
+    height:80vh;
+   overflow-y:auto;
+   overflow-x:auto;
+  }
+
+ .centered-panel{
+    display:block;
+    justify-content: center;
+    align-items: center;
+    width:80vw;
+    height:80vh;
+    
+  }
+
+ 
+ 
+ .content-header{  
+   padding-left:20px;
+   padding-right:20px;
+   height:10vh;
+   background-color: #e2e3e7;
+   border-bottom: solid black 4px;
+ } 
+ .content-headermenu{  
+   height:4vh;
+   background-color: #e2e3e7;
+ } 
+ .header-imagesall{  
+   padding-top:2px;
+   padding-bottom:5px;
+   padding-left:20px;
+   padding-right:20px;
+ display: flex;
+ background-color: #e2e3e7;
+ } 
+ .header-image1{  
+   margin-top:10px;
+  height:10vh;
+  width:80vw;
+ background-image: url(/assets/appheaderlogo1.png) ;
+ background-repeat: no-repeat;
+ background-size: 500px 100%;
+ background-position: left;
+ } 
+ 
+ .header-blockright{  
+   margin-top:10px;
+   height:5vh;
+  width:20vw; 
+  
+ } 
+ ul {
+    list-style-type: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 0px;
+    padding-left: 10px;
+    overflow: hidden;
+   
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding-top:8px;
+    padding-left: 15px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111111;
+  }
+ 
+.boxmain {
+    width:100%;
+    max-width:1500px;
+    background-color: #4e90fe;
+    height:60vh;
+    padding:20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    }
+
+ .boxclear{
+  
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   align-content: center;
+   width:100%;
+   height:100%;
+   margin-right: auto;
+   margin-left: auto;
+ }
+ 
+ 
+ 
+ .box1{
+   border-top:solid black 2px;
+   border-bottom:solid black 2px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:15px;
+    padding-bottom:15px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+    align-items: center;
+    background-color:#e2e3e7;
+   
+    text-align: center;
+ 
+ }
+ 
+ 
+ 
+ .boxpanel {
+    display:block;
+    justify-content: center;
+    align-items: center;
+    width:80vw;
+    max-height:80vh;
+    background-color:#e2e3e7;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+    padding-bottom:20px;
+  overflow-x:scroll;
+  overflow-y:scroll;
+    }
+    .boxpanel1{
+        display:block;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        background-color:#e2e3e7;
+        margin-top:10px;
+        margin-bottom:10px;
+        }
+
+        .boxcard {
+            display:flex;
+         width:100%;
+            height:120px;
+            background-color:#e2e3e7;
+         border-top:solid black 5px;
+         border-bottom:solid black 5px;
+            margin-left:10px;
+            margin-right:10px;
+            margin-top:10px;
+            margin-bottom:10px;
+            padding-left:10px;
+            padding-right:10px;
+            padding-top:10px;
+            padding-bottom:10px;
+          
+            } 
+      
+
+
+      .boxpanelheader {
+        align-items: center;
+        margin-left:10px;
+        margin-right:10px;
+        margin-top:10px;
+        margin-bottom:10px;
+        padding-top:20px;
+        padding-bottom:20px;
+        color:white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        background-color:#003ca6;
+        text-decoration: none;
+        }
+   
+ 
+        .pricebox {
+        
+          margin-left: auto;
+          margin-right: auto;
+          align-content: center;
+        }
+        
+        .columns-price {
+         text-align: center;
+         margin-left: auto;
+          margin-right: auto;
+          width:100%;
+         max-width:400px;
+          padding: 8px;
+        }
+        
+        .price {
+          list-style-type: none;
+          display:inline;
+          border: 1px solid #eee;
+          margin: 4px;
+          padding: 5px;
+          -webkit-transition: 0.3s;
+          transition: 0.3s;
+        }
+        
+        .price:hover {
+          box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+        }
+        
+        .price .header {
+          background-color: #111;
+          color: white;
+          
+        }
+        
+        .price li {
+          border-bottom: 3px solid #eee;
+          padding: 10px;
+          text-align: center;
+          width:100%;
+          background-color: #4e90fe;
+        }
+        
+        .price .grey {
+          background-color: #eee;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }

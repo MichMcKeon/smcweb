@@ -1,0 +1,91 @@
+
+   
+    
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+ 
+ <div class="centered-clear mt-1">   
+     <div *ngIf="!smc" ><img src="./assets/spinner-icon-gif-2.jpg.gif"></div>
+ 
+     <div class="boxpanel">
+       
+         <div *ngIf="smcdetail.Registered_Name__c" class="boxpanelheader has-text-centered title is-3">
+             <button  mat-raised-button class="button is-ghost " style="text-decoration:none" (click)="showcontent('main')" matTooltipClass="tooltip has-background-primary has-text-white is-size-7" >
+                 <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>    CONTACT US:   </div>
+ 
+                 <div  class="boxpanelcontent-bkgdblack has-text-centered" (click)="showcontent('main')" >
+                     
+                   
+                     <button mat-raised-button class="button is-ghost" matTooltip="{{smcdetail.Registered_Name__c}} |  {{smcdetail.Directors__c}} " matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+                   <img src="./assets/icons/Blue_Icon_info.png" style="width:40px"></button> 
+                   <button mat-raised-button class="button is-ghost" matTooltip="{{smcdetail.Address__c}} " matTooltipClass="tooltip has-background-primary has-text-white is-size-7" >
+                       <img src="./assets/icons/Blue_Icon_address.png" style="width:40px"></button> 
+                       <button mat-raised-button class="button is-ghost" matTooltip="View Mobile {{smcdetail.Mobile__c}}" matTooltipClass="tooltip has-background-primary has-text-white is-size-7" >
+                   <img src="./assets/icons/Blue_Icon_phone.png" style="width:40px"></button>
+                   <a href="{{smcdetail.Website__c}}" target="_blank"><button mat-raised-button class="button is-ghost" matTooltip="Open website {{smcdetail.Website__c}}" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+                   <img src="./assets/icons/Blue_Icon_web.png" style="width:40px"></button> </a>
+                   <a href="mailto:{{smcdetail.Email__c}}"><button mat-raised-button class="button is-ghost" matTooltip="Send Email {{smcdetail.Email__c}}" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+                   <img src="./assets/icons/Blue_Icon_email.png" style="width:40px"></button> </a> 
+                   <button mat-raised-button class="button is-ghost" matTooltip="Send Portal Message" matTooltipClass="tooltip has-background-primary has-text-white is-size-7"  #adminid value="{{portalid}}" (click)="message(adminid.value)">
+               <img src="./assets/icons/Blue_Icon_portalmessage.png" style="width:40px">  </button> 
+                   </div>
+ 
+                 <div >
+                <div  class="columns   has-background-white mt-3 ml-3 mr-4 "  >  
+                  
+                 <div class="column is-10  pl-3 pr-3 pb-0">
+                  {{usersportal.Display_Custom_Message__c}}</div>
+                  <div class="column is-2 pl-3 pr-3 pb-0">
+                <img src="./assets/image-support.png" style="height:auto"> 
+            </div>
+         </div><button class="button is-primary is-fullwidth is-small" (click)="showcontent('divisions')">  <img src="./assets/icons/Blue_Icon_contacts.png" style="width:80px">  </button> 
+         </div>
+       
+ 
+           
+            <div  class="is-flex has-background-info" >
+             <ul   *ngFor="let division of divisions">
+                      <li *ngIf="division.Portal_DisplayName__c && division.Portal_DisplayName__c == portal && division.Status__c == 'Active'"><button class="button is-info" #showdept value="{{division.Id}}" (click)="showdepartment(showdept.value);showcontent('departments')">{{division.RecordTypeName__c}}</button></li>
+                   </ul>   
+                 </div>
+             
+                 <div class="is-flex has-background-info" >
+                     <ul  *ngFor="let department of departments">
+                     <li *ngIf="department.Portal_Division_Id__c && department.Portal_Division_Id__c == divdepartment "><button class="button is-info " #showdeptstaff value="{{department.Id}}" (click)="showdepartmentstaff(showdeptstaff.value);showcontent('staff')">{{department.Display_Name__c}}</button></li>
+                 </ul> 
+                 </div>
+             
+          
+                 <div  class="is-flex has-background-info" style="overflow-x:scroll;" >
+       <ul *ngFor="let admin of admins">
+           <li *ngIf="admin.Hide_from_Portal_assistance__c != true && admin.Is_default_selection__c != true && admin.Portal_Department_Id__c == divdepartmentstaff  ">      
+               
+               <div class="boxcard">
+                     <div >
+                         <p *ngIf="admin.Display_Image__c" class="image is-64x64 is-align-items-center">
+                           <img src="{{admin.Display_Image__c}}">
+                         </p>
+                         <p *ngIf="!admin.Display_Image__c"class="image is-64x64">
+                           <img class="is-align-items-center" src="./assets/profile.png">
+                         </p>
+                         <p >
+                         <button class="button is-small is-primary is-fullwidth" #adminsend value="{{admin.Id}}" (click)="sendportalmessage(adminsend.value);gotomessageview('message')">Portal Message</button></p>                    </div>
+                     <div class="is-flex">
+                     <p>
+                       <strong>{{admin.Display_Name__c}}</strong> <small *ngIf="admin.Expert_Area__c"><span class="icon is-small"><i class="fa fa-star"></i></span>{{admin.Expert_Area__c}}</small>
+                       <br>
+                       <small *ngIf="admin.Display_Mobile__c"> <span class="icon is-small"><i class="fa fa-mobile"></i></span>{{admin.Display_Mobile__c}}</small> <br>
+                       <small *ngIf="admin.Display_Email__c"> <span class="icon is-small"><i class="fa fa-envelope"></i></span>{{admin.Display_Email__c}}</small> <br>
+                       <small *ngIf="admin.Display_Website__c"> <span class="icon is-small"><i class="fa fa-globe"></i></span>{{admin.Display_Website__c}}</small> <br>
+                 </p></div>
+               </div>
+             </li></ul>          
+                 </div>
+             </div>
+             </div>
+ 
+ 
+ 
+ 
+ 
+             
