@@ -79,9 +79,9 @@
                               <ul *ngFor="let pricediscount of pricediscounts">
                            
                               <button *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && pricediscount.Coupon_Required__c " mat-raised-button class="button  py-1 my-1 has-background-black is-fullwidth has-text-white is-size-7" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getcoupon()">
-                                <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> {{price.Id}} <img src="./assets/icons/lock-icon.png" style="width:20px; margin-left:15px"></button>  
+                                <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> DISCOUNTED OPTION <img src="./assets/icons/lock-icon.png" style="width:20px; margin-left:15px"></button>  
                               <button *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && !pricediscount.Coupon_Required__c " mat-raised-button class="button py-5 my-1 has-background-black is-fullwidth has-text-white is-size-7" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getdiscount()">
-                                  <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> DISCOUNTED OPTION {{price.Id}}</button>  
+                                  <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> DISCOUNTED OPTION</button>  
                                   </ul> 
                               </ul>  </div>    </li></ul>
 
@@ -91,31 +91,33 @@
                                 <li  *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c" >
                                 
                                 
-                                 <div *ngIf="showcoupon == 'show'">
-                                    <input class="form-control" class="input " #coupon   placeholder="Enter coupon to unlock" type="text"  (keyup)="checkcoupon(coupon.value)"> 
-                                 </div>
-                                  <div   *ngIf="showdiscount == 'show'">
+                             
+                                  
+                                 
                                     <div class="columns-price tags" >
                                     <ul class="price" >
-                                      
+                                      <input *ngIf="discounted.Coupon_Required__c && coupon != discounted.Coupon__c" class="form-control" class="input " #coupon   placeholder="Enter coupon to unlock" type="text"  (keyup)="checkcoupon(coupon.value)"> 
+                              
                                      <li class="header"> 
                                         <span class="tag is-link mr-2" *ngIf="discounted.DiscountStatus__c != 'Inactive' &&  discounted.Show_Price_Status__c ">{{discounted.DiscountStatus__c}}</span>
                                         <span class="tag is-black mr-2" *ngIf="discounted.Start_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.Start_Date_Countdown__c}} days!</span>
                                         <span class="tag is-black mr-2" *ngIf="discounted.End_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.End_Date_Countdown__c}} days!</span>
                                     
                                           <span class="is-size-6" >  {{discounted.Price_Option__c}}</span></li>
-                                      <li><span class="tag is-black has-text-weight-semibold">Discounted Upfront:</span> <span class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{discounted.Currency__c}} {{discounted.Discounted_Upfront__c | number:'2.2-2'}}</span> </li>
-                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Disounted Monthly:</span><span class="tag is-white has-text-black is-size-7"> {{discounted.Currency__c}} {{discounted.Discounted_Monthly__c | number:'2.2-2'}} </span></li>
-                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{discounted.Terms__c}}</span></li>
+                                          <li><span class="fourthbgd"><span class="tag is-black has-text-weight-semibold">Discounted Upfront:</span> <span *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{discounted.Currency__c}} {{discounted.Discounted_Upfront__c | number:'2.2-2'}}</span></span> </li>
+                                    
+                                      <li ><span class="tag is-black has-text-weight-semibold">Discounted Upfront:</span> <span *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{discounted.Currency__c}} {{discounted.Discounted_Upfront__c | number:'2.2-2'}}</span> </li>
+                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Disounted Monthly:</span><span *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="tag is-white has-text-black is-size-7"> {{discounted.Currency__c}} {{discounted.Discounted_Monthly__c | number:'2.2-2'}} </span></li>
+                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Terms:</span><span *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="tag is-white has-text-black  is-size-7">{{discounted.Terms__c}}</span></li>
                                  
                                   
                                        
-                                      <button mat-raised-button class="button is-outlined is-black my-1 py-5 has-background-white is-fullwidth has-text-black is-size-7" #priceid value="{{discounted.Id}}" name="Portal_Discount__c"(click)="sfupdate(priceid.value,priceid.name)">
+                                      <button mat-raised-button *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="button is-outlined is-black my-1 py-1 has-background-white is-fullwidth has-text-black is-size-7" #priceid value="{{discounted.Id}}" name="Portal_Discount__c"(click)="sfupdate(priceid.value,priceid.name)">
                                         <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> REGISTER </button>  
                                      
                                    
                                       
-                                    </ul>  </div>    </div>              
+                                    </ul>  </div>            
  </li></ul>
 </div></div></div></div>
 

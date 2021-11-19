@@ -5,11 +5,11 @@
 
  
  <div class="centered-clear mt-1">   
- 
+  <div class="centered-clear" *ngIf="smcdetail.Registered_Name__c == ''"> 
+    <p  class="loader"></p></div>
   
-     <div class="boxpanel">
-      <div class="centered-clear" *ngIf="!smcdetail"> 
-        <p  class="loader"></p></div>
+     <div  *ngIf="smcdetail.Registered_Name__c != ''"class="boxpanel">
+     
          <div *ngIf="smcdetail.Registered_Name__c" class="boxpanelheader has-text-centered title is-3">
              <button  mat-raised-button class="button is-ghost " style="text-decoration:none" (click)="showcontent('main')" matTooltipClass=" primarybgd has-text-white is-size-7" >
                  <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>    CONTACT US:   </div>
