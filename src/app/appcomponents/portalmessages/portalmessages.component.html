@@ -1,76 +1,92 @@
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
  
-<div class="centered-clear mt-4 mb-4">   
+<div class="centered-clear  mb-4">   
    
-    <div class="boxpanel mt-4 mb-4">
-      
+    <div class="boxpanel mb-4">
+        <div class="centered-content-clear1" *ngIf="!portalid"> 
+            <p  class="loader"></p></div>
         <div  class="boxpanelheader has-text-centered title is-3">
             <button  mat-raised-button class="button is-ghost " style="text-decoration:none"  matTooltipClass="tooltip has-background-primary has-text-white is-size-7" >
                 <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>  PORTAL MESSAGES  </div>
+        <div class="boxclear">
+                            <div class="box1">                      
 
-               
-                    
-                        <div class="box " >                      
-
-                            <form #UserUpdate="ngForm"><br>
-    <div class="has-background-black has-text-left pl-4 pr-4" >
-        <p class="has-background-info pl-4 pr-4 pt-4 pb-4">
-            In order to send and receive portal messages, you need to enter the below details.<br>
-           On submiting your details, you will receive an sms to the entered number with portal access details in order to receive responses.
-        </p>
+                            <form  #UserUpdate="ngForm" *ngIf="!messagesent"><br>
+    <div class="has-text-left pl-4 pr-4 pb-3" > 
+           The following details are required in order to recieve the response to your message.  
     </div>
-   <div class="field has-background-black has-text-left pl-4 pr-4" >
-    <div class="form-group has-background-black has-text-left pl-4 pr-4">
+   
+   <div class="field  has-text-left pl-4 pr-4" >
+    <div class="form-group  has-text-left pl-4 pr-4">
     <div class="field has-addons"><p class="control is-expanded has-icons-left "><span class="icon is-small is-left">
      <i class="fas fa-user-graduate" style="font-size:20px;color:#4e90fe"></i></span>  
-    <input class="form-control" class="input is-flex has-background-info" #FName  name="User_First_Name__c" placeholder="First Name" type="text" value={{userdetail.User_First_Name__c}} (keyup.enter)="sfupdate(FName.value,FName.name)"> </p>         
+    <input class="form-control" class="input " #FName  name="User_First_Name__c" placeholder="First Name" type="text" value={{userdetail.User_First_Name__c}} (blur)="sfupdate(FName.value,FName.name)"> </p>         
    </div></div></div>
 
-   <div class="field has-background-black has-text-left pl-4 pr-4" >
-    <div class="form-group has-background-black has-text-left pl-4 pr-4">
+   <div class="field  has-text-left pl-4 pr-4" >
+    <div class="form-group  has-text-left pl-4 pr-4">
     <div class="field has-addons"><p class="control is-expanded has-icons-left "><span class="icon is-small is-left">
      <i class="fas fa-user-graduate" style="font-size:20px;color:#4e90fe"></i></span>  
-    <input class="form-control" class="input is-flex has-background-info" #LName  name="User_Last_Name__c" placeholder="Last Name"  type="text" value={{userdetail.User_Last_Name__c}} (keyup.enter)="sfupdate(LName.value,LName.name)"> </p>         
+    <input class="form-control" class="input" #LName  name="User_Last_Name__c" placeholder="Last Name"  type="text" value={{userdetail.User_Last_Name__c}} (blur)="sfupdate(LName.value,LName.name)"> </p>         
    </div></div></div>
 
-   <div class="field has-background-black has-text-left pl-4 pr-4" >
-    <div class="form-group has-background-black has-text-left pl-4 pr-4">
+   <div class="field  has-text-left pl-4 pr-4" >
+    <div class="form-group  has-text-left pl-4 pr-4">
     <div class="field has-addons"><p class="control is-expanded has-icons-left"><span class="icon is-small is-left">
      <i class="fas fa-envelope" style="font-size:20px;color:#4e90fe"></i></span>  
-    <input class="form-control" class="input has-background-info" #FName  name="User_First_Name__c" placeholder="Email" type="text" value={{userdetail.User_First_Name__c}} (keyup.enter)="sfupdate(FName.value,FName.name)"> </p>         
+    <input class="form-control" class="input " #uEmail  name="User_Email__c" placeholder="Email" type="text" value={{userdetail.User_Email__c}} (blur)="sfupdate(uEmail.value,uEmail.name);checkemail(uEmail.value)"> </p>         
    </div></div></div>
 
-   <div class="field has-background-black has-text-left pl-4 pr-4">
-    <div class="form-group has-background-black has-text-left pl-4 pr-4">
+   <div class="field  has-text-left pl-4 pr-4">
+    <div class="form-group  has-text-left pl-4 pr-4">
     <div class="field has-addons">
         <p class="control has-icons-left"><span class="icon is-small is-left">
     <i class="fas fa-phone" style="font-size:20px;color:#4e90fe"></i></span>  
-    <input class="form-control" class="input has-background-info" #uDial  name="User_Dial__c" type="tel" placeholder="Dial"  value={{userdetail.User_Dial__c}} (keyup.enter)="sfupdate(uDial.value,uDial.name)"> </p>         
+    <input class="form-control" class="input "  #uDial style="width:100px" name="User_Dial__c" type="tel" placeholder="Dial"  value={{userdetail.User_Dial__c}} (blur)="sfupdate(uDial.value,uDial.name)"> </p>         
     <p class="control has-icons-left is-expanded"><span class="icon is-small is-left">
         <i class="fas fa-phone" style="font-size:20px;color:#4e90fe"></i></span>  
-        <input class="form-control" class="input has-background-info " #uMobile pattern="[0-9]{9}" placeholder="Mobile" name="User_Mobile_Number__c" type="tel" value={{userdetail.User_Mobile_Number__c}} (keyup.enter)="sfupdate(uMobile.value,uMobile.name)"> </p>         
+        <input class="form-control" class="input  " #uMobile required pattern="[0-9]{9}" placeholder="Mobile" name="User_Mobile_Number__c" type="tel" value={{userdetail.User_Mobile_Number__c}} (blur)="sfupdate(uMobile.value,uMobile.name);checkmobile(uDial.value+uMobile.value)"> </p>         
     </div></div></div>
 
-        <div class="field has-background-black has-text-left pl-4 pr-4">
-            <div class="form-group has-background-black has-text-left pl-4 pr-4">
+        <div class="field  has-text-left pl-4 pr-4">
+            <div class="form-group  has-text-left pl-4 pr-4">
             <div class="field has-addons">
                <p class="control has-icons-left is-expanded"><span class="icon is-small is-left">
-                <i class="fas fa-phone" style="font-size:20px;color:#4e90fe"></i></span>  
-                <input class="form-control" class="input has-background-info " #message placeholder="Message"  type="textarea" > </p>         
+                <i class="fas fa-edit" style="font-size:20px;color:#4e90fe"></i></span>  
+                <textarea class="form-control" class="textarea  " required #message name="message"  (blur)="addmessage(message.value)"> </textarea></p>         
             </div></div></div>
 
-        <div class="field has-addons">  <p class="control is-expanded">
-            <span class="select is-fullwidth">
-             <select  class="form-control" > 
-                         <option ></option>
-                         <option > </option>   
-                         <option></option>   
-                   </select></span></p>   </div>
-    <button class="button is-fullwidth has-background-link" (click)="portaluseraccess()">Submit</button>
-</form></div>
- 
-          
+        
+                  
+                   <div class="field">
+                    <div class="form-group">
+                    <div class="field has-addons">  <p class="control is-expanded">
+                      <span class="select is-fullwidth">
+                       <select  class="form-control" #responsetype name="responsetype" (blur)="addresponse(responsetype.value)" > 
+                        <option>Select the type of response </option>
+                        <option>Portal Message</option>
+                                 <option >SMS </option>   
+                                 <option>Whatsapp</option> 
+                                 <option>Call</option>   
+                                 <option>Email</option>   
+                             </select></span></p>
+                            </div></div></div>
+                            <div class="field">
+                            <label class="checkbox pl-3">
+                                <input type="checkbox" #check required  (click)="checkvalid(true)">
+                              by submitting your message, you are authorising Stock Market College to share your contact details with the relevant recieptient. 
+                              </label>
+                              </div>
+                <div *ngIf="mobilevalid && emailvalid && privacyvalid">  
+    <button  class="button is-fullwidth primarybgd" (click)="sendmessage()">Submit</button>
+</div>
+<div *ngIf="!mobilevalid"> Invalid mobile - correct to continue </div>
+<div *ngIf="!emailvalid"> Invalid email - correct to continue </div>
+<div *ngIf="!privacyvalid"> Authorise privacy sharing to continue </div>
+</form> <div *ngIf="messagesent"class="pt-4 ">
+    Message sent successfully. 
+</div>  </div>
+    
 </div> 
 </div>

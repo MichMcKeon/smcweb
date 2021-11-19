@@ -1,22 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
 
-.primary {
-    color:  #003ca6;
+
+.primaryfont {
+  color:  #003ca6;
 }
-.link{
-    color: #4e90fe
+.primarybgd {
+  background-color:  #003ca6;;
 }
-.info{
-    color: #e2e3e7
+.primaryborder {
+ border:solid 2px #003ca6;
 }
-.danger{
-    color:red
+
+
+.secondfont {
+  color:  #4e90fe;
+}
+.secondbgd {
+  background-color:  #4e90fe;;
+}
+.secondborder {
+ border:solid 3px #4e90fe;
+}
+
+.thirdfont {
+  color:  #e2e3e7;
+}
+.thirdbgd {
+  background-color:  #e2e3e7;;
+}
+.thirdborder {
+ border:solid 2px #e2e3e7;
+}
+
+
+.fourthtext {
+  color:  rgb(128, 5, 5);
+}
+.fourthbgd {
+  background-color:  rgb(128, 5, 5);
+}
+.fourthborder {
+ border:solid 2px rgb(128, 5, 5);
+}
+
+.tagprimary{
+  background-color: #003ca6;
+  color:white;
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-left:4px;
+  padding-right:4px;
+  margin-left:5px;
+  margin-right:5px;
+  border:solid 2px white;
+  border-radius: 1px;
+  font-size:10px;
+  font-weight: bold;
 }
 
 .Viewonly{
@@ -44,6 +88,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background: #003ca6;
     font-size:12px;
     text-align:center;
+ 
   }
   
 
@@ -83,7 +128,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
    
  }
  .content-image{  
-     min-height:100vh;
+     min-height:95vh;
  background-image: url(/assets/appbckgdblank.png) ;
  background-repeat: repeat;
  background-size: 100% 100%;
@@ -225,10 +270,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-left: auto;
     justify-content: center;
     align-items: center;
-    background-color:#e2e3e7;
-   
+    background-color:white;
     text-align: center;
- 
+
  }
  
  
@@ -273,6 +317,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
             padding-right:10px;
             padding-top:10px;
             padding-bottom:10px;
+            box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
           
             } 
       

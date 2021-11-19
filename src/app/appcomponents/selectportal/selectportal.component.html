@@ -19,24 +19,23 @@
 
   <a class="is-ghost is-pulled-left"> <img src="./assets/appheaderlogo1.png" style="width:500px">    </a>
 
-  <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+  <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass=" primarybgd has-text-white is-size-7">
     <img src="./assets/icons/Blue_Icon_talk.png" style="width:80px" (click)="showview('chat')" >    </button>
 
-    <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+    <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass=" primarybgd has-text-white is-size-7">
       <img src="./assets/icons/Blue_Icon_contacts.png" style="width:80px" (click)="showview('contacts')" >    </button>
    
-      <button class="button is-ghost is-pulled-right mt-3" matTooltip="View Training / Presentation Schedule" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+      <button class="button is-ghost is-pulled-right mt-3" matTooltip="View Training / Presentation Schedule" matTooltipClass=" primarybgd has-text-white is-size-7">
         <img src="./assets/icons/Blue_Icon_calendar.png" style="width:80px" (click)="showview('calendar')" >    </button>
 
-      <button class="button is-ghost is-pulled-right mt-3" matTooltip="View available learning" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+      <button class="button is-ghost is-pulled-right mt-3" matTooltip="View available learning" matTooltipClass=" primarybgd has-text-white is-size-7">
         <img src="./assets/icons/Blue_Icon_learn1.png" style="width:80px" (click)="showview('learn')" >    </button>
 
-  <button class="button is-ghost is-pulled-right mt-3"  (click)="showview('clickshow')" matTooltip="View Why Learn" matTooltipClass="tooltip has-background-primary has-text-white is-size-7">
+  <button class="button is-ghost is-pulled-right mt-3"  (click)="showview('clickshow')" matTooltip="View Why Learn" matTooltipClass=" primarybgd has-text-white is-size-7">
     <img src="./assets/icons/Blue_Icon_clickview.png" style="width:80px; "  >    </button>
             
   </div>
-  <div class="centered-content-clear1" *ngIf="!portalid"> 
-  <p  class="loader"></p></div>
+
  
 
   <ng-container  *ngIf="view == 'learn'"> 
@@ -59,24 +58,33 @@
 </ng-container>
 
 
-<div name="overlaycontent" class="centered-content-clear1 is-overlay"   *ngIf="view == 'portalaccept'">
-<div class="content-image1">
-<div class="notification is-info"   *ngIf="portalprivacy" [innerHTML]="portalprivacy" >
+<div name="overlaycontent" class="is-overlay "    *ngIf="view == 'portalaccept'">
+
+<div class="notification has-background-white  mb-0" style="max-height:60%; overflow-y: auto ; margin-top:15vh"  *ngIf="portalprivacy" [innerHTML]="portalprivacy" >
+
 </div>
 
 
-<div class=" is-fullwidth mt-6">
-<div class="is-pulled-left pl-5">
-<button class="button is-ghost is-fullwidth mt-6">
-  <img src="./assets/icons/Blue_Icon_guest.png" style="width:200px" (click)="showview('clickshow');newuser()"> </button>
-<br><button class="button is-primary  is-fullwidth  has-text-weight-semibold is-size-5 is-outlined has-background-white has-text-primary" (click)="showview('clickshow');newuser()">SMC Guest Access</button>
-</div><div class="is-pulled-right pr-6">
-<button class="button is-ghost is-fullwidth mt-6 ">
-<img src="./assets/icons/Blue_Icon_user.png" style="width:200px" (click)="redirect()"> </button>
-<br><button class="button is-primary is-fullwidth  has-text-weight-semibold is-size-5 is-outlined has-background-white has-text-primary">SMC Learner Access</button>
-</div></div>
-</div></div>
+<div class="notification has-background-white is-flex mt-0" >
+  <div class="column">
+<a class="button is-ghost  is-fullwidth">
+  <img src="./assets/icons/Blue_Icon_guest.png" style="width:100px" (click)="showview('clickshow');newuser()"> </a>
+<br><button class="button is-small is-fullwidth  is-size-6 primaryborder primaryfont" (click)="showview('clickshow');newuser()">SMC Guest Access</button>
 </div>
+
+<div class="column">
+<a class="button is-ghost is-fullwidth">
+<img src="./assets/icons/Blue_Icon_user.png" style="width:100px" (click)="redirect()"> </a>
+<br><button class="button is-small is-fullwidth  is-size-6 primarybgd  has-text-white">SMC Learner Access</button>
+</div></div>
+
+</div>
+
+
+</div>
+
+
+
 
 <app-footer></app-footer>
 

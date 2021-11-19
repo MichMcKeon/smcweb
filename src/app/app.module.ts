@@ -18,6 +18,7 @@ import { FooterComponent } from './appcomponents/footer/footer.component';
 import { PortalmessagesComponent } from './appcomponents/portalmessages/portalmessages.component';
 import { SmcComponent } from './appcomponents/smc/smc.component';
 import { UserportalComponent } from './appcomponents/userportal/userportal.component';
+import { ViewlearningComponent } from './appcomponents/viewlearning/viewlearning.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UserportalComponent } from './appcomponents/userportal/userportal.compo
     FooterComponent,
     PortalmessagesComponent,
     SmcComponent,
-    UserportalComponent
+    UserportalComponent,
+    ViewlearningComponent
   ],
   imports: [
     BrowserModule,

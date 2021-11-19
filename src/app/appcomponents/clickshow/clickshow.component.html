@@ -1,5 +1,8 @@
 <div class="centered-clear">
+    <div class="centered-clear" *ngIf="!clickitem"> 
+        <p  class="loader"></p></div>
     <div *ngFor="let clickitem of clickitem">
+       
         <div *ngIf="clickitem.Portal_Click_Show__r.Show_on_Route__c.includes(thisapproute)">
         
             <div *ngIf="clickitem.Show_Order__c == nextonclick && clickitem.is_End_of_Click_Show__c">

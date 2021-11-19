@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+ 
+<div class="centered-clear mt-1">   
+  
+  <div class="centered-clear" > 
+ 
+  <div class="boxpanel">
+
+        <div   *ngIf="!products" class="loader"></div>
+      
+        <div  class="boxpanelheader has-text-centered has-text-white title is-3">
+            <button  mat-raised-button class="button is-ghost " style="text-decoration:none"  matTooltipClass="tooltip has-background-primary has-text-white is-size-7" >
+                <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>  LEARNING </div>
+
+                <div class=" mx-5 px-5 py-5">
+                  <div class="columns">
+                    <div class="column is-9"   *ngIf="learningpolicy" [innerHTML]="learningpolicy" >
+                    </div>
+                 <div class="column is-3">   <img src="./assets/image-calendar1.png" style="height:auto" >
+                   </div></div></div>
+
+                  <button class="button is-black is-fullwidth is-small mb-5 mx-5" >  <img src="./assets/icons/Blue_Icon_learn1.png" style="width:80px">  </button> 
+           
+      <div  class="is-flex has-background-info" >
+    <ul *ngFor="let product of products"> 
+    <li *ngIf="product.Global_Product__r.Status__c == 'Active'">
+<button class="button is-info" #learn value="{{product.Id}}" (click)="getlearning(learn.value)">
+{{product.Global_Product__r.Display_Name__c}}</button>
+
+</li></ul>
+</div>
+
+  <div  class=" has-background-info" *ngFor="let product of products">
+<div  *ngIf="product.Id == showlearn"  class="notification is-info">
+  <div class="has-background-primary has-text-white has-text-centered is-size-5 pt-3 pb-3 pl-2 mb-3">LEARNING: {{product.Global_Product__r.Display_Name__c}}</div>
+  <b>OVERVIEW:</b> 
+  {{product.Global_Product__r.Description__c}}<br>
+<b>Duration:</b> {{product.Global_Product__r.Duration__c}} <br>
+<b>Passing Grade:</b> {{product.Global_Product__r.Passing_Grade__c}}   <br>
+<b>Certificate of Completion:</b> {{product.Global_Product__r.Certificate_of_Completion__c}}   <br>
+<b>Online Support:</b> {{product.Global_Product__r.Online_Support__c}} 
+ <b>MODULES:</b> 
+  {{product.Global_Product__r.Modules__c}} <br> 
+<b>ACTIVITIES:</b>  
+  {{product.Global_Product__r.Activities__c}}<br>
+  <div class="has-background-info pb-5"> 
+    <div *ngIf="product.Global_Product__r.Overview__c != ''" class="has-background-info has-text-black has-text-centered has-text-weight-semibold is-size-6 pt-3 pb-3 pl-2 mt-4" >PREVIEW: {{product.Global_Product__r.Display_Name__c}}</div>
+              
+                  </div></div></div>
+
+                  <div class="is-flex is-justify-content-center is-align-content-center" >
+                   
+                        <ul  *ngFor="let price of prices" >
+
+                      <li  *ngIf="price.Portal_Product_Id__c == showlearn && !price.Hide__c && price.PriceStatus__c !='Inactive' "  >
+                      
+                      
+                        <div *ngIf="showprice == 'show'" class="columns-price tags" >
+                         
+                          <ul class="price">
+                           
+                            <li class="header"> 
+                              <span class="tag is-info mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
+                              <span class="tag is-link mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_PriceStatus__c ">{{price.PriceStatus__c}}</span>
+                              <span class="tag is-black mr-2" *ngIf="price.Start_Date_Countdown__c > 0  &&  price.Show_Countdown__c">  in {{price.Start_Date_Countdown__c}} days!</span>
+                              <span class="tag is-black mr-2" *ngIf="price.End_Date_Countdown__c > 0  &&  price.Show_Countdown__c ">  in {{price.End_Date_Countdown__c}} days!</span>
+                          
+                              <span class="tag is-warning mr-2" *ngIf="price.Portal_Payment_Option_id__c == selectedproduct">SELECTED</span>
+                               <span class="is-size-6">  {{price.Price_Option__c}}</span></li>
+                            <li><span class="tag is-black has-text-weight-semibold">Upfront:</span> <span class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{price.Currency__c}} {{price.Upfront__c | number:'2.2-2'}}</span> </li>
+                            <li  *ngIf="price.Monthly__c"><span class="tag is-black">Monthly:</span><span class="tag is-white has-text-black is-size-7"> {{price.Currency__c}} {{price.Monthly__c | number:'2.2-2'}} </span></li>
+                            <li  *ngIf="price.Monthly__c"><span class="tag is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{price.Terms__c}}</span></li>
+                       
+                        
+                             
+                            <button mat-raised-button class="button is-outlined is-black my-1 py-1 has-background-white is-fullwidth has-text-black is-size-7" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name)">
+                              <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> REGISTER </button>  
+                              <ul *ngFor="let pricediscount of pricediscounts">
+                           
+                              <button *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && pricediscount.Coupon_Required__c " mat-raised-button class="button  py-1 my-1 has-background-black is-fullwidth has-text-white is-size-7" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getcoupon()">
+                                <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> {{price.Id}} <img src="./assets/icons/lock-icon.png" style="width:20px; margin-left:15px"></button>  
+                              <button *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && !pricediscount.Coupon_Required__c " mat-raised-button class="button py-5 my-1 has-background-black is-fullwidth has-text-white is-size-7" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getdiscount()">
+                                  <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> DISCOUNTED OPTION {{price.Id}}</button>  
+                                  </ul> 
+                              </ul>  </div>    </li></ul>
+
+
+                              <ul  *ngFor="let discounted of discounted" >
+
+                                <li  *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c" >
+                                
+                                
+                                  <div  class="columns-price tags" >
+                                   
+                                    <ul class="price">
+                                     <input class="form-control" class="input " #coupon   placeholder="Enter coupon to unlock" type="text"  (keyup)="checkcoupon(coupon.value)"> 
+                                    
+                                     <li class="header"> 
+                                        <span class="tag is-link mr-2" *ngIf="discounted.DiscountStatus__c != 'Inactive' &&  discounted.Show_Price_Status__c ">{{discounted.DiscountStatus__c}}</span>
+                                        <span class="tag is-black mr-2" *ngIf="discounted.Start_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.Start_Date_Countdown__c}} days!</span>
+                                        <span class="tag is-black mr-2" *ngIf="discounted.End_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.End_Date_Countdown__c}} days!</span>
+                                    
+                                          <span class="is-size-6" >  {{discounted.Price_Option__c}}</span></li>
+                                      <li><span class="tag is-black has-text-weight-semibold">Discounted Upfront:</span> <span class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{discounted.Currency__c}} {{discounted.Discounted_Upfront__c | number:'2.2-2'}}</span> </li>
+                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Disounted Monthly:</span><span class="tag is-white has-text-black is-size-7"> {{discounted.Currency__c}} {{discounted.Discounted_Monthly__c | number:'2.2-2'}} </span></li>
+                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{discounted.Terms__c}}</span></li>
+                                 
+                                  
+                                       
+                                      <button mat-raised-button class="button is-outlined is-black my-1 py-5 has-background-white is-fullwidth has-text-black is-size-7" #priceid value="{{discounted.Id}}" name="Portal_Discount__c"(click)="sfupdate(priceid.value,priceid.name)">
+                                        <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> REGISTER </button>  
+                                     
+                                   
+                                      
+                                    </ul>  </div>                  
+ </li></ul>
+</div></div></div></div>
+
+
+
+
+
+
+            
+  
+    
+              

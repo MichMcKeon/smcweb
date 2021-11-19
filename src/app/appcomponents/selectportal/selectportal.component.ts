@@ -128,24 +128,24 @@ redirect(){
    this.route.params.subscribe(
     (params:Params) => {
  
-      if(params.m ){
-        this.createportaluserModel.parm=params.m;
+      if(params['m'] ){
+        this.createportaluserModel.parm=params['m'];
         }else{this.createportaluserModel.parm='SMC'};
 
-       if(params.d ){
-       this.createportaluserModel.dist=params.d.toUpperCase();
+       if(params['d'] ){
+       this.createportaluserModel.dist=params['d'].toUpperCase();
        }else{this.createportaluserModel.dist='SMC'};
 
-        if(params.p ){
-        this.createportaluserModel.prodpayopt=params.p;
+        if(params['p'] ){
+        this.createportaluserModel.prodpayopt=params['p'];
          }else{this.createportaluserModel.prodpayopt='none'};
          
-          if(params.c ){
-         this.createportaluserModel.consult=params.c;
+          if(params['c'] ){
+         this.createportaluserModel.consult=params['c'];
            }else{this.createportaluserModel.consult='202123'};
            
-            if(params.ib ){
-              this.createportaluserModel.ib=params.ib;
+            if(params['ib'] ){
+              this.createportaluserModel.ib=params['ib'];
             }else{this.createportaluserModel.ib='202122'};
             console.log(this.createportaluserModel);
 

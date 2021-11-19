@@ -45,7 +45,7 @@ admins:any;
 smcdetail:any;
 portallinks:any;
 
-
+contactspolicy='';
 boxpanelcontent1='hide';
 showcontactdetail='hide';
 viewcontacts='hide';
@@ -126,6 +126,14 @@ this.sfportalrequestsService.getportalthissmcoffice(this.smc)
 }
     ngOnInit(): void{
 
+      this.http.get('assets/docs/contactspolicy.html', {
+        responseType : 'text'
+     })
+     .subscribe((data) => {
+      this.contactspolicy = data
+      });
+      
+
 if(this.user){
         this.sfportalrequestsService.getthisportaluser(this.user)
     .subscribe((response:any) =>{
@@ -163,6 +171,10 @@ this.sfportalrequestsService.getportalalldepartment(this.portal )
  this.departments = response;
 
  
+ this.sfportalrequestsService.getportalalladmin(this.portal )
+ .subscribe((response) =>{
+  console.log('admins',response);
+  this.admins = response;
 
 
  this.sfportalrequestsService.gethourthisportal(this.portal )
@@ -172,10 +184,6 @@ this.sfportalrequestsService.getportalalldepartment(this.portal )
 
  
 
-  this.sfportalrequestsService.getportalalladmin(this.portal )
-.subscribe((response) =>{
- console.log('admins',response);
- this.admins = response;
 
   
 
