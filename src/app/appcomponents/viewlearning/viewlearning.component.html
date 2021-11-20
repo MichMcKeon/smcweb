@@ -58,9 +58,9 @@
                       
                         <div *ngIf="showprice == 'show'" class="tags" >
                          
-                          <ul class="boxcard is-block ">
+                          <ul class="boxcard ">
                            
-                            <li class="is-block"> 
+                            <li class="is-block px-2 mx-2"> 
                               <span class="tag is-info mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
                               <span class="tag is-link mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_PriceStatus__c ">{{price.PriceStatus__c}}</span>
                               <span class="tag is-black mr-2" *ngIf="price.Start_Date_Countdown__c > 0  &&  price.Show_Countdown__c">  in {{price.Start_Date_Countdown__c}} days!</span>
@@ -68,21 +68,21 @@
                           
                               <span class="tag is-warning mr-2" *ngIf="price.Portal_Payment_Option_id__c == selectedproduct">SELECTED</span>
                                <span class="is-size-6">  {{price.Price_Option__c}}</span></li>
-                            <li class="is-block"><span class="tag is-black has-text-weight-semibold">Upfront:</span> <span class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{price.Currency__c}} {{price.Upfront__c | number:'2.2-2'}}</span> </li>
-                            <li class="is-block" *ngIf="price.Monthly__c"><span class="tag is-black">Monthly:</span><span class="tag is-white has-text-black is-size-7"> {{price.Currency__c}} {{price.Monthly__c | number:'2.2-2'}} </span></li>
-                            <li class="is-block" *ngIf="price.Monthly__c"><span class="tag is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{price.Terms__c}}</span></li>
+                            <li class="is-block px-2 mx-2"><span class="tag is-black has-text-weight-semibold">Upfront:</span> <span class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{price.Currency__c}} {{price.Upfront__c | number:'2.2-2'}}</span> </li>
+                            <li class="is-block px-2 mx-2" *ngIf="price.Monthly__c"><span class="tag is-black">Monthly:</span><span class="tag is-white has-text-black is-size-7"> {{price.Currency__c}} {{price.Monthly__c | number:'2.2-2'}} </span></li>
+                            <li class="is-block px-2 mx-2" *ngIf="price.Monthly__c"><span class="tag is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{price.Terms__c}}</span></li>
                        
                         
                              
-                            <button mat-raised-button class="button  thirdbgd fourthborder my-4 py-1 has-text-black is-size-7 " style="text-decoration:none"  #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name)">
-                              <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:70px"> REGISTER </button>  
+                            <button mat-raised-button class="button   is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none"  #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name)">
+                                <img src="./assets/icons/Blue_Icon_blueregister1.png" class="pt-3 pb-3" style="width:70px"> REGISTER </button>  
                              
-                              <li class="mx-3" *ngFor="let pricediscount of pricediscounts">
+                              <li px-2 mx-2 *ngFor="let pricediscount of pricediscounts">
                                 <button *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && pricediscount.Coupon_Required__c " mat-raised-button class="button is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getcoupon()" matTooltipClass=" has-text-white is-size-7" >
-                                  <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:40px"> Discounted Locked</button> 
+                                  <img src="./assets/icons/Blue_Icon_red_locked.png" class="pt-3 pb-3" style="width:80px"> Discounted Locked</button> 
                            
                                   <button  *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && !pricediscount.Coupon_Required__c " mat-raised-button class="button is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getdiscount()" matTooltipClass=" has-text-white is-size-7" >
-                                    <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:40px"> Discounted Locked</button> 
+                                    <img src="./assets/icons/Blue_Icon_redbkgd.png" class="pt-3 pb-3" style="width:200px"> Discounted </button> 
                            
                                
                                 </li>  
