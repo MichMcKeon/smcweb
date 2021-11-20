@@ -60,70 +60,89 @@
                          
                           <ul class="boxcard ">
                            
-                            <li class="is-block px-2 mx-2"> 
-                              <span class="tag is-info mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
+                            <li class="boxcard1 has-text-white is-size-6 "><b>  {{price.Price_Option__c}}:</b> &nbsp;&nbsp;<small>{{price.Payment_Option__c}}</small></li>
+                             <li class="mr-2 pt-1"> <span class="tag is-info mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
                               <span class="tag is-link mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_PriceStatus__c ">{{price.PriceStatus__c}}</span>
                               <span class="tag is-black mr-2" *ngIf="price.Start_Date_Countdown__c > 0  &&  price.Show_Countdown__c">  in {{price.Start_Date_Countdown__c}} days!</span>
                               <span class="tag is-black mr-2" *ngIf="price.End_Date_Countdown__c > 0  &&  price.Show_Countdown__c ">  in {{price.End_Date_Countdown__c}} days!</span>
                           
                               <span class="tag is-warning mr-2" *ngIf="price.Portal_Payment_Option_id__c == selectedproduct">SELECTED</span>
-                               <span class="is-size-6">  {{price.Price_Option__c}}</span></li>
-                            <li class="is-block px-2 mx-2"><span class="tag is-black has-text-weight-semibold">Upfront:</span> <span class="tag is-white  has-text-black has-text-weight-semibold is-size-7">{{price.Currency__c}} {{price.Upfront__c | number:'2.2-2'}}</span> </li>
-                            <li class="is-block px-2 mx-2" *ngIf="price.Monthly__c"><span class="tag is-black">Monthly:</span><span class="tag is-white has-text-black is-size-7"> {{price.Currency__c}} {{price.Monthly__c | number:'2.2-2'}} </span></li>
-                            <li class="is-block px-2 mx-2" *ngIf="price.Monthly__c"><span class="tag is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{price.Terms__c}}</span></li>
+                              </li>
+                            <li class="mr-2 pt-1"><span class="tag is-black mr-0 has-text-weight-semibold">Upfront:</span> <span class="tag ml-0 is-white  has-text-black has-text-weight-semibold is-size-7">{{price.Currency__c}} {{price.Upfront__c | number:'2.2-2'}}</span> </li>
+                            <li class="mr-2 pt-1" *ngIf="price.Monthly__c"><span class="tag mr-0  is-black">Monthly:</span><span class="tag ml-0  is-white has-text-black is-size-7"> {{price.Currency__c}} {{price.Monthly__c | number:'2.2-2'}} </span></li>
+                            <li class="mr-2 pt-1" *ngIf="price.Monthly__c"><span class="tag mr-0  is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{price.Terms__c}}</span></li>
                        
                         
-                             
+                            <li class="mr-2 is-pulled-right">
                             <button mat-raised-button class="button   is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none"  #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name)">
-                                <img src="./assets/icons/Blue_Icon_blueregister1.png" class="pt-3 pb-3" style="width:70px"> REGISTER </button>  
-                             
-                              <li px-2 mx-2 *ngFor="let pricediscount of pricediscounts">
+                                <img src="./assets/icons/Blue_Icon_blueregister1.png" class="pt-3 pb-3" style="width:50px"> REGISTER </button>  
+                              </li>
+                              <li class="mr-2 is-pulled-right" *ngFor="let pricediscount of pricediscounts">
                                 <button *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && pricediscount.Coupon_Required__c " mat-raised-button class="button is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getcoupon()" matTooltipClass=" has-text-white is-size-7" >
-                                  <img src="./assets/icons/Blue_Icon_red_locked.png" class="pt-3 pb-3" style="width:80px"> Discounted Locked</button> 
+                                  <img src="./assets/icons/Blue_Icon_black_locked.png" class="pt-3 pb-3" style="width:50px"> Discounted Locked</button> 
                            
                                   <button  *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && !pricediscount.Coupon_Required__c " mat-raised-button class="button is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getdiscount()" matTooltipClass=" has-text-white is-size-7" >
-                                    <img src="./assets/icons/Blue_Icon_redbkgd.png" class="pt-3 pb-3" style="width:200px"> Discounted </button> 
+                                    <img src="./assets/icons/Blue_Icon_black_discount.png" class="pt-3 pb-3" style="width:50px"> Discounted </button> 
                            
                                
                                 </li>  
                               </ul>  </div>    </li></ul>
 
 
-                              <ul  *ngFor="let discounted of discounted" >
+                                <div *ngFor="let price of prices" >
+                                        <div *ngIf="price.Id == priceid" class="tags" >
+                                        <ul class="boxcard ">
+                           
+                                          <li class="boxcard1 has-text-white is-size-6 "><b>  {{price.Price_Option__c}}:</b> &nbsp;&nbsp;<small>{{price.Payment_Option__c}}</small></li>
+                                           <li class="mr-2 pt-1"> <span class="tag is-info mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
+                                            <span class="tag is-link mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_PriceStatus__c ">{{price.PriceStatus__c}}</span>
+                                            <span class="tag is-black mr-2" *ngIf="price.Start_Date_Countdown__c > 0  &&  price.Show_Countdown__c">  in {{price.Start_Date_Countdown__c}} days!</span>
+                                            <span class="tag is-black mr-2" *ngIf="price.End_Date_Countdown__c > 0  &&  price.Show_Countdown__c ">  in {{price.End_Date_Countdown__c}} days!</span>
+                                        
+                                            <span class="tag is-warning mr-2" *ngIf="price.Portal_Payment_Option_id__c == selectedproduct">SELECTED</span>
+                                            </li>
+                                          <li class="mr-2 pt-1"><span class="tag is-black mr-0 has-text-weight-semibold">Upfront:</span> <span class="tag ml-0 is-white  has-text-black has-text-weight-semibold is-size-7">{{price.Currency__c}} {{price.Upfront__c | number:'2.2-2'}}</span> </li>
+                                          <li class="mr-2 pt-1" *ngIf="price.Monthly__c"><span class="tag mr-0  is-black">Monthly:</span><span class="tag ml-0  is-white has-text-black is-size-7"> {{price.Currency__c}} {{price.Monthly__c | number:'2.2-2'}} </span></li>
+                                          <li class="mr-2 pt-1" *ngIf="price.Monthly__c"><span class="tag mr-0  is-black">Terms:</span><span class="tag is-white has-text-black  is-size-7">{{price.Terms__c}}</span></li>
+                                     </ul></div></div>
 
-                                <li  *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c" >
+
+
+                                          <div  *ngFor="let discounted of discounted" >
+
+                                          
+                                               
+                                       <div class="has-text-white fourthbgd ml-4 mr-4 pt-1 pb-1 is-size-6" *ngIf="discounted.Coupon_Required__c && coupon != discounted.Coupon__c"> 
+                                      <input *ngIf="discounted.Coupon_Required__c && coupon != discounted.Coupon__c" class="form-control" class="input pl-4" #coupon   placeholder="Enter coupon to unlock discount" type="text"  (keyup)="checkcoupon(coupon.value)"> 
+                                     </div>
+                                      <ul class="boxcard " *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c" >
+                           
+                                        
                                 
-                                
-                             
-                                  
-                                 
-                                    <div class="tags" >
-                                    <ul  >
-                                      <input *ngIf="discounted.Coupon_Required__c && coupon != discounted.Coupon__c" class="form-control" class="input " #coupon   placeholder="Enter coupon to unlock" type="text"  (keyup)="checkcoupon(coupon.value)"> 
-                              
-                                     <li > 
-                                        <span class="tag is-link mr-2 my-1" *ngIf="discounted.DiscountStatus__c != 'Inactive' &&  discounted.Show_Price_Status__c ">{{discounted.DiscountStatus__c}}</span>
-                                        <span class="tag is-black mr-2 my-1" *ngIf="discounted.Start_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.Start_Date_Countdown__c}} days!</span>
-                                        <span class="tag is-black mr-2 my-1" *ngIf="discounted.End_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.End_Date_Countdown__c}} days!</span>
-                                    
-                                          <span class="is-size-6" >  {{discounted.Price_Option__c}}</span></li>
-                                          <li ><span *ngIf="discounted.Upfront_Discounted_By__c !='' && discounted.Upfront_Discounted_By__c > 0"class="tag is-white has-text-weight-semibold"> Upfront discounted by: {{discounted.Currency__c}} {{discounted.Upfront_Discounted_By__c | number:'2.2-2'}}</span> <span *ngIf="discounted.Monthly_Discounted_By__c !='' && discounted.Monthly_Discounted_By__c > 0"class="tag is-white has-text-weight-semibold"> Monthly discounted by: {{discounted.Currency__c}} {{discounted.Monthly_Discounted_By__c | number:'2.2-2'}}</span></li>
-                                    
-                                      <li ><span class="tag is-black has-text-weight-semibold">Discounted Upfront:</span> <span *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="tag is-white  has-text-black has-text-weight-semibold is-size-7 my-1">{{discounted.Currency__c}} {{discounted.Discounted_Upfront__c | number:'2.2-2'}}</span> </li>
-                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Disounted Monthly:</span><span *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="tag is-white has-text-black is-size-7 my-1"> {{discounted.Currency__c}} {{discounted.Discounted_Monthly__c | number:'2.2-2'}} </span></li>
-                                      <li  *ngIf="discounted.Discounted_Monthly__c"><span class="tag is-black">Terms:</span><span *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="tag is-white has-text-black  is-size-7 my-1">{{discounted.Terms__c}}</span></li>
-                                 
-                                  
-                                       
-                                      <button mat-raised-button *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="button is-outlined is-black my-1 py-1 has-background-white is-fullwidth has-text-black is-size-7" #priceid value="{{discounted.Id}}" name="Portal_Discount__c"(click)="sfupdate(priceid.value,priceid.name)">
-                                        <img src="./assets/icons/Blue_Bull.png" style="width:20px; margin-right:15px"> REGISTER </button>  
-                                     
+                                      <li  class=" boxcard3 has-text-white is-size-6 "  *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)"  ><b>  {{discounted.Price_Option__c}}:</b> &nbsp;&nbsp;<small>{{discounted.Payment_Option__c}}</small></li>
+                                          <li class="mr-2 pt-1 "  *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)">
+                                        <span class="tag is-link mr-2 pt-1  " *ngIf="discounted.DiscountStatus__c != 'Inactive' &&  discounted.Show_Price_Status__c ">{{discounted.DiscountStatus__c}}</span>
+                                        <span class="tag is-black mr-2 pt-1   " *ngIf="discounted.Start_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.Start_Date_Countdown__c}} days!</span>
+                                        <span class="tag is-black mr-2 pt-1 " *ngIf="discounted.End_Date_Countdown__c > 0  &&  discounted.Show_Countdown__c ">  in {{discounted.End_Date_Countdown__c}} days!</span>
+                                       </li>
                                    
-                                      
-                                    </ul>  </div>            
- </li></ul>
-</div></div></div></div>
+                                       <li class="mr-2 pt-1 "  *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" ><span *ngIf="discounted.Upfront_Discounted_By__c !='' && discounted.Upfront_Discounted_By__c > 0"class="tag is-white  has-text-black has-text-weight-semibold is-size-7 "> Upfront discounted by: {{discounted.Currency__c}} {{discounted.Upfront_Discounted_By__c | number:'2.2-2'}}</span> <span *ngIf="discounted.Monthly_Discounted_By__c !='' && discounted.Monthly_Discounted_By__c > 0"class="tag is-white  has-text-black has-text-weight-semibold is-size-7 "> Monthly discounted by: {{discounted.Currency__c}} {{discounted.Monthly_Discounted_By__c | number:'2.2-2'}}</span></li>
+                                 
+                                         
+                                      <li class="mr-2 pt-1" *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)"><span class="tag is-black has-text-weight-semibold">Discounted Upfront:</span> <span  class="tag is-white  has-text-black has-text-weight-semibold is-size-7 ">{{discounted.Currency__c}} {{discounted.Discounted_Upfront__c | number:'2.2-2'}}</span> </li>
+                                      <li  class="mr-2 pt-1" *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)"><span *ngIf="discounted.Discounted_Monthly__c"class="tag is-black">Disounted Monthly:</span><span *ngIf="discounted.Discounted_Monthly__c" class="tag is-white has-text-black is-size-7"> {{discounted.Currency__c}} {{discounted.Discounted_Monthly__c | number:'2.2-2'}} </span></li>
+                                      <li class="mr-2 pt-1"  *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)"><span *ngIf="discounted.Discounted_Monthly__c" class="tag is-black">Terms:</span><span *ngIf="discounted.Discounted_Monthly__c" class="tag is-white has-text-black  is-size-7 ">{{discounted.Terms__c}}</span></li>
+                                 
+                                  
+                                   
+                                      <button mat-raised-button *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="button   is-ghost my-4 py-1 has-text-black is-size-7 " #priceid value="{{discounted.Id}}" name="Portal_Discount__c"(click)="sfupdate(priceid.value,priceid.name)">
+                                        <img src="./assets/icons/Blue_Icon_blueregister1.png" class="pt-3 pb-3" style="width:50px"> REGISTER </button>  
+                                     
+                                 </ul>
+                                     
+                                    </div>          </div></div></div>  
 
+</div>
 
 
 
