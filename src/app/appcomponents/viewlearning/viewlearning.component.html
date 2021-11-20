@@ -10,7 +10,7 @@
         <div   *ngIf="!products" class="loader"></div>
       
         <div  class="boxpanelheader has-text-centered has-text-white title is-3">
-            <button  mat-raised-button class="button is-ghost " style="text-decoration:none"  matTooltipClass="tooltip has-background-primary has-text-white is-size-7" >
+            <button  mat-raised-button class="button is-ghost " style="text-decoration:none"  matTooltipClass="tooltip primarybgdhas-text-white is-size-7" >
                 <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>  LEARNING </div>
 
                 <div class=" mx-5 px-5 py-5">
@@ -22,18 +22,18 @@
 
                   <button class="button is-black is-fullwidth is-small mb-5 mx-5" >  <img src="./assets/icons/Blue_Icon_learn1.png" style="width:80px">  </button> 
            
-      <div  class="is-flex has-background-info" >
+      <div  class="is-flex thirdbgd" >
     <ul *ngFor="let product of products"> 
     <li *ngIf="product.Global_Product__r.Status__c == 'Active'">
-<button class="button is-info" #learn value="{{product.Id}}" (click)="getlearning(learn.value)">
+<button class="button thirdbgd" #learn value="{{product.Id}}" (click)="getlearning(learn.value)">
 {{product.Global_Product__r.Display_Name__c}}</button>
 
 </li></ul>
 </div>
 
-  <div  class=" has-background-info" *ngFor="let product of products">
-<div  *ngIf="product.Id == showlearn"  class="notification is-info">
-  <div class="has-background-primary has-text-white has-text-centered is-size-5 pt-3 pb-3 pl-2 mb-3">LEARNING: {{product.Global_Product__r.Display_Name__c}}</div>
+  <div  class=" thirdbgd" *ngFor="let product of products">
+<div  *ngIf="product.Id == showlearn"  class="notification thirdbgd">
+  <div class="primarybgd has-text-white has-text-centered is-size-5 pt-3 pb-3 pl-2 mb-3">LEARNING: {{product.Global_Product__r.Display_Name__c}}</div>
   <b>OVERVIEW:</b> 
   {{product.Global_Product__r.Description__c}}<br>
 <b>Duration:</b> {{product.Global_Product__r.Duration__c}} <br>
@@ -44,8 +44,8 @@
   {{product.Global_Product__r.Modules__c}} <br> 
 <b>ACTIVITIES:</b>  
   {{product.Global_Product__r.Activities__c}}<br>
-  <div class="has-background-info pb-5"> 
-    <div *ngIf="product.Global_Product__r.Overview__c != ''" class="has-background-info has-text-black has-text-centered has-text-weight-semibold is-size-6 pt-3 pb-3 pl-2 mt-4" >PREVIEW: {{product.Global_Product__r.Display_Name__c}}</div>
+  <div class="thirdbgd pb-5"> 
+    <div *ngIf="product.Global_Product__r.Overview__c != ''" class="thirdbgd has-text-black has-text-centered has-text-weight-semibold is-size-6 pt-3 pb-3 pl-2 mt-4" >PREVIEW: {{product.Global_Product__r.Display_Name__c}}</div>
               
                   </div></div></div>
 
@@ -61,7 +61,7 @@
                           <ul class="boxcard ">
                            
                             <li class="boxcard1 has-text-white is-size-6 "><b>  {{price.Price_Option__c}}:</b> &nbsp;&nbsp;<small>{{price.Payment_Option__c}}</small></li>
-                             <li class="mr-2 pt-1"> <span class="tag is-info mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
+                             <li class="mr-2 pt-1"> <span class="tag thirdbgd mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
                               <span class="tag is-link mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_PriceStatus__c ">{{price.PriceStatus__c}}</span>
                               <span class="tag is-black mr-2" *ngIf="price.Start_Date_Countdown__c > 0  &&  price.Show_Countdown__c">  in {{price.Start_Date_Countdown__c}} days!</span>
                               <span class="tag is-black mr-2" *ngIf="price.End_Date_Countdown__c > 0  &&  price.Show_Countdown__c ">  in {{price.End_Date_Countdown__c}} days!</span>
@@ -75,11 +75,11 @@
                         
                             <li class="mr-2 is-pulled-right">
                             <button mat-raised-button class="button   is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none"  #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name)">
-                                <img src="./assets/icons/Blue_Icon_blueregister1.png" class="pt-3 pb-3" style="width:50px"> REGISTER </button>  
+                                <img src="./assets/icons/Blue_Icon_blueregister1.png" class="pt-3 pb-3" style="width:50px"> Register </button>  
                               </li>
                               <li class="mr-2 is-pulled-right" *ngFor="let pricediscount of pricediscounts">
                                 <button *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && pricediscount.Coupon_Required__c " mat-raised-button class="button is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getcoupon()" matTooltipClass=" has-text-white is-size-7" >
-                                  <img src="./assets/icons/Blue_Icon_black_locked.png" class="pt-3 pb-3" style="width:50px"> Discounted Locked</button> 
+                                  <img src="./assets/icons/Blue_Icon_black_locked.png" class="pt-3 pb-3" style="width:50px">Apply Coupon to unlock discount</button> 
                            
                                   <button  *ngIf="pricediscount.Portal_Price_id__c && pricediscount.Portal_Price_id__c == price.Id && !pricediscount.Coupon_Required__c " mat-raised-button class="button is-ghost my-4 py-1 has-text-black is-size-7 " style="text-decoration:none" #priceid value="{{price.Id}}" name="Portal_Price__c"(click)="sfupdate(priceid.value,priceid.name);getdiscount()" matTooltipClass=" has-text-white is-size-7" >
                                     <img src="./assets/icons/Blue_Icon_black_discount.png" class="pt-3 pb-3" style="width:50px"> Discounted </button> 
@@ -94,7 +94,7 @@
                                         <ul class="boxcard ">
                            
                                           <li class="boxcard1 has-text-white is-size-6 "><b>  {{price.Price_Option__c}}:</b> &nbsp;&nbsp;<small>{{price.Payment_Option__c}}</small></li>
-                                           <li class="mr-2 pt-1"> <span class="tag is-info mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
+                                           <li class="mr-2 pt-1"> <span class="tag thirdbgd mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_as_Popular_Selection__c">Popular!</span>
                                             <span class="tag is-link mr-2" *ngIf="price.PriceStatus__c != 'Inactive' &&  price.Show_PriceStatus__c ">{{price.PriceStatus__c}}</span>
                                             <span class="tag is-black mr-2" *ngIf="price.Start_Date_Countdown__c > 0  &&  price.Show_Countdown__c">  in {{price.Start_Date_Countdown__c}} days!</span>
                                             <span class="tag is-black mr-2" *ngIf="price.End_Date_Countdown__c > 0  &&  price.Show_Countdown__c ">  in {{price.End_Date_Countdown__c}} days!</span>
