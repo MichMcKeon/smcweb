@@ -19,6 +19,7 @@ import { PortalmessagesComponent } from './appcomponents/portalmessages/portalme
 import { SmcComponent } from './appcomponents/smc/smc.component';
 import { UserportalComponent } from './appcomponents/userportal/userportal.component';
 import { ViewlearningComponent } from './appcomponents/viewlearning/viewlearning.component';
+import { PortalchatComponent } from './appcomponents/portalchat/portalchat.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ViewlearningComponent } from './appcomponents/viewlearning/viewlearning
     PortalmessagesComponent,
     SmcComponent,
     UserportalComponent,
-    ViewlearningComponent
+    ViewlearningComponent,
+    PortalchatComponent
   ],
   imports: [
     BrowserModule,
