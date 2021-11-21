@@ -8,6 +8,7 @@ import { PortalchatService } from 'src/app/appservices/portalchat.service';
 })
 export class PortalchatComponent implements OnInit{
 
+  
   newMessage: string | undefined;
   messageList: string[] = [];
 
