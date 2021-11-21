@@ -12,7 +12,7 @@ export class PortalchatService {
   constructor() { }
 
 
-  socket = io('http://localhost:3001');
+  socket = io('http://localhost:5000');
 
   public sendMessage(message:any) {
     this.socket.emit('message', message);

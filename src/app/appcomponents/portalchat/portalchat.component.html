@@ -6,4 +6,11 @@
 </div>
 
 <input [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" />
-<button (click)="sendMessage()">Send Message</button>
+<button (click)="sendMessage()">Send Message</button> 
+
+<ul id="messages">
+     
+</ul>
+<form id="form" action="">
+  <input id="input" autocomplete="off" /><button>Send</button>
+</form>
