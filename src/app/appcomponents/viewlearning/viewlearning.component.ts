@@ -3,6 +3,7 @@ import { SfportalrequestsService } from 'src/app/appservices/sfportalrequests.se
 import {Updateportaluser} from 'src/app/appclasses/updateportaluser';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-viewlearning',
   templateUrl: './viewlearning.component.html',
