@@ -20,6 +20,9 @@ import { SmcComponent } from './appcomponents/smc/smc.component';
 import { UserportalComponent } from './appcomponents/userportal/userportal.component';
 import { ViewlearningComponent } from './appcomponents/viewlearning/viewlearning.component';
 import { PortalchatComponent } from './appcomponents/portalchat/portalchat.component';
+import { GlobalviewComponent } from './appcomponents/globalview/globalview.component';
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { PortalchatComponent } from './appcomponents/portalchat/portalchat.compo
     SmcComponent,
     UserportalComponent,
     ViewlearningComponent,
-    PortalchatComponent
+    PortalchatComponent,
+    GlobalviewComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,8 @@ import { PortalchatComponent } from './appcomponents/portalchat/portalchat.compo
     MatIconModule,
     MatCommonModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+   
 
   ],
   providers: [],
