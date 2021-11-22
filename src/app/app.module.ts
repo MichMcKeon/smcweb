@@ -21,7 +21,7 @@ import { UserportalComponent } from './appcomponents/userportal/userportal.compo
 import { ViewlearningComponent } from './appcomponents/viewlearning/viewlearning.component';
 import { PortalchatComponent } from './appcomponents/portalchat/portalchat.component';
 import { GlobalviewComponent } from './appcomponents/globalview/globalview.component';
-import { VjsPlayerComponent } from './appcomponents/vjs-player/vjs-player.component';
+
 
 
 
@@ -37,8 +37,8 @@ import { VjsPlayerComponent } from './appcomponents/vjs-player/vjs-player.compon
     UserportalComponent,
     ViewlearningComponent,
     PortalchatComponent,
-    GlobalviewComponent,
-    VjsPlayerComponent
+    GlobalviewComponent
+   
   ],
   imports: [
     BrowserModule,
