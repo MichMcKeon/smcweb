@@ -14,7 +14,7 @@ export class ViewlearningComponent implements OnInit {
   @Input () portal='';
   @Input () smc='';
   updateportaluserModel = new Updateportaluser('','','')
-
+  
   constructor(private sfportalrequestsService:SfportalrequestsService, private http:HttpClient) { }
  
   learningpolicy:any;

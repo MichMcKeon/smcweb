@@ -5,6 +5,7 @@ import { PortalmessagesComponent } from './appcomponents/portalmessages/portalme
 import{SelectportalComponent} from './appcomponents/selectportal/selectportal.component';
 
 
+
 const routes: Routes = [
   {path: '' ,  component:SelectportalComponent },
   {path: 'smc' ,  component:SelectportalComponent },

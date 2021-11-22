@@ -48,7 +48,12 @@
     <div *ngIf="product.Global_Product__r.Overview__c != ''" class="thirdbgd has-text-black has-text-centered has-text-weight-semibold is-size-6 pt-3 pb-3 pl-2 mt-4" >PREVIEW: {{product.Global_Product__r.Display_Name__c}}</div>
                   </div>
 
-                
+                  <div data-vjs-player>
+                    <video id="vid1" class="video-js">
+                      <source src="//vjs.zencdn.net/v/oceans.mp4">
+                    </video>
+                  </div>
+                  
                   <video
                   id="my-video"
                   class="video-js"
