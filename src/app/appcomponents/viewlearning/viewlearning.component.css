@@ -1,0 +1,13 @@
+.video-js .vjs-control-bar { 
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .video-js .vjs-big-play-button,
+.video-js .vjs-menu-button .vjs-menu-content {
+  /* IE8 - has no alpha support */
+  background-color: #003ca6;
+  
+  background-color: rgba(#003ca6, 0.7);
+}

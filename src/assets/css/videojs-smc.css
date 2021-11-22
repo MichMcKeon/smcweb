@@ -1,0 +1,9 @@
+ 
+.vjs-smc.video-js{
+  width:10%;
+  height:100%;
+  color:rgb(128, 5, 5);
+}
+.vjs-smc .vjs-control-bar {
+background-color:rgb(128, 5, 5)
+}

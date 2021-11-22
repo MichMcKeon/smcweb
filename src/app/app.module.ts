@@ -21,7 +21,14 @@ import { UserportalComponent } from './appcomponents/userportal/userportal.compo
 import { ViewlearningComponent } from './appcomponents/viewlearning/viewlearning.component';
 import { PortalchatComponent } from './appcomponents/portalchat/portalchat.component';
 import { GlobalviewComponent } from './appcomponents/globalview/globalview.component';
+import { VideoplayerComponent } from './appcomponents/videoplayer/videoplayer.component';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
+import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 
 
@@ -37,7 +44,8 @@ import { GlobalviewComponent } from './appcomponents/globalview/globalview.compo
     UserportalComponent,
     ViewlearningComponent,
     PortalchatComponent,
-    GlobalviewComponent
+    GlobalviewComponent,
+    VideoplayerComponent
    
   ],
   imports: [
@@ -52,7 +60,14 @@ import { GlobalviewComponent } from './appcomponents/globalview/globalview.compo
     MatCommonModule,
     MatTableModule,
     MatFormFieldModule,
-   
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
 
   ],
   providers: [],

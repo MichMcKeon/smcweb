@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PortalchatComponent } from './appcomponents/portalchat/portalchat.component';
 import { PortalmessagesComponent } from './appcomponents/portalmessages/portalmessages.component';
 import{SelectportalComponent} from './appcomponents/selectportal/selectportal.component';
+import { VideoplayerComponent } from './appcomponents/videoplayer/videoplayer.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'smc-c/:d/:p/:c/:m', component:SelectportalComponent },
   {path: 'message', component:PortalmessagesComponent },
   {path: 'chat', component:PortalchatComponent },
+  {path: 'video', component:VideoplayerComponent },
 
 
   {path: '**', component:SelectportalComponent }
