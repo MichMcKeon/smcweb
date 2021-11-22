@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet" />
 <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
+<script src="videoplayer.js"></script>
 <div class="centered-clear mt-1">   
   
   <div class="centered-clear" > 
@@ -48,30 +49,17 @@
     <div *ngIf="product.Global_Product__r.Overview__c != ''" class="thirdbgd has-text-black has-text-centered has-text-weight-semibold is-size-6 pt-3 pb-3 pl-2 mt-4" >PREVIEW: {{product.Global_Product__r.Display_Name__c}}</div>
                   </div>
 
-                  <div data-vjs-player>
-                    <video id="vid1" class="video-js">
-                      <source src="//vjs.zencdn.net/v/oceans.mp4">
-                    </video>
-                  </div>
-                  
-                  <video
-                  id="my-video"
-                  class="video-js"
-                  controls
-                  preload="auto"
-                  width="640"
-                  height="264"
-                  poster="MY_VIDEO_POSTER.jpg"
-                  data-setup="{}"
-                >
-                  <source src="{{product.Global_Product__r.Overview__c}}" type="video/mp4" />
+               
+
+                  <video id="my-video" class="video-js" data-setup="{}">
+                    <source src="{{product.Global_Product__r.Overview__c}}" type="video/mp4" />
+                
+                
+                 
             
                   <p class="vjs-no-js">
-                    To view this video please enable JavaScript, and consider upgrading to a
-                    web browser that
-                    <a href="https://videojs.com/html5-video-support/" target="_blank"
-                      >supports HTML5 video</a
-                    >
+                   To view videos you need to enable javascript in your browser.
+                    
                   </p>
                 </video>
 

@@ -4,6 +4,7 @@ import {Updateportaluser} from 'src/app/appclasses/updateportaluser';
 import { HttpClient } from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-viewlearning',
   templateUrl: './viewlearning.component.html',
@@ -15,6 +16,7 @@ export class ViewlearningComponent implements OnInit {
   @Input () smc='';
   updateportaluserModel = new Updateportaluser('','','')
   
+   
   constructor(private sfportalrequestsService:SfportalrequestsService, private http:HttpClient) { }
  
   learningpolicy:any;
