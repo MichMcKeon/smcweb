@@ -25,7 +25,7 @@
       <div  class="is-flex thirdbgd" >
     <ul *ngFor="let product of products"> 
     <li *ngIf="product.Global_Product__r.Status__c == 'Active'">
-<button class="button thirdbgd" #learn value="{{product.Id}}" (click)="getlearning(learn.value)">
+<button class="button thirdbgd" #learn value="{{product.Id}}" (click)="getlearning(learn.value);clearcoupon()">
 {{product.Global_Product__r.Display_Name__c}}</button>
 
 </li></ul>
@@ -46,7 +46,7 @@
   {{product.Global_Product__r.Activities__c}}<br>
   <div class="thirdbgd pb-5"> 
     <div *ngIf="product.Global_Product__r.Overview__c != ''" class="thirdbgd has-text-black has-text-centered has-text-weight-semibold is-size-6 pt-3 pb-3 pl-2 mt-4" >PREVIEW: {{product.Global_Product__r.Display_Name__c}}</div>
-                  </div></div></div>
+                  </div>
 
                 
                   <video
@@ -59,8 +59,8 @@
                   poster="MY_VIDEO_POSTER.jpg"
                   data-setup="{}"
                 >
-                  <source src="MY_VIDEO.mp4" type="video/mp4" />
-                  <source src="MY_VIDEO.webm" type="video/webm" />
+                  <source src="{{product.Global_Product__r.Overview__c}}" type="video/mp4" />
+            
                   <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a
                     web browser that
@@ -70,7 +70,7 @@
                   </p>
                 </video>
 
-
+              </div></div>
 
 
                   <div>   <ul  *ngFor="let price of prices" >
@@ -130,12 +130,12 @@
 
                                           
                                                
-                                       <div class="has-text-white fourthbgd ml-4 mr-4 pt-1 pb-1 is-size-6" *ngIf="discounted.Coupon_Required__c && coupon != discounted.Coupon__c"> 
-                                      <input *ngIf="discounted.Coupon_Required__c && coupon != discounted.Coupon__c" class="form-control" class="input pl-4" #coupon   placeholder="Enter coupon to unlock discount" type="text"  (keyup)="checkcoupon(coupon.value)"> 
+                                       <div  *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c"class="has-text-white fourthbgd ml-4 mr-4 pt-0 pb-0 is-size-6"  style="max-width:1000px; align-content:center; text-align:center"  > 
+                                      <input *ngIf="discounted.Coupon_Required__c && coupon != discounted.Coupon__c" style="max-width:300px" class="form-control" class="input pl-4" #coupon   placeholder="Enter coupon to unlock discount" type="text"  (keyup)="checkcoupon(coupon.value)"> 
                                      </div>
-                                      <ul class="boxcard " *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c" >
+                                      <div *ngIf="discounted.Portal_Price_id__c && priceid == discounted.Portal_Price_id__c" >
                            
-                                        
+                                  <ul class="boxcard "> 
                                 
                                       <li  class=" boxcard3 has-text-white is-size-6 "  *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)"  ><b>  {{discounted.Price_Option__c}}:</b> &nbsp;&nbsp;<small>{{discounted.Payment_Option__c}}</small></li>
                                           <li class="mr-2 pt-1 "  *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)">
@@ -156,7 +156,7 @@
                                       <button mat-raised-button *ngIf="!discounted.Coupon_Required__c || (discounted.Coupon_Required__c && coupon == discounted.Coupon__c)" class="button   is-ghost my-4 py-1 has-text-black is-size-7 " #priceid value="{{discounted.Id}}" name="Portal_Discount__c"(click)="sfupdate(priceid.value,priceid.name)">
                                         <img src="./assets/icons/Blue_Icon_blueregister1.png" class="pt-3 pb-3" style="width:50px"> REGISTER </button>  
                                      
-                                 </ul>
+                                 </ul></div>
                                      
                                     </div>          </div></div></div>  
 

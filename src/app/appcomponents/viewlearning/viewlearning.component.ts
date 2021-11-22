@@ -38,6 +38,12 @@ showdiscount='hide';
     this.coupon = value;
     console.log(this.coupon)
   }
+  clearcoupon(){
+    this.coupon = '';  
+    this.priceid = '';
+    this.showdiscount = 'hide';
+    this.showprice= 'show';
+  }
   getlearning(value:string){
     this.showlearn = value;
     console.log(this.showlearn);
