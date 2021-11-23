@@ -1,14 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { SfportalrequestsService } from 'src/app/appservices/sfportalrequests.service';
 import {Updateportaluser} from 'src/app/appclasses/updateportaluser';
 import { HttpClient } from '@angular/common/http';
 
-
+import videojs  from 'video.js';
 
 @Component({
   selector: 'app-viewlearning',
   templateUrl: './viewlearning.component.html',
-  styleUrls: ['./viewlearning.component.css']
+
+  styleUrls: ['./viewlearning.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ViewlearningComponent implements OnInit {
   @Input () user = '';
@@ -16,7 +18,8 @@ export class ViewlearningComponent implements OnInit {
   @Input () smc='';
   updateportaluserModel = new Updateportaluser('','','')
   
-   
+  player = videojs.Player;
+  
   constructor(private sfportalrequestsService:SfportalrequestsService, private http:HttpClient) { }
  
   learningpolicy:any;

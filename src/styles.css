@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -395,4 +396,175 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
           align-content: center;
         }
         
+ .video-js{
+   border: solid #003ca6 2px  !important;
+  width:80% !important;
+  height:80% !important;
+   margin-left: auto !important;
+   margin-right: auto !important;
  
+
+ }
+ .vjs-custom-theme {
+  --vjs-custom-theme--primary: #003ca6 !important;
+  --vjs-custom-theme--secondary: #fff !important;
+}
+ 
+
+.vjs-custom-theme .vjs-big-play-button{
+  width: 200px !important;
+  height: 210px !important;
+  background:none!important;
+  background-repeat: no-repeat !important;
+  background-position: bottom !important;
+  background-image: url(/assets/icons/videoplay.png) !important;
+  background-size: 170px 170px !important;
+border:none !important;
+  top: 50% !important;
+  left: 50% !important;
+  margin-top: -34px!important;
+  margin-left: -84px !important;
+  color: white !important;
+}
+
+.vjs-custom-theme .vjs-big-play-button .vjs-icon-placeholder {
+  display: none !important;
+}
+
+/* Control Bar */
+.vjs-custom-theme .vjs-button > .vjs-icon-placeholder::before {
+  line-height: 1.55 !important;
+}
+
+.vjs-custom-theme .vjs-control:not(.vjs-disabled, .vjs-time-control):hover {
+  color: var(--vjs-custom-theme--primary) !important;
+  text-shadow: var(--vjs-custom-theme--secondary) 1px 0 10px !important;
+}
+
+.vjs-custom-theme .vjs-control-bar {
+  background: #003ca6 !important;
+  margin-bottom: 1em !important; 
+  padding-left: 1em !important;
+  padding-right: 1em !important; 
+  border: solid #003ca6 2px  !important;
+}
+
+/* Play Button */
+.vjs-custom-theme .vjs-play-control {
+  font-size: 0.8em !important;
+ 
+}
+
+.vjs-custom-theme .vjs-play-control .vjs-icon-placeholder:before {
+  background-color: var(--vjs-custom-theme--secondary) !important;
+  height: 1.5em !important;
+  width: 1.5em !important;
+  margin-top: 0.2em !important;
+  border-radius: 1em !important;
+  color: var(--vjs-custom-theme--primary) !important;
+}
+
+.vjs-custom-theme .vjs-play-control:hover .vjs-icon-placeholder:before {
+  background-color: var(--vjs-custom-theme--primary) !important;
+  color: var(--vjs-custom-theme--secondary)!important;
+}
+
+/* Volume stuff */
+.vjs-custom-theme .vjs-mute-control {
+  display: block !important;
+}
+
+.vjs-custom-theme .vjs-volume-panel {
+  margin-left: 0.5em !important;
+  margin-right: 0.5em !important;
+  padding-top: 0.3em !important;
+}
+
+.vjs-custom-theme .vjs-volume-panel,
+.vjs-custom-theme .vjs-volume-panel:hover,
+.vjs-custom-theme .vjs-volume-panel:hover .vjs-volume-control.vjs-volume-horizontal,
+.vjs-custom-theme .vjs-volume-panel:active .vjs-volume-control.vjs-volume-horizontal,
+.vjs-custom-theme .vjs-volume-panel.vjs-volume-panel-horizontal:hover,
+.vjs-custom-theme .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active,
+.vjs-custom-theme .vjs-volume-bar.vjs-slider-horizontal {
+  width: 3em !important;
+}
+
+.vjs-custom-theme .vjs-volume-level::before {
+  font-size: 1em !important;
+}
+
+.vjs-custom-theme .vjs-volume-panel .vjs-volume-control {
+  opacity: 1 !important;
+  width: 100% !important;
+  height: 100%  !important;
+}
+
+.vjs-custom-theme .vjs-volume-bar {
+  background: none !important;
+  margin: 0 !important;
+}
+
+.vjs-custom-theme .vjs-slider-horizontal .vjs-volume-level {
+  height: 100% !important;
+}
+
+.vjs-custom-theme .vjs-volume-bar.vjs-slider-horizontal {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  height: 100% !important;
+}
+
+.vjs-custom-theme .vjs-volume-bar::before {
+  content: '' !important;
+  z-index: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  top: 0px !important;
+  left: 0 !important;
+
+  border-style: solid !important;
+  border-width: 0 0 2em 3em !important;
+  border-color: transparent transparent var(--vjs-custom-theme--primary) transparent !important;
+}
+
+.vjs-custom-theme .vjs-volume-level {
+  overflow: hidden !important;
+  background-color: transparent !important;
+}
+
+.vjs-custom-theme .vjs-volume-level::before {
+  content: '' !important;
+  z-index: 1 !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+
+  border-style: solid !important;
+  border-width: 0 0 2em 3em !important;
+  border-color: transparent transparent var(--vjs-custom-theme--secondary) transparent  !important ;
+}
+
+/* Progress Bar */
+.vjs-custom-theme .vjs-progress-control:hover .vjs-progress-holder {
+  font-size: 1em  !important;
+}
+
+.vjs-custom-theme .vjs-play-progress::before {
+  display: none  !important;
+}
+
+.vjs-custom-theme .vjs-progress-holder {
+  border-radius: 0.2em  !important;
+  height: 0.5em  !important;
+  margin: 5em  !important;
+}
+
+.vjs-custom-theme .vjs-play-progress,
+.vjs-custom-theme .vjs-load-progress,
+.vjs-custom-theme .vjs-load-progress div {
+  border-radius: 0.2em  !important;
+}
