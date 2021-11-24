@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
+<link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
 
 <div class="centered-clear mt-1">   
   
@@ -47,8 +47,8 @@
   <div class="thirdbgd pb-5"> 
     <div *ngIf="product.Global_Product__r.Overview__c != ''" class="thirdbgd has-text-black has-text-centered has-text-weight-semibold is-size-6 pt-3 pb-3 pl-2 mt-4" >PREVIEW: {{product.Global_Product__r.Display_Name__c}}</div>
                   </div>
-
-                  <video class="video-js vjs-9-5 vjs-custom-theme" data-setup='{}' controls muted>
+                  
+                  <video class="video-js vjs-custom-theme vjs-9-5 vjs-contols-enabled vjs-playing vjs-has-started vjs-user-active" poster="/websmc-app/src/assets/videoposter.png" controls muted>
                     <source src="http://images.stockmarketcollege.com/assets/videos/ToolsFortheSmartTrader.mp4" type="video/mp4">
                 </video>
 

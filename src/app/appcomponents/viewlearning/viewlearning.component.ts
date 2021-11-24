@@ -8,17 +8,17 @@ import videojs  from 'video.js';
 @Component({
   selector: 'app-viewlearning',
   templateUrl: './viewlearning.component.html',
-
   styleUrls: ['./viewlearning.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class ViewlearningComponent implements OnInit {
   @Input () user = '';
   @Input () portal='';
   @Input () smc='';
   updateportaluserModel = new Updateportaluser('','','')
   
-  player = videojs.Player;
+  player = videojs.Player
   
   constructor(private sfportalrequestsService:SfportalrequestsService, private http:HttpClient) { }
  
