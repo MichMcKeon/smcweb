@@ -44,6 +44,39 @@ portallocaldate='';
 
 portallocaltime= '';
 //showcontent='content-whytrade';
+test='a1g3z000009WIbZ';
+
+////////////////////////////test/////////////////////////////////
+testget(){
+this.sfportalrequestsService.getthisportaluser(this.test)
+   .subscribe((response:any) =>{
+     console.log('gotuser',response);
+this.portal=response.Portal__c;
+this.dist=response.Distributor_Code__c;
+this.ibuserid=response.IB_Name__c;
+this.consultuserid=response.Dist_Consultant_Name__c;
+this.usercountry=response.User_Country__c;
+this.smc = response.SMC_Office_Id__c;
+this.portalid = response.Portal_id__c;
+this.portalgmt= response.Portal_TimeZone__c;
+this.usergmt = response.Timezone__c;
+this.portaltoday= new  Date().toLocaleString('en-US', {
+  timeZone:   this.portalgmt});
+console.log('portalis',this.portal, this.portaltoday);
+
+   this.sfportalrequestsService.getthisportal(this.portalid)
+   .subscribe((response:any) =>{
+    console.log(response);
+    this.portals = response;
+ 
+  this.sfportalrequestsService.getthisportallinks(this.portal)
+  .subscribe((response) =>{
+   console.log(response);
+   this.portallinks = response;
+  
+ });  });  }); 
+}
+
 
 
   createportaluserModel = new Createportaluserrecord('','','','','','','','','','','','','','','');
@@ -102,28 +135,30 @@ redirect(){
  //this.usergmt=res.timezone;
  //console.log(this.createportaluserModel);
 
-   // this.http.get<any>("https://ipgeolocation.abstractapi.com/v1/?api_key=92f9b478a9f94813ba6bb387dca17562")
-   // .subscribe((res: any)=>{
-   // console.log(res);
+ newuser(){
+
+    this.http.get<any>("https://ipgeolocation.abstractapi.com/v1/?api_key=92f9b478a9f94813ba6bb387dca17562")
+    .subscribe((res: any)=>{
+    console.log(res);
     
-  //this.createportaluserModel.ip=res.ip_address;
-  //   this.createportaluserModel.country=res.country;
-  //   this.createportaluserModel.city=res.city;
-//this.createportaluserModel.Timezone=res.timezone.name;
-//this.createportaluserModel.currency=res.currency.currency_code;
-  //   this.usercountry=res.country;
-  //   this.usergmt=res.timezone.name;
-   //  console.log(this.createportaluserModel);
+this.createportaluserModel.ip=res.ip_address;
+   this.createportaluserModel.country=res.country;
+     this.createportaluserModel.city=res.city;
+this.createportaluserModel.Timezone=res.timezone.name;
+this.createportaluserModel.currency=res.currency.currency_code;
+     this.usercountry=res.country;
+     this.usergmt=res.timezone.name;
+     console.log(this.createportaluserModel);
   
-   newuser(){
+
     
-   this.createportaluserModel.ip='100000000';
-     this.createportaluserModel.country='South Africa';
-      this.createportaluserModel.city='Johannesburg';
- this.createportaluserModel.Timezone='Africa/Johannesburg';
- this.createportaluserModel.currency='ZAR';
+  // this.createportaluserModel.ip='100000000';
+   //  this.createportaluserModel.country='South Africa';
+   //   this.createportaluserModel.city='Johannesburg';
+ // this.createportaluserModel.Timezone='Africa/Johannesburg';
+ //this.createportaluserModel.currency='ZAR';
    
-    console.log(this.createportaluserModel);
+  //  console.log(this.createportaluserModel);
 
    this.route.params.subscribe(
     (params:Params) => {
@@ -184,7 +219,7 @@ console.log('portalis',this.portal, this.portaltoday);
   
  });  });  }); 
  });});
- 
+});
 
 };  
 ngOnInit(): void {
