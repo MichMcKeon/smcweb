@@ -1,0 +1,22 @@
+@media only screen and (min-width: 768px) and (max-width: 1920px) {
+.btn {
+    width: 80px;
+    height: 80px;
+    padding: 1px;
+    margin-top:3px;
+}}
+
+@media only screen  and (max-width: 769px) {
+    .btn {
+        width: 50px;
+        height: auto;
+        padding: 1px;
+        margin-top:0px;
+    }    
+}
+.tooltip {
+    background: #003ca6;
+    font-size:12px;
+    text-align:center;
+ 
+  }
