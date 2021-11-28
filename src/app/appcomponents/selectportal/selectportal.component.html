@@ -2,31 +2,36 @@
   
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+
+<div class="container-fluid bg-dark" (mouseover)="updateportaltoday()">    
+
+    <div class="btn-group is-flex is-pulled-right" role="group" >
+  <ul>
+      <li class=" has-text-black is-size-7"  >  {{usercountry}}&nbsp;  {{portaltoday  | date:'fullDate'}} &nbsp; Current Time: {{portaltoday  | date:'HH:mm:ss'}}  </li>
+      <ul *ngFor="let portallink of portallinks">
  
-<div class="content-image">
-<div class="content-headermenu" (mouseover)="updateportaltoday()">
-<ul style="margin-left:15px; margin-right:15px has-background-black">
+  <li><button class="button is-ghost is-pulled-left"> <img src="https://app.stockmarketcollege.com/assets/email.png" >    </button>
+    
+    <a href="{{portallink.Link__c}}">
+  <span class="icon is-small is-center"> <i class="{{portallink.Display_Icon__c}}"></i></span> </a> </li>
 
-<li> <a class="has-text-black" style="padding-left:20px;padding-top:10px"><b> {{usercountry}}</b>&nbsp;  {{portaltoday  | date:'fullDate'}} &nbsp; Current Time: {{portaltoday  | date:'HH:mm:ss'}} </a></li>
-<li *ngFor="let portallink of portallinks">
-  <a class="navbar-item" href="{{portallink.Link__c}}">
-  <span class="icon is-small is-center"> <i class="{{portallink.Display_Icon__c}}"></i></span>  </a>
-
-</ul>
+      </ul></ul>
 </div>
 
-<div class="content-header">   
+  <div class="container-fluid">
+    <div class="btn-group is-flex is-pulled-right" role="group" >
+  <button class="button is-ghost is-pulled-left"> <img src="./assets/appheaderlogo1.png" >    </button>
 
-  <a class="is-ghost is-pulled-left"> <img src="./assets/appheaderlogo1.png" style="width:500px">    </a>
+  <button class="button is-ghost " matTooltip="View/Find/Message SMC Contacts" matTooltipClass=" primarybgd has-text-white is-size-7">
+    <img src="./assets/icons/Blue_Icon_talk.png"  (click)="showview('chat')" >    </button>
 
-  <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass=" primarybgd has-text-white is-size-7">
-    <img src="./assets/icons/Blue_Icon_talk.png" style="width:80px" (click)="showview('chat')" >    </button>
-
-    <button class="button is-ghost is-pulled-right mt-3" matTooltip="View/Find/Message SMC Contacts" matTooltipClass=" primarybgd has-text-white is-size-7">
-      <img src="./assets/icons/Blue_Icon_contacts.png" style="width:80px" (click)="showview('contacts')" >    </button>
+    <button class="button is-ghost " matTooltip="View/Find/Message SMC Contacts" matTooltipClass=" primarybgd has-text-white is-size-7">
+      <img src="./assets/icons/Blue_Icon_contacts.png" (click)="showview('contacts')" >    </button>
    
-      <button class="button is-ghost is-pulled-right mt-3" matTooltip="View Training / Presentation Schedule" matTooltipClass=" primarybgd has-text-white is-size-7">
-        <img src="./assets/icons/Blue_Icon_calendar.png" style="width:80px" (click)="showview('calendar')" >    </button>
+      <button class="button is-ghost " matTooltip="View Training / Presentation Schedule" matTooltipClass=" primarybgd has-text-white is-size-7">
+        <img src="./assets/icons/Blue_Icon_calendar.png"  (click)="showview('calendar')" >    </button>
 
       <button class="button is-ghost is-pulled-right mt-3" matTooltip="View available learning" matTooltipClass=" primarybgd has-text-white is-size-7">
         <img src="./assets/icons/Blue_Icon_learn1.png" style="width:80px" (click)="showview('learn')" >    </button>
@@ -34,8 +39,8 @@
   <button class="button is-ghost is-pulled-right mt-3"  (click)="showview('clickshow')" matTooltip="View Why Learn" matTooltipClass=" primarybgd has-text-white is-size-7">
     <img src="./assets/icons/Blue_Icon_clickview.png" style="width:80px; "  >    </button>
             
-  </div>
-
+ 
+</div> 
  
 
   <ng-container  *ngIf="view == 'learn'"> 

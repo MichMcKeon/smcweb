@@ -29,6 +29,8 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ChatComponent } from './appcomponents/chat/chat.component';
+import { PaymentComponent } from './appcomponents/payment/payment.component';
 
 
 
@@ -45,7 +47,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     ViewlearningComponent,
     PortalchatComponent,
     GlobalviewComponent,
-    VideoplayerComponent
+    VideoplayerComponent,
+    ChatComponent,
+    PaymentComponent
    
   ],
   imports: [
