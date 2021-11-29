@@ -17,7 +17,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .primaryborder {
  border:solid 2px #003ca6;
 }
-
+.blackbgd {
+  background-color:  black;;
+}
+.greybgd {
+  background-color:  #808080;;
+}
 
 .secondfont {
   color:  #4e90fe;
@@ -100,11 +105,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         border-top: 16px solid #3498db;
         width: 200px;
         height: 200px;
-        margin-left: auto;
-        margin-right: auto;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
+
         background-image: url(/assets/Bull_Icon.png) ;
         background-repeat: no-repeat;
         background-size: 200px 100%;

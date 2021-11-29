@@ -4,49 +4,39 @@
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
  
- <div class="container-fluid bg-dark h-100 has-text-black is-size-7" >
-  <div class="centered-clear" *ngIf="smcdetail.Registered_Name__c == ''"> 
-    <p  class="loader"></p></div>
+ <div class="container-fluid   pt-3">
   
 
-  
-     <div  *ngIf="smcdetail.Registered_Name__c != ''" class="d-block justify-content-center bg-dark pt-2 pl-2 pr-2 text-white">
-     
-         <div *ngIf="smcdetail.Registered_Name__c" class="boxpanelheader has-text-centered title is-3">
-             <button  mat-raised-button class="button is-ghost " style="text-decoration:none" (click)="showcontent('main')" matTooltipClass=" primarybgd has-text-white is-size-7" >
-                 <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>    CONTACT US:   </div>
- 
-                 <div  class=" has-text-centered" (click)="showcontent('main')" >
-                     
-                   
-                     <button mat-raised-button class="button is-ghost" matTooltip="{{smcdetail.Registered_Name__c}} |  {{smcdetail.Directors__c}} " matTooltipClass=" primarybgd has-text-white is-size-7">
-                   <img src="./assets/icons/Blue_Icon_info.png" style="width:40px"></button> 
-                   <button mat-raised-button class="button is-ghost" matTooltip="{{smcdetail.Address__c}} " matTooltipClass=" primarybgd has-text-white is-size-7" >
-                       <img src="./assets/icons/Blue_Icon_address.png" style="width:40px"></button> 
-                       <button mat-raised-button class="button is-ghost" matTooltip="View Mobile {{smcdetail.Mobile__c}}" matTooltipClass=" primarybgd has-text-white is-size-7" >
-                   <img src="./assets/icons/Blue_Icon_phone.png" style="width:40px"></button>
-                   <a href="{{smcdetail.Website__c}}" target="_blank"><button mat-raised-button class="button is-ghost" matTooltip="Open website {{smcdetail.Website__c}}" matTooltipClass=" primarybgd has-text-white is-size-7">
-                   <img src="./assets/icons/Blue_Icon_web.png" style="width:40px"></button> </a>
-                   <a href="mailto:{{smcdetail.Email__c}}"><button mat-raised-button class="button is-ghost" matTooltip="Send Email {{smcdetail.Email__c}}" matTooltipClass=" primarybgd has-text-white is-size-7">
-                   <img src="./assets/icons/Blue_Icon_email.png" style="width:40px"></button> </a> 
-                   <button mat-raised-button class="button is-ghost" matTooltip="Send Portal Message" matTooltipClass=" primarybgd has-text-white is-size-7"  #adminid value="{{portalid}}" (click)="message(adminid.value)">
-               <img src="./assets/icons/Blue_Icon_portalmessage.png" style="width:40px">  </button> 
+      <p  *ngIf="smcdetail.Registered_Name__c == ''" class="loader align-items-center"></p>
+    
+        <div class="flexedgrey pt-0 pb-0">
+          <span class="f p-2 text-white">CONTACT US </span>
+                     <button class="tablinks is-ghost" matTooltip="{{smcdetail.Registered_Name__c}} |  {{smcdetail.Directors__c}} " matTooltipClass=" primarybgd has-text-white is-size-7">
+                   <img src="./assets/icons/icon_info.png" class="btn1"></button> 
+                   <button class="tablinks is-ghost" matTooltip="{{smcdetail.Address__c}} " matTooltipClass=" primarybgd has-text-white is-size-7" >
+                       <img src="./assets/icons/icon_location.png" class="btn1"></button> 
+                       <button class="tablinks is-ghost" matTooltip="{{smcdetail.Mobile__c}}" matTooltipClass=" primarybgd has-text-white is-size-7" >
+                   <img src="./assets/icons/icon_phone.png" class="btn1"></button>
+            <button class="tablinks is-ghost" matTooltip="{{smcdetail.Website__c}}" matTooltipClass=" primarybgd has-text-white is-size-7">
+                   <img src="./assets/icons/icon_web.png" class="btn1"></button> 
+               <button class="tablinks is-ghost" matTooltip="{{smcdetail.Email__c}}" matTooltipClass=" primarybgd has-text-white is-size-7">
+                   <img src="./assets/icons/icon_email.png" class="btn1"></button> 
+                   <button class="tablinks is-ghost" matTooltip="Send Portal Message" matTooltipClass=" primarybgd has-text-white is-size-7"  #adminid value="{{portalid}}" (click)="message(adminid.value)">
+               <img src="./assets/icons/icon_message.png" class="btn1">  </button> 
                    </div>
  
-                   <div class=" mx-5 px-5 py-5">
-                    <div class="columns">
-                      <div class="column is-9"   *ngIf="contactspolicy" [innerHTML]="contactspolicy" >
-                      </div>
-                   <div class="column is-3">   <img src="./assets/image-support1.png" style="height:auto" >
+                   <div class="d-flex  justify-content-center mb-3 h-100" >
+                  
+                     <div class="overflow-auto pt-3 pl-2"  *ngIf="contactspolicy" [innerHTML]="contactspolicy" >
+                     </div><div class="imagehide">
+                   <img src="./assets/image-support1.png" class="img-fluid h-100 w-100"  >
                      
-                          </div></div></div>
+                    </div>   </div></div>
 
 
          <button class="button primarybgd is-fullwidth is-small mb-4" (click)="showcontent('divisions')">  <img src="./assets/icons/Blue_Icon_contacts.png" style="width:80px">  </button> 
         
-       
-
-         <div  class="is-flex thirdbgd" >
+         <div class="d-flex  justify-content-center thirdbgd mb-3" >
           <ul   *ngFor="let division of divisions">
                    <li *ngIf="division.Portal_DisplayName__c != '' && division.Portal_DisplayName__c == portal && division.Status__c == 'Active'"><button class="button thirdbgd" #showdept value="{{division.Id}}" (click)="showdepartment(showdept.value);showcontent('departments')">{{division.RecordTypeName__c}}</button></li>
                 </ul></div>
@@ -97,9 +87,7 @@
             
           </li></ul>          
               </div>
-          </div>
-          </div>
- 
+          
  
  
  

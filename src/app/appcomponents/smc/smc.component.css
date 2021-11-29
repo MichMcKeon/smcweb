@@ -1,0 +1,61 @@
+.flexedblue{
+    background-color: #003ca6;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flexedgrey{
+    background-color:#808080;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tablinks {
+    background-color: grey;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1px 1px;
+  font-size: 17px;
+  
+}
+
+  @media only screen and (min-width: 768px) and (max-width: 1920px) {
+    .btn {
+        width: 80px;
+        height: 80px;
+        padding: 1px;
+        margin-top:3px;
+    }
+    .btn1 {
+        width: 40px;
+        height: 40px;
+        padding: 1px;
+        margin-top:3px;
+    }
+    .f{
+        font-size:22px;
+    }
+}
+    
+    @media only screen  and (max-width: 769px) {
+        .btn {
+            width: 50px;
+            height: auto;
+            padding: 1px;
+            margin-top:0px;
+        }    
+        .btn1 {
+            width: 20px;
+            height: auto;
+        }  
+        .f{
+            font-size:12px;
+        }
+        .imagehide{
+            display:none;
+        }
+    }
+      
