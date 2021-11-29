@@ -17,11 +17,14 @@ export class ClickshowComponent implements OnInit {
   hovertext='hide';
   clickroute='';
     clickitem:any;
-  
-     constructor(private route:ActivatedRoute, private router: Router,private http:HttpClient, private sfportalrequestsService:SfportalrequestsService) { }
+
+     constructor(private route:ActivatedRoute, private router: Router,private http:HttpClient, private sfportalrequestsService:SfportalrequestsService) { 
      
+     }
+
+ 
    
-  
+ 
   gonext(){
     this.nextonclick=this.nextonclick + 1;
     console.log(this.nextonclick)
@@ -33,7 +36,8 @@ export class ClickshowComponent implements OnInit {
     this.hovertext=value;
   }
     ngOnInit(): void {
-     
+    
+      
       this.clickroute=this.router.url;
       console.log(this.thisapproute);
   

@@ -4,11 +4,13 @@
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
  
- <div class="centered-clear mt-1">   
+ <div class="container-fluid bg-dark h-100 has-text-black is-size-7" >
   <div class="centered-clear" *ngIf="smcdetail.Registered_Name__c == ''"> 
     <p  class="loader"></p></div>
   
-     <div  *ngIf="smcdetail.Registered_Name__c != ''"class="boxpanel">
+
+  
+     <div  *ngIf="smcdetail.Registered_Name__c != ''" class="d-block justify-content-center bg-dark pt-2 pl-2 pr-2 text-white">
      
          <div *ngIf="smcdetail.Registered_Name__c" class="boxpanelheader has-text-centered title is-3">
              <button  mat-raised-button class="button is-ghost " style="text-decoration:none" (click)="showcontent('main')" matTooltipClass=" primarybgd has-text-white is-size-7" >
