@@ -66,18 +66,18 @@
     <ul  class="mb-2" style="max-width:100%" *ngFor="let admin of admins">
         <li  *ngIf="admin.Hide_from_Portal_assistance__c != true && admin.Is_default_selection__c != true && admin.Portal_Department_Id__c == divdepartmentstaff  ">      
            
-          <div class="vstackitem gap-4 " style="max-width:100%">
-            <div class=" ms-auto blackbgd pt-3 pb-3 pl-2 border border-3 border-white" style="max-width:100%">
+          <div class="d-flex " style="width:90vw">
+            <div class="w-40  blackbgd pt-3 pb-3 pl-2 border border-3 border-white" style="width:100%">
               <div class="text-white f d-inline ml-2 mr-2  pb-2 text-align-center" > 
                 {{admin.Display_Name__c}} </div> 
              <div class="text-white f d-inline ml-2 mr-2 pb-2 text-align-center"><span *ngIf="admin.Expert_Area__c" ><i class="fa fa-star" style="font-size:20px;"></i> 
                 &nbsp;  {{admin.Expert_Area__c}}</span></div>
             </div>
-            <div class="pt-3 pb-3 pl-3 border border-3 border-white" style="max-width:100%">
-              <div class="d-flex flex-row justify-content-between ">
+            <div class="w-60 pt-3 pb-3 pl-3 pr-3 border border-3 border-dark " style="width:100%">
+              <div class="d-flex flex-row justify-content-around " style="height:100px">
                 <div>
-              <span *ngIf="admin.Display_Image__c">   <img src="{{admin.Display_Image__c}}" class="stackimg"></span>
-              <span *ngIf="!admin.Display_Image__c">   <img src="./assets/profile.png" class="stackimg"></span>
+              <span *ngIf="admin.Display_Image__c">   <img src="{{admin.Display_Image__c}}" class="img-fluid  mr-3 float-start" style="height:100px; width:100px"></span>
+              <span *ngIf="!admin.Display_Image__c">   <img src="./assets/profile.png" class="img-fluid mr-3  float-start" style="height:100px; width:100px"></span>
               </div>
               <div>
               <address style="max-width:100%">
@@ -89,9 +89,7 @@
           
             </address>
             </div>
-            <div>
-            <img src="./assets/cardbkgd.png" class="img-fluid "  style="max-width:100%">
-          </div></div>
+   </div>
           </div>
           </div></li></ul></div>
                  
