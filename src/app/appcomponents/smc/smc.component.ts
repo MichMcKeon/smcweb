@@ -52,7 +52,7 @@ viewcontacts='hide';
 content="main";
 divdepartment='';
 divdepartmentstaff='';
- 
+showcontacts = 'hide'; 
 portaltimezone='';
 
 gmt='GMT+5'
@@ -74,9 +74,9 @@ showboxpanelcontent1(value:string){
   this.boxpanelcontent1=value;
   console.log(this.boxpanelcontent1)
   }
-showcontent(value:string){
-  this.content=value;
-  console.log('content',this.content)
+showcontentthis(value:string){
+  this.showcontacts = value;
+  console.log('content',this.showcontacts)
 }
 showdepartment(value:string){
   this.sfportalrequestsService.getdepartments(value )

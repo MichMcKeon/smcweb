@@ -4,12 +4,12 @@
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
  
- <div class="container-fluid   pt-3">
+ <div class="container-fluid pt-3" style="max-width:100%">
   
 
-      <p  *ngIf="smcdetail.Registered_Name__c == ''" class="loader align-items-center"></p>
+      <p  *ngIf="smcdetail.Registered_Name__c == ''" class="loader align-items-center" style="max-width:100%"></p>
     
-        <div class="flexedgrey pt-0 pb-0">
+        <div class="flexedblack pt-0 pb-0" style="max-width:100%">
           <span class="f p-2 text-white">CONTACT US </span>
                      <button class="tablinks is-ghost" matTooltip="{{smcdetail.Registered_Name__c}} |  {{smcdetail.Directors__c}} " matTooltipClass=" primarybgd has-text-white is-size-7">
                    <img src="./assets/icons/icon_info.png" class="btn1"></button> 
@@ -25,105 +25,68 @@
                <img src="./assets/icons/icon_message.png" class="btn1">  </button> 
                    </div>
  
-                   <div class="d-flex  justify-content-center  h-100" >
+                   <div class="d-flex  justify-content-center  h-100" style="max-width:100%" >
                   
-                     <div class="overflow-auto pt-3 pl-2"  *ngIf="contactspolicy" [innerHTML]="contactspolicy" >
+                     <div class="overflow-auto pt-3 pl-2"  *ngIf="contactspolicy" [innerHTML]="contactspolicy" style="max-width:100%">
                      </div><div class="imagehide">
-                   <img src="./assets/image-support1.png" class="img-fluid h-100 w-100"  >
+                   <img src="./assets/image-support1.png" class="img-fluid h-100 w-100"  style="max-width:100%">
                      
                     </div>   </div>
 
+                    <div class="flexedblack pt-0 pb-0" style="max-width:100%">
+                      <span class="f p-2 text-white">VIEW ALL CONTACTS </span>
+                   <button class="tablinks is-ghost" (click)="showcontentthis('divisions')" matTooltip="View Divisions" matTooltipClass="primarybgd has-text-white is-size-7">
+                      <img src="./assets/icons/icon_smc.png" class="btn1"></button> 
+</div>
+                
 
-                    <div class="container-fluid  f">
-                    <ul class="flexedgrey1 mb-2" *ngFor="let division of divisions">
+<div class="container-fluid  mt-2 f" style="max-width:100%" *ngIf="showcontacts == 'divisions'">
+                    <ul class="flexedblack1 mb-2 mt-2" style="max-width:100%" *ngFor="let division of divisions">
                    
-                   <li class="f mb-1" *ngIf="division.Portal_DisplayName__c != '' && division.Portal_DisplayName__c == portal && division.Status__c == 'Active'" > 
+                   <li class="f mb-1" style="max-width:100%" *ngIf="division.Portal_DisplayName__c != '' && division.Portal_DisplayName__c == portal && division.Status__c == 'Active'" > 
             
-                      <button class="f tablinks is-ghost pt-2 mb-1"   #showdept value="{{division.Id}}" (click)="showdepartment(showdept.value);showcontent('departments')"> {{division.RecordTypeName__c}}</button></li>
+                      <button class="f tablinks is-ghost pt-2 mb-1"   #showdept value="{{division.Id}}" (click)="showdepartment(showdept.value);showcontentthis('departments')"> {{division.RecordTypeName__c}}</button></li>
                    </ul></div>
                   
-                    <div class="container-fluid f">
-            
-               <ul  class="flexedblack1 mb-2" *ngFor="let department of departments">
-                  <li class="f mb-1" *ngIf="department.Portal_Division_Id__c == divdepartment "><button class="f tablinksblack is-ghost pt-2 mb-1" #showdeptstaff value="{{department.Id}}" (click)="showdepartmentstaff(showdeptstaff.value);showcontent('staff')"> {{department.Display_Name__c}}</button></li>
+
+                   <div class="container-fluid mt-2 f" style="max-width:100%" *ngIf="showcontacts == 'departments'">
+              
+               <ul  class="flexedblack1 mb-2" style="max-width:100%" *ngFor="let department of departments">
+                  <li class="f mb-1"style="max-width:100%" *ngIf="department.Portal_Division_Id__c == divdepartment "><button class="f tablinksblack is-ghost pt-2 mb-1" #showdeptstaff value="{{department.Id}}" (click)="showdepartmentstaff(showdeptstaff.value);showcontentthis('staff')"> {{department.Display_Name__c}}</button></li>
               </ul> 
               
-              </div>
+              </div></div>
+
+
+
+            
+
        
-              <div class="container-fluid greybgd pt-2 pb-2 f">  
-    <ul  class="mb-2" *ngFor="let admin of admins">
+                <div class="container-fluid w-100 pt-2 pb-2 f" style="max-width:100%" *ngIf="showcontacts == 'staff'">       
+    <ul  class="mb-2" style="max-width:100%" *ngFor="let admin of admins">
         <li  *ngIf="admin.Hide_from_Portal_assistance__c != true && admin.Is_default_selection__c != true && admin.Portal_Department_Id__c == divdepartmentstaff  ">      
            
-          <div class="vstackitem gap-4 ">
-            <div class=" primarybgd pt-3 pb-1 pl-2 border border-3 border-white">
-              <p class="text-white f "> 
-                {{admin.Display_Name__c}}  <br>
-              <span *ngIf="admin.Expert_Area__c" ><i class="fa fa-star" style="font-size:20px;"></i> 
-                &nbsp;  {{admin.Expert_Area__c}}</span></p>
+          <div class="vstackitem gap-4 " style="max-width:100%">
+            <div class=" ms-auto blackbgd pt-3 pb-3 pl-2 border border-3 border-white" style="max-width:100%">
+              <div class="text-white f d-inline ml-2 mr-2  pb-2 text-align-center" > 
+                {{admin.Display_Name__c}} </div> 
+             <div class="text-white f d-inline ml-2 mr-2 pb-2 text-align-center"><span *ngIf="admin.Expert_Area__c" ><i class="fa fa-star" style="font-size:20px;"></i> 
+                &nbsp;  {{admin.Expert_Area__c}}</span></div>
             </div>
-            <div class="pt-3 pb-1 pl-2 border border-3 border-white">
-         
-              <address>
-                <p *ngIf="admin.Display_Mobile__c" ><i class="fa fa-phone" style="font-size:20px;"></i> &nbsp;{{admin.Display_Mobile__c}}</p>
+            <div class="pt-3 pb-3 pl-3 border border-3 border-white" style="max-width:100%">
+              <span *ngIf="admin.Display_Image__c">   <img src="{{admin.Display_Image__c}}" class="stackimg"></span>
+              <span *ngIf="!admin.Display_Image__c">   <img src="./assets/profile.png" class="stackimg"></span>
+              <address style="max-width:100%">
+                <p *ngIf="admin.Display_Mobile__c" style="max-width:100%" ><i class="fa fa-phone" style="font-size:20px;"></i> &nbsp;{{admin.Display_Mobile__c}}</p>
                
-                <p *ngIf="admin.Display_Email__c" ><i class="fa fa-envelope" style="font-size:20px;"></i> &nbsp;{{admin.Display_Email__c}} </p>
+                <p *ngIf="admin.Display_Email__c" style="max-width:100%" ><i class="fa fa-envelope" style="font-size:20px;"></i> &nbsp;{{admin.Display_Email__c}} </p>
             
-                 <p *ngIf="admin.Display_Website__c" ><i class="fa fa-globe" style="font-size:20px;"></i> &nbsp;{{admin.Display_Website__c}}</p>
+                 <p *ngIf="admin.Display_Website__c" style="max-width:100%"><i class="fa fa-globe" style="font-size:20px;"></i> &nbsp;{{admin.Display_Website__c}}</p>
           
             </address></div>
-          </div>
-          <div class=" card w-100 ">
-            <div class="card-header d-flex text-white primarybgd">
-             {{admin.Display_Name__c}}   <span *ngIf="admin.Expert_Area__c" ><i class="fa fa-star" style="font-size:20px;"></i> 
-                {{admin.Expert_Area__c}}</span>
-            </div>
-            <div class="card-body">
-              <img src="/assets/cardbkgd.png" class="card-img ml-0 mr-0" alt="...">
-              <div class="card-img-overlay">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div></div>
-            <div class="card-footer text-muted">
-              2 days ago
-            </div>
-          </div>
-
-
-
-          <div class="d-flex flex-row  mb-3">
-          
- 
-                    <div class=" is-2 ">   
-                  <p *ngIf="admin.Display_Image__c" class="image is-64x64 is-align-items-center">
-                    <img src="{{admin.Display_Image__c}}">
-                  </p>
-                  <p *ngIf="!admin.Display_Image__c"class="image is-64x64">
-                    <img class="is-align-items-center" src="./assets/profile.png">
-                  </p>
-                  <button class="tablinks is-ghost" matTooltip="Send Portal Message" matTooltipClass=" primarybgd has-text-white is-size-7"  #adminsend value="{{admin.Id}}" (click)="sendportalmessage(adminsend.value);gotomessageview('message')"><img src="./assets/icons/Blue_Icon_portalmessage.png" class="btn1"></button>                
-                </div>
-                  <div class="column is-4">
-                    <strong>{{admin.Display_Name__c}}</strong> 
-                    <p *ngIf="admin.Expert_Area__c" ><i class="fa fa-star" style="font-size:20px;color:blue;"></i> 
-                    {{admin.Expert_Area__c}}</p>
-                      </div>
+          </div></li></ul></div>
                  
-                <div class="column is-6">
-               <p *ngIf="admin.Display_Mobile__c" ><i class="fa fa-phone" style="font-size:20px;color:blue;"></i> {{admin.Display_Mobile__c}}</p>
-               
-               <p *ngIf="admin.Display_Email__c" ><i class="fa fa-envelope" style="font-size:20px;color:blue;"></i> {{admin.Display_Email__c}} </p>
-           
-                <p *ngIf="admin.Display_Website__c" ><i class="fa fa-globe" style="font-size:20px;color:blue;"></i> {{admin.Display_Website__c}}</p>
-         
-         
-              </div></div>
-              
             
-             
-            
-          </li></ul>          
-              </div>
           
  
  

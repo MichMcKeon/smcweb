@@ -3,16 +3,30 @@
     display:flex;
     align-items: center;
     justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
   }
   .flexedgrey{
     background-color:#808080;
     display:flex;
     align-items: center;
     justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
   }
- 
+  .flexedblack{
+    background-color:black;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
+  }
   .tablinks {
-    background-color: grey;
+    background-color: black;
   color: white;
   float: left;
   border: none;
@@ -20,6 +34,7 @@
   cursor: pointer;
   padding: 1px 1px;
   font-size: 17px;
+  max-width:100%;
   
 }
 
@@ -32,6 +47,7 @@
   cursor: pointer;
   padding: 1px 1px;
   font-size: 17px;
+  max-width:100%;
   
 }
 
@@ -58,6 +74,9 @@
         align-items: center;
         justify-content: center;
         width:100vw;
+        max-width:100%;
+        flex-direction: row;
+        flex-basis: 100%;
       }
 
     .flexedblack1{
@@ -65,15 +84,44 @@
         display:flex;
         align-items: center;
         justify-content: center;
-        width:100vw;
+        width:70vw;
+        max-width:100%;
+        flex-direction: row;
+        flex-basis: 100%;
+        margin-left:auto;
+        margin-right:auto;
       }
      
       .vstackitem {
-        background-color:pink;
+        background-color:#e2e3e7;
         display: block;
+        float:left;
       width:100vw;
         align-self: stretch;
-      }
+        max-width:100%;
+        margin-left:1px;
+        margin-right:1px;
+        flex-direction: row;
+        flex-basis: 100%;
+}
+.stackimg {
+    float:left;
+  width:100%;
+  height:100%;
+  max-height:10vh;
+  padding-left:4px;
+  padding-right:4px;
+  padding-top:4px;
+  padding-bottom:4px;
+    max-width:10vw;
+    margin-top:1px;
+    margin-bottom:1px;
+    margin-left:10px;
+    margin-right:10px;
+ border:solid 5px black;
+ background-color:black;
+}
+
 }
     
     @media only screen  and (max-width: 769px) {
@@ -99,6 +147,9 @@
             align-items: center;
             justify-content: center;
             width:100vw;
+            max-width:100%;
+            flex-direction: row;
+        flex-basis: 100%;
           }
 
         .flexedblack1{
@@ -107,12 +158,38 @@
             align-items: center;
             justify-content: center;
             width:100vw;
+            max-width:100%;
+            flex-direction: row;
+        flex-basis: 100%;
           }
           .vstackitem {
-            background-color:pink;
+              float:left;
+              background-color:#e2e3e7;
             display: block;
          width:100vw;
             align-self: stretch;
+            max-width:100%;
+            flex-direction: row;
+        flex-basis: 100%;
           }
+
+          .stackimg {
+            float:left;
+          width:100%;
+          height:100%;
+          max-height:15vh;
+          padding-left:4px;
+          padding-right:4px;
+          padding-top:4px;
+          padding-bottom:4px;
+            max-width:15vw;
+            margin-top:5px;
+            margin-bottom:5px;
+            margin-left:10px;
+            margin-right:10px;
+         border:solid 5px black;
+         background-color:black;
+   
+        }
     }
       
