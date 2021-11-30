@@ -79,13 +79,24 @@ showcontent(value:string){
   console.log('content',this.content)
 }
 showdepartment(value:string){
+  this.sfportalrequestsService.getdepartments(value )
+.subscribe((response) =>{
+ console.log('departments',response);
+ this.departments = response;
   this.divdepartment=value;
   console.log('divdepartment',this.divdepartment)
-}
+})
+};
 showdepartmentstaff(value:string){
+
+ this.sfportalrequestsService.getadmin(value)
+ .subscribe((response) =>{
+  console.log('admins',response);
+  this.admins = response;
   this.divdepartmentstaff=value;
   console.log('divdeptstaff',this.divdepartmentstaff)
-}
+})
+};
 sendportalmessage(value:string){
 this.adminid.emit(value);
 console.log(this.adminid);
@@ -165,16 +176,9 @@ this.sfportalrequestsService.getportalalldivision(this.portal )
  this.divisions = response;
 
 
-this.sfportalrequestsService.getportalalldepartment(this.portal )
-.subscribe((response) =>{
- console.log('departments',response);
- this.departments = response;
+
 
  
- this.sfportalrequestsService.getportalalladmin(this.portal )
- .subscribe((response) =>{
-  console.log('admins',response);
-  this.admins = response;
 
 
  this.sfportalrequestsService.gethourthisportal(this.portal )
@@ -194,7 +198,7 @@ this.sfportalrequestsService.getportalalldepartment(this.portal )
 
  
 
-}); });  }); });   }); });  }); 
+}); });  }); });   }); 
 }
 //});
      }}

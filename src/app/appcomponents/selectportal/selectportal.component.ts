@@ -60,6 +60,7 @@ this.smc = response.SMC_Office_Id__c;
 this.portalid = response.Portal_id__c;
 this.portalgmt= response.Portal_TimeZone__c;
 this.usergmt = response.Timezone__c;
+this.user = this.test;
 this.portaltoday= new  Date().toLocaleString('en-US', {
   timeZone:   this.portalgmt});
 console.log('portalis',this.portal, this.portaltoday);

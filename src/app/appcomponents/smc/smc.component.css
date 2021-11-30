@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
   }
+ 
   .tablinks {
     background-color: grey;
   color: white;
@@ -21,6 +22,19 @@
   font-size: 17px;
   
 }
+
+.tablinksblack {
+    background-color:black;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1px 1px;
+  font-size: 17px;
+  
+}
+
 
   @media only screen and (min-width: 768px) and (max-width: 1920px) {
     .btn {
@@ -36,8 +50,30 @@
         margin-top:3px;
     }
     .f{
-        font-size:22px;
+        font-size:16px;
     }
+    .flexedgrey1{
+        background-color:#808080;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:100vw;
+      }
+
+    .flexedblack1{
+        background-color:black;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:100vw;
+      }
+     
+      .vstackitem {
+        background-color:pink;
+        display: block;
+      width:100vw;
+        align-self: stretch;
+      }
 }
     
     @media only screen  and (max-width: 769px) {
@@ -57,5 +93,26 @@
         .imagehide{
             display:none;
         }
+        .flexedgrey1{
+            background-color:#808080;
+            display:block;
+            align-items: center;
+            justify-content: center;
+            width:100vw;
+          }
+
+        .flexedblack1{
+            background-color:black;
+            display:block;
+            align-items: center;
+            justify-content: center;
+            width:100vw;
+          }
+          .vstackitem {
+            background-color:pink;
+            display: block;
+         width:100vw;
+            align-self: stretch;
+          }
     }
       

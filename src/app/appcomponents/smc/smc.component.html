@@ -25,46 +25,83 @@
                <img src="./assets/icons/icon_message.png" class="btn1">  </button> 
                    </div>
  
-                   <div class="d-flex  justify-content-center mb-3 h-100" >
+                   <div class="d-flex  justify-content-center  h-100" >
                   
                      <div class="overflow-auto pt-3 pl-2"  *ngIf="contactspolicy" [innerHTML]="contactspolicy" >
                      </div><div class="imagehide">
                    <img src="./assets/image-support1.png" class="img-fluid h-100 w-100"  >
                      
-                    </div>   </div></div>
+                    </div>   </div>
 
 
-         <button class="button primarybgd is-fullwidth is-small mb-4" (click)="showcontent('divisions')">  <img src="./assets/icons/Blue_Icon_contacts.png" style="width:80px">  </button> 
-        
-         <div class="d-flex  justify-content-center thirdbgd mb-3" >
-          <ul   *ngFor="let division of divisions">
-                   <li *ngIf="division.Portal_DisplayName__c != '' && division.Portal_DisplayName__c == portal && division.Status__c == 'Active'"><button class="button thirdbgd" #showdept value="{{division.Id}}" (click)="showdepartment(showdept.value);showcontent('departments')">{{division.RecordTypeName__c}}</button></li>
-                </ul></div>
-
-                <div  class="is-inline" >     
-                  <ul  *ngFor="let department of departments">
-                  <li  *ngIf=" department.Portal_Division_Id__c == divdepartment "><button class="button thirdbgd " #showdeptstaff value="{{department.Id}}" (click)="showdepartmentstaff(showdeptstaff.value);showcontent('staff')">{{department.Display_Name__c}}</button></li>
+                    <div class="container-fluid  f">
+                    <ul class="flexedgrey1 mb-2" *ngFor="let division of divisions">
+                   
+                   <li class="f mb-1" *ngIf="division.Portal_DisplayName__c != '' && division.Portal_DisplayName__c == portal && division.Status__c == 'Active'" > 
+            
+                      <button class="f tablinks is-ghost pt-2 mb-1"   #showdept value="{{division.Id}}" (click)="showdepartment(showdept.value);showcontent('departments')"> {{division.RecordTypeName__c}}</button></li>
+                   </ul></div>
+                  
+                    <div class="container-fluid f">
+            
+               <ul  class="flexedblack1 mb-2" *ngFor="let department of departments">
+                  <li class="f mb-1" *ngIf="department.Portal_Division_Id__c == divdepartment "><button class="f tablinksblack is-ghost pt-2 mb-1" #showdeptstaff value="{{department.Id}}" (click)="showdepartmentstaff(showdeptstaff.value);showcontent('staff')"> {{department.Display_Name__c}}</button></li>
               </ul> 
               
               </div>
-          
        
-              <div  class="thirdbgd" >
-    <ul  *ngFor="let admin of admins">
-        <li class=" is-inline is-fullwidth mx-auto" *ngIf="admin.Hide_from_Portal_assistance__c != true && admin.Is_default_selection__c != true && admin.Portal_Department_Id__c == divdepartmentstaff  ">      
+              <div class="container-fluid greybgd pt-2 pb-2 f">  
+    <ul  class="mb-2" *ngFor="let admin of admins">
+        <li  *ngIf="admin.Hide_from_Portal_assistance__c != true && admin.Is_default_selection__c != true && admin.Portal_Department_Id__c == divdepartmentstaff  ">      
+           
+          <div class="vstackitem gap-4 ">
+            <div class=" primarybgd pt-3 pb-1 pl-2 border border-3 border-white">
+              <p class="text-white f "> 
+                {{admin.Display_Name__c}}  <br>
+              <span *ngIf="admin.Expert_Area__c" ><i class="fa fa-star" style="font-size:20px;"></i> 
+                &nbsp;  {{admin.Expert_Area__c}}</span></p>
+            </div>
+            <div class="pt-3 pb-1 pl-2 border border-3 border-white">
+         
+              <address>
+                <p *ngIf="admin.Display_Mobile__c" ><i class="fa fa-phone" style="font-size:20px;"></i> &nbsp;{{admin.Display_Mobile__c}}</p>
+               
+                <p *ngIf="admin.Display_Email__c" ><i class="fa fa-envelope" style="font-size:20px;"></i> &nbsp;{{admin.Display_Email__c}} </p>
             
-     
-              <div class="boxcard thirdbgd is-fullwidth mt-4 mb-6" >
-                <div class="columns is-flex is-fullwidth">
+                 <p *ngIf="admin.Display_Website__c" ><i class="fa fa-globe" style="font-size:20px;"></i> &nbsp;{{admin.Display_Website__c}}</p>
+          
+            </address></div>
+          </div>
+          <div class=" card w-100 ">
+            <div class="card-header d-flex text-white primarybgd">
+             {{admin.Display_Name__c}}   <span *ngIf="admin.Expert_Area__c" ><i class="fa fa-star" style="font-size:20px;"></i> 
+                {{admin.Expert_Area__c}}</span>
+            </div>
+            <div class="card-body">
+              <img src="/assets/cardbkgd.png" class="card-img ml-0 mr-0" alt="...">
+              <div class="card-img-overlay">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div></div>
+            <div class="card-footer text-muted">
+              2 days ago
+            </div>
+          </div>
+
+
+
+          <div class="d-flex flex-row  mb-3">
+          
  
-                    <div class="column is-2 ">   
+                    <div class=" is-2 ">   
                   <p *ngIf="admin.Display_Image__c" class="image is-64x64 is-align-items-center">
                     <img src="{{admin.Display_Image__c}}">
                   </p>
                   <p *ngIf="!admin.Display_Image__c"class="image is-64x64">
                     <img class="is-align-items-center" src="./assets/profile.png">
                   </p>
-                  <button class="button is-small is-ghost is-fullwidth" matTooltip="Send Portal Message" matTooltipClass=" primarybgd has-text-white is-size-7"  #adminsend value="{{admin.Id}}" (click)="sendportalmessage(adminsend.value);gotomessageview('message')"><img src="./assets/icons/Blue_Icon_portalmessage.png" style="width:80%"></button>                
+                  <button class="tablinks is-ghost" matTooltip="Send Portal Message" matTooltipClass=" primarybgd has-text-white is-size-7"  #adminsend value="{{admin.Id}}" (click)="sendportalmessage(adminsend.value);gotomessageview('message')"><img src="./assets/icons/Blue_Icon_portalmessage.png" class="btn1"></button>                
                 </div>
                   <div class="column is-4">
                     <strong>{{admin.Display_Name__c}}</strong> 
@@ -78,7 +115,7 @@
                <p *ngIf="admin.Display_Email__c" ><i class="fa fa-envelope" style="font-size:20px;color:blue;"></i> {{admin.Display_Email__c}} </p>
            
                 <p *ngIf="admin.Display_Website__c" ><i class="fa fa-globe" style="font-size:20px;color:blue;"></i> {{admin.Display_Website__c}}</p>
-              </div>
+         
          
               </div></div>
               

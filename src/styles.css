@@ -20,6 +20,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .blackbgd {
   background-color:  black;;
 }
+
+.blackborder {
+  border:solid 2px black;
+ }
+ 
 .greybgd {
   background-color:  #808080;;
 }

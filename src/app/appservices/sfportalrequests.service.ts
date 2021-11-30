@@ -54,6 +54,9 @@ export class SfportalrequestsService {
     return this.sfService.get(`portalthisadminuser/${sfid}`);
   }
   
+  getadmin(dept:string){
+    return this.sfService.get(`admin/${dept}`);
+  }
 
   getportalalldivision(portal:string){
     return this.sfService.get(`portalalldivision/${portal}`);
@@ -62,7 +65,10 @@ export class SfportalrequestsService {
   getportalalldepartment(portal:string){
     return this.sfService.get(`portalalldepartment/${portal}`);
   }
-
+  getdepartments(div:string){
+    return this.sfService.get(`departments/${div}`);
+  }
+  
   getportalalladmin(portalid:string){
     return this.sfService.get(`getportalalladmin/${portalid}`);
   }
