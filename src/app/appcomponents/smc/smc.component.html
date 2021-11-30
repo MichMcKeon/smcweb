@@ -74,8 +74,12 @@
                 &nbsp;  {{admin.Expert_Area__c}}</span></div>
             </div>
             <div class="pt-3 pb-3 pl-3 border border-3 border-white" style="max-width:100%">
+              <div class="d-flex flex-row justify-content-between ">
+                <div>
               <span *ngIf="admin.Display_Image__c">   <img src="{{admin.Display_Image__c}}" class="stackimg"></span>
               <span *ngIf="!admin.Display_Image__c">   <img src="./assets/profile.png" class="stackimg"></span>
+              </div>
+              <div>
               <address style="max-width:100%">
                 <p *ngIf="admin.Display_Mobile__c" style="max-width:100%" ><i class="fa fa-phone" style="font-size:20px;"></i> &nbsp;{{admin.Display_Mobile__c}}</p>
                
@@ -83,7 +87,12 @@
             
                  <p *ngIf="admin.Display_Website__c" style="max-width:100%"><i class="fa fa-globe" style="font-size:20px;"></i> &nbsp;{{admin.Display_Website__c}}</p>
           
-            </address></div>
+            </address>
+            </div>
+            <div>
+            <img src="./assets/cardbkgd.png" class="img-fluid "  style="max-width:100%">
+          </div></div>
+          </div>
           </div></li></ul></div>
                  
             
