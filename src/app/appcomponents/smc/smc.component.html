@@ -7,8 +7,9 @@
  <div class="container-fluid pt-3" style="max-width:100%">
   
 
-      <p  *ngIf="smcdetail.Registered_Name__c == ''" class="loader align-items-center" style="max-width:100%"></p>
-    
+      <div  *ngIf="smcdetail.Registered_Name__c == ''"  style="max-width:100%" class="flexedblack pt-0 pb-0" style="max-width:100%">
+    <p class="loader"></p></div>
+
         <div class="flexedblack pt-0 pb-0" style="max-width:100%">
           <span class="f p-2 text-white">CONTACT US </span>
                      <button class="tablinks is-ghost" matTooltip="{{smcdetail.Registered_Name__c}} |  {{smcdetail.Directors__c}} " matTooltipClass=" primarybgd has-text-white is-size-7">
@@ -25,15 +26,15 @@
                <img src="./assets/icons/icon_message.png" class="btn1">  </button> 
                    </div>
  
-                   <div class="d-flex  justify-content-center  h-100" style="max-width:100%" >
+                   <div class="d-flex  justify-content-center  h-100" style="max-width:100%; max-height:300px" >
                   
                      <div class="overflow-auto pt-3 pl-2"  *ngIf="contactspolicy" [innerHTML]="contactspolicy" style="max-width:100%">
                      </div><div class="imagehide">
-                   <img src="./assets/image-support1.png" class="img-fluid h-100 w-100"  style="max-width:100%">
+                   <img src="./assets/image-support1.png" class="img-fluid h-100 w-100">
                      
                     </div>   </div>
 
-                    <div class="flexedblack pt-0 pb-0" style="max-width:100%">
+                    <div class="flexedblack mb-2 pt-0 pb-0" style="max-width:100%">
                       <span class="f p-2 text-white">VIEW ALL CONTACTS </span>
                    <button class="tablinks is-ghost" (click)="showcontentthis('divisions')" matTooltip="View Divisions" matTooltipClass="primarybgd has-text-white is-size-7">
                       <img src="./assets/icons/icon_smc.png" class="btn1"></button> 
@@ -49,7 +50,7 @@
                    </ul></div>
                   
 
-                   <div class="container-fluid mt-2 f" style="max-width:100%" *ngIf="showcontacts == 'departments'">
+                   <div class="container-fluid mt-2 mb-2 f" style="max-width:100%" *ngIf="showcontacts == 'departments'">
               
                <ul  class="flexedblack1 mb-2" style="max-width:100%" *ngFor="let department of departments">
                   <li class="f mb-1"style="max-width:100%" *ngIf="department.Portal_Division_Id__c == divdepartment "><button class="f tablinksblack is-ghost pt-2 mb-1" #showdeptstaff value="{{department.Id}}" (click)="showdepartmentstaff(showdeptstaff.value);showcontentthis('staff')"> {{department.Display_Name__c}}</button></li>

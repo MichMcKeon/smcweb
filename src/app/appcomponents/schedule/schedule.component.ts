@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit,Input } from '@angular/core';
 import { SfportalrequestsService } from 'src/app/appservices/sfportalrequests.service';
 
@@ -12,7 +13,7 @@ export class ScheduleComponent implements OnInit {
   @Input () usergmt='';
   @Input () portalgmt='';
 
-
+  calendarpolicy:any;
 usersportal:any;
 hours:any;
 events:any;
@@ -26,16 +27,44 @@ usertoday='';
 portalusertimediff=0;
 showevent='';
 eventtype='';
+showcontacts = '';
 
-constructor(private sfportalrequestsService:SfportalrequestsService) { }
-  showevents(value:string){
+constructor(private sfportalrequestsService:SfportalrequestsService, private  http:HttpClient) { }
+
+showcontentthis(value:string){
+  this.showcontacts = value;
+}
+getevents(){
+this.sfportalrequestsService.geteventthisportal(this.portal )
+.subscribe((response) =>{
+ console.log('portalevents',response);
+ this.events = response;
+}); 
+};
+
+
+
+showevents(value:string){
     this.showevent = value;
+
+this.sfportalrequestsService.gethourthisportal(value )
+.subscribe((response) =>{
+ console.log('portalhours',response);
+ this.hours = response;
+});
   };
 
   showeventtype(value:string){
     this.eventtype = value;
   };
+
   ngOnInit(): void {
+    this.http.get('assets/docs/calendarpolicy.html', {
+      responseType : 'text'
+   })
+   .subscribe((data) => {
+    this.calendarpolicy = data
+    });
   
     console.log('usergmt',this.usergmt);
     console.log('portalgmt',this.portalgmt);
@@ -72,19 +101,6 @@ console.log('portalday',this.portalday);
  this.usersportal = response;
 });
 
-
-this.sfportalrequestsService.geteventthisportal(this.portal )
-.subscribe((response) =>{
- console.log('portalevents',response);
- this.events = response;
-});
-
-
-this.sfportalrequestsService.gethourthisportal(this.portal )
-.subscribe((response) =>{
- console.log('portalhours',response);
- this.hours = response;
-});
   }
 
 }

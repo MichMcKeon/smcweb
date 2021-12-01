@@ -1,34 +1,45 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
  
-<div class="centered-clear mt-4 mb-4">   
+<div class="container-fluid pt-3" style="max-width:100%"> 
    
-    <div class="boxpanel mt-4 mb-4">
-      
-        <div  class="boxpanelheader has-text-centered title is-3">
-            <button  mat-raised-button class="button is-ghost " style="text-decoration:none"  matTooltipClass="primarybgd has-text-white is-size-7" >
-                <img src="./assets/icons/Blue_Icon_smc.png" class="pt-3 pb-3" style="width:80px"> </button>  WHAT'S HAPPENING AT SMC   </div>
+  <div class="flexedblack pt-0 pb-0" style="max-width:100%">
+    <span class="f p-2 text-white">WHAT'S HAPPENING AT SMC  </span>
+               <button class="tablinksblack is-ghost" >
+             <img src="./assets/icons/icon_smc.png" class="btn1"></button> </div>
 
-                <div >
-                  <div  class="columns   has-background-white mt-3 ml-3 mr-4 "  >  
-                    
-                   <div class="column is-10  pl-3 pr-3 pb-0">
-                    {{usersportal.Display_Custom_Calendar_Message__c}}</div>
-                    <div class="column is-2 pl-3 pr-3 pb-0">
-                  <img src="./assets/image-calendar1.png" style="height:auto"> 
-              </div>
-           </div><button class="button primarybgd is-fullwidth is-small" >  <img src="./assets/icons/Blue_Icon_calendar.png" style="width:80px">  </button> 
-           </div>
-           <div class="is-flex thirdbgd" >
-            <ul  *ngFor="let event of events">
-            <li *ngIf="event.Portal_Id__c && event.Portal_Id__c == portalid "><button class="button thirdbgd" #showevent value="{{event.Id}}" name="{{event.Display_Name__c}}" (click)="showevents(showevent.value);showeventtype(showevent.name)">{{event.Display_Name__c}}</button></li>
-        </ul> 
+ <div class="d-flex  justify-content-center  h-100" style="max-width:100%;max-height:300px" >                 
+<div class="overflow-auto pt-3 pl-2"  *ngIf="calendarpolicy" [innerHTML]="calendarpolicy" style="max-width:100%">
+   </div><div class="imagehide">
+ <img src="./assets/image-calendar1.png" class="img-fluid h-100 w-100">
+  </div>   </div>
+   
+  <div class="flexedblack mb-2 pt-0 pb-0" style="max-width:100%">
+    <span class="f p-2 text-white">VIEW EVENT SCHEDULE </span>
+ <button class="tablinksblack is-ghost" (click)="showcontentthis('events');getevents()" matTooltip="View Schedule" matTooltipClass="primarybgd has-text-white is-size-7">
+    <img src="./assets/icons/icon_calendar.png" class="btn1"></button> 
+</div>
+
+
+<div class="container-fluid  mt-2 f" style="max-width:100%" *ngIf="showcontacts == 'events'">
+  <ul class="flexedblack1 mb-2 mt-2" style="max-width:100%" *ngFor="let event of events">
+ <li class="f mb-1" style="max-width:100%" *ngIf="event.Portal_Id__c && event.Portal_Id__c == portalid "> 
+    <button class="f tablinksblack is-ghost pt-2 mb-1"   #showevent value="{{event.Id}}" name="{{event.Display_Name__c}}" (click)="showevents(showevent.value);showeventtype(showevent.name);showcontentthis('items')">{{event.Display_Name__c}}</button></li>
+ </ul></div>
+      
+ 
+
+    <div *ngIf="showcontacts == 'items'" style="overflow-y:scroll">
+
+        <div class="flexedblack1 mb-2 mt-2 pl-2 pt-2 pb-2 text-white f" style="max-width:100%" *ngIf="eventtype && eventtype != ''" >       
+           RECURRING WEEKLY    </div>
+  
+           <div class="flexedsilver1 mb-0 pt-0 pb-0" style="max-width:100%">
+         <button class="tablinks is-ghost">
+            <img src="./assets/icons/Mondayblue.png" class="btn1"></button> 
         </div>
 
-        <div *ngIf="eventtype && eventtype != ''" class="thirdbgd" style="overflow-y:scroll;" >       
-          <div class="primarybgd has-text-centered has-text-white title is-3"  >  RECURRING WEEKLY    </div>
-           <button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Mondayblue.png" style="width:60px"></button>
-           <ul  *ngFor="let hour of hours">
+              <ul  *ngFor="let hour of hours">
            <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
              
             <div class="is-flex">
@@ -248,9 +259,5 @@ Presenter: {{hour.Presenter_Display_Name__c}}
                 </div></div>
               </li></ul>  
             </div>
-      
-
-
-
-          </div>
-        </div>
+                </div>
+   
