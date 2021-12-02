@@ -1,3 +1,35 @@
+* {
+    box-sizing: border-box;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1920px) {
+.column {
+    float: left;
+    min-width:33%;
+    max-width:33.33%;
+    text-align: center;
+    justify-content: center;
+    margin-top:5px;
+    margin-bottom:5px;
+    margin:auto;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }}
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+      margin-top:2px;
+    }
+  }
 .flexedblue{
     background-color: #003ca6;
     display:flex;
@@ -9,6 +41,14 @@
   }
   .flexedgrey{
     background-color:#808080;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
+  }
+  .flexed{
     display:flex;
     align-items: center;
     justify-content: center;
@@ -111,6 +151,7 @@
         flex-basis: 100%;
         margin-left:auto;
         margin-right:auto;
+       
       }
      
       .vstackitem {

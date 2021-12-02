@@ -29,235 +29,211 @@
       
  
 
-    <div *ngIf="showcontacts == 'items'" style="overflow-y:scroll">
-
-        <div class="flexedblack1 mb-2 mt-2 pl-2 pt-2 pb-2 text-white f" style="max-width:100%" *ngIf="eventtype && eventtype != ''" >       
+    <div   *ngIf="showcontacts == 'items'">
+      <a #showrecur  (click)="showrecurthis('weekly')"> <div class="flexed blackborder mb-2 mt-2 pl-2 pt-2 pb-2 f" > WEEKLY EVENTS</div></a>  
+   <a   #showrecur  (click)="showrecurthis('none')" > <div class="flexed blackborder  mb-2 mt-2 pl-2 pt-2 pb-2 f" >NON WEEKLY EVENTS </div></a>
+     </div>
+<div class="container-fluid" *ngIf="showcontacts == 'items' && showrecur == 'weekly'">
+        <div class="flexedblack mb-2 mt-2 pl-2 pt-2 pb-2 text-white f" style="max-width:100%" *ngIf="eventtype && eventtype != ''" >       
            RECURRING WEEKLY    </div>
-  
-           <div class="flexedsilver1 mb-0 pt-0 pb-0" style="max-width:100%">
-         <button class="tablinks is-ghost">
-            <img src="./assets/icons/Mondayblue.png" class="btn1"></button> 
-        </div>
-
-              <ul  *ngFor="let hour of hours">
-           <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
-             
-            <div class="is-flex">
-            <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-              <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-              {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}
-             </div>
-             <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
-       {{hour.Display_Name__c}} 
-      </div>
-      <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-      {{hour.Display_Description__c}} 
-      </div>
-      <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
-     Presenter: {{hour.Presenter_Display_Name__c}} 
-    </div></div>
-    <div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-    <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-   {{hour.Operating_Hours_Type__c}}
-   </div>
-   <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
-     </div>
-      </div></div>
-        </li></ul>
-
+<div class="row">
+            <div class="column">
+             <img src="./assets/icons/Mondayblue.png" class="btn">
+         
+               <ul  class="container-fluid" *ngFor="let hour of hours">
+            <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
           
-           <button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Tuesdayblue.png" style="width:60px"></button>
-           <ul  *ngFor="let hour of hours">
-           <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Tuesday' ">
-             
-            <div class="is-flex">
-            <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-              <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-              {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}
-             </div>
-             <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
-       {{hour.Display_Name__c}} 
-      </div>
-      <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-      {{hour.Display_Description__c}} 
-      </div>
-      <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
-     Presenter: {{hour.Presenter_Display_Name__c}} 
-    </div></div>
-    <div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-    <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-   {{hour.Operating_Hours_Type__c}}
-   </div>
-   <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
-     </div>
-      </div></div>
-        </li></ul>
-
-    <button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Wednesdayblue.png" style="width:60px"></button>
-    <ul  *ngFor="let hour of hours">
-      <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Wednesday' ">
- 
-        <div class="is-flex">
-          <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-            <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-            {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}
-           </div>
-           <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
-     {{hour.Display_Name__c}} 
-    </div>
-    <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-    {{hour.Display_Description__c}} 
-    </div>
-    <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
-   Presenter: {{hour.Presenter_Display_Name__c}} 
-  </div></div>
-  <div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-  <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
- {{hour.Operating_Hours_Type__c}}
- </div>
- <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
-   </div>
-    </div></div>
-  </li></ul>
-
-  <button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Thursdayblue.png" style="width:60px"></button>
-  <ul  *ngFor="let hour of hours">
-    <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Thursday' ">
-
-      <div class="is-flex">
-        <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-          <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-          {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}
-         </div>
-         <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
-   {{hour.Display_Name__c}} 
-  </div>
-  <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-  {{hour.Display_Description__c}} 
-  </div>
-  <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
- Presenter: {{hour.Presenter_Display_Name__c}} 
-</div></div>
-<div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-{{hour.Operating_Hours_Type__c}}
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
- </div>
-  </div></div>
-</li></ul>
-
-<button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Fridayblue.png" style="width:60px"></button>
-<ul  *ngFor="let hour of hours">
-  <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Friday' ">
-
-    <div class="is-flex">
-      <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-        <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-        {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}
-       </div>
-       <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
- {{hour.Display_Name__c}} 
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-{{hour.Display_Description__c}} 
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
-Presenter: {{hour.Presenter_Display_Name__c}} 
-</div></div>
-<div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-{{hour.Operating_Hours_Type__c}}
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
-</div>
-</div></div>
-</li></ul>
-
-<button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Saturdayblue.png" style="width:60px"></button>
-<ul  *ngFor="let hour of hours">
-  <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Saturday' ">
-
-    <div class="is-flex">
-      <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-        <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-        {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}
-       </div>
-       <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
- {{hour.Display_Name__c}} 
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-{{hour.Display_Description__c}} 
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
-Presenter: {{hour.Presenter_Display_Name__c}} 
-</div></div>
-<div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-{{hour.Operating_Hours_Type__c}}
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
-</div>
-</div></div>
-</li></ul>
-
-<button class="button is-fullwidth is-small is-white mb-5 mt-5">  <img src="./assets/icons/Sundayblue.png" style="width:60px"></button>
-<ul  *ngFor="let hour of hours">
-  <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Sunday' ">
-
-    <div class="is-flex">
-      <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-        <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-        {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}
-       </div>
-       <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
- {{hour.Display_Name__c}} 
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-{{hour.Display_Description__c}} 
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
-Presenter: {{hour.Presenter_Display_Name__c}} 
-</div></div>
-<div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-{{hour.Operating_Hours_Type__c}}
-</div>
-<div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
-</div>
-</div></div>
-</li></ul>
-              </div>
-          
-              <div  *ngIf="eventtype && eventtype != ''" class="secondbgd" style="overflow-y:scroll;" >       
-                <div class="primarybgd has-text-centered has-text-white title is-3 mt-4"  >   NON-RECURRING    </div>
-                <button class="button is-fullwidth is-small is-white mb-3 mt-2">  <img src="./assets/icons/Dayblank.png" style="width:60px"></button>
-                <ul  *ngFor="let hour of hours">
-                  <li *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c != 'Weekly' && (hour.Start_Month__c == portalmonthnext || hour.Start_Month__c == portalmonth) && hour.Start_Year__c == portalyear ">
+             <div class="card blackborder">
+                <div class="card-header primarybgd text-align-center">
                 
-                 
-                    <div class="is-flex">
-                      <div class=" is-flex primaryborder has-background-white  is-align-content-stretch" style="width:65vw" >
-                        <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">   
-                        {{hour.Start_Day__c}}/{{hour.Start_Month__c}}/{{hour.Start_Year__c}} to {{hour.End_Day__c}}/{{hour.End_Month__c}}/{{hour.End_Year__c}}
-                       </div>
-                       <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 primaryfont">     
-                 {{hour.Display_Name__c}} 
-                </div>
-                <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2">    
-                {{hour.Display_Description__c}} 
-                </div>
-                <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2" *ngIf="hour.Presenter_Display_Name__c">   
-               Presenter: {{hour.Presenter_Display_Name__c}} 
-              </div></div>
-              <div class=" ml-2 is-flex primaryborder has-background-white is-pulled-right" style="width:10vw">
-              <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-             {{hour.Operating_Hours_Type__c}}
-             </div>
-             <div class="mr-2 ml-2 pt-2 pb-2 pl-2 pr-2 is-pulled-right" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}
+               <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
                </div>
+               <div class="card-body f">
+                <p class="primarytext f"><b>{{hour.Display_Name__c}}</b> </p>
+                  <p> {{hour.Display_Description__c}}</p>
+                  <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+               </div>
+               <div class="card-footer f">
+                  <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+                    {{hour.Operating_Hours_Type__c}}</span>
+                    <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
                 </div></div>
-              </li></ul>  
+             
+          </li></ul></div>
+          
+
+          <div class="column">
+         
+            <img src="./assets/icons/Tuesdayblue.png" class="btn">
+        
+              <ul  class="container-fluid" *ngFor="let hour of hours">
+           <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+         
+            <div class="card blackborder">
+               <div class="card-header primarybgd text-align-center">
+              <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i>  {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
+              </div>
+              <div class="card-body f">
+               <p><b>{{hour.Display_Name__c}}</b> </p>
+                 <p> {{hour.Display_Description__c}}</p>
+                 <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+              </div>
+              <div class="card-footer f">
+                 <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+                   {{hour.Operating_Hours_Type__c}}</span>
+                   <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
+               </div></div>
+            
+         </li></ul></div>
+    
+         <div class="column">
+         
+          <img src="./assets/icons/Wednesdayblue.png" class="btn">
+      
+            <ul  class="container-fluid" *ngFor="let hour of hours">
+         <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+       
+          <div class="card blackborder">
+            <div class="card-header primarybgd text-align-center">
+              <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i>  {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
             </div>
-                </div>
+            <div class="card-body f">
+             <p><b>{{hour.Display_Name__c}}</b> </p>
+               <p> {{hour.Display_Description__c}}</p>
+               <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+            </div>
+            <div class="card-footer f">
+               <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+                 {{hour.Operating_Hours_Type__c}}</span>
+                 <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
+             </div></div>
+          
+       </li></ul></div>
+       <div class="column">
+         
+        <img src="./assets/icons/Thursdayblue.png" class="btn">
+    
+          <ul  class="container-fluid" *ngFor="let hour of hours">
+       <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+     
+        <div class="card blackborder">
+          <div class="card-header primarybgd text-align-center">
+            <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
+          </div>
+          <div class="card-body f">
+           <p><b>{{hour.Display_Name__c}}</b> </p>
+             <p> {{hour.Display_Description__c}}</p>
+             <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+          </div>
+          <div class="card-footer f">
+             <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+               {{hour.Operating_Hours_Type__c}}</span>
+               <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
+           </div></div>
+        
+     </li></ul></div>
+  
+     <div class="column">
+         
+      <img src="./assets/icons/Fridayblue.png" class="btn">
+  
+        <ul  class="container-fluid" *ngFor="let hour of hours">
+     <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+   
+      <div class="card blackborder">
+        <div class="card-header primarybgd text-align-center">
+          <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
+        </div>
+        <div class="card-body f">
+         <p><b>{{hour.Display_Name__c}}</b> </p>
+           <p> {{hour.Display_Description__c}}</p>
+           <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+        </div>
+        <div class="card-footer f">
+           <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+             {{hour.Operating_Hours_Type__c}}</span>
+             <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
+         </div></div>
+      
+   </li></ul></div>
+  
+   <div class="column">
+         
+    <img src="./assets/icons/Saturdayblue.png" class="btn">
+
+      <ul  class="container-fluid" *ngFor="let hour of hours">
+   <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+ 
+    <div class="card blackborder">
+      <div class="card-header primarybgd text-align-center">
+        <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
+      </div>
+      <div class="card-body f">
+       <p><b>{{hour.Display_Name__c}}</b> </p>
+         <p> {{hour.Display_Description__c}}</p>
+         <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+      </div>
+      <div class="card-footer f">
+         <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+           {{hour.Operating_Hours_Type__c}}</span>
+           <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
+       </div></div>
+    
+ </li></ul></div>
+
+ <div class="column">
+         
+  <img src="./assets/icons/Sundayblue.png" class="btn">
+
+    <ul  class="container-fluid" *ngFor="let hour of hours">
+ <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+
+  <div class="card blackborder">
+    <div class="card-header primarybgd text-align-center">
+      <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
+    </div>
+    <div class="card-body f">
+     <p><b>{{hour.Display_Name__c}}</b> </p>
+       <p> {{hour.Display_Description__c}}</p>
+       <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+    </div>
+    <div class="card-footer f">
+       <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+         {{hour.Operating_Hours_Type__c}}</span>
+         <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
+     </div></div>
+  
+</li></ul></div>
+
+</div></div>
+
+<div *ngIf="showcontacts == 'items' && showrecur == 'none'">
+          
+          
+<div class="flexedblack mb-2 mt-2 pl-2 pt-2 pb-2 text-white f" style="max-width:100%" *ngIf="eventtype && eventtype != ''">       
+                NON-RECURRING    </div>
+                   <ul class="container-fluid"  *ngFor="let hour of hours">
+                  <li class="container-fluid"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c != 'Weekly' && (hour.Start_Month__c == portalmonthnext || hour.Start_Month__c == portalmonth) && hour.Start_Year__c == portalyear ">
+      
+                    <div class="row">  <div class="column "> 
+    <div class="card blackborder">
+ <div class="card-header primarybgd text-align-center">
+   <span class="badge secondbgd f text-white"><i class="fas fa-calendar"></i>{{hour.Start_Day__c}}-{{hour.Start_Month__c}}-{{hour.Start_Year__c}}  {{hour.End_Day__c}}-{{hour.End_Month__c}}-{{hour.End_Year__c}}</span><br>
+   <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}} </span> 
+ 
+    </div>
+   <div class="card-body f">
+   <p><b>{{hour.Display_Name__c}}</b> </p>
+     <p> {{hour.Display_Description__c}}</p>
+  <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
+   </div>
+    <div class="card-footer f">
+   <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
+    {{hour.Operating_Hours_Type__c}}</span>
+  <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
+     </div></div></div>      </div> 
+     </li></ul>
+    </div>
+                    
+                 
    

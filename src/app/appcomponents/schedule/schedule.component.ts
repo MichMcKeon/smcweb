@@ -28,6 +28,7 @@ portalusertimediff=0;
 showevent='';
 eventtype='';
 showcontacts = '';
+showrecur='';
 
 constructor(private sfportalrequestsService:SfportalrequestsService, private  http:HttpClient) { }
 
@@ -57,6 +58,10 @@ this.sfportalrequestsService.gethourthisportal(value )
   showeventtype(value:string){
     this.eventtype = value;
   };
+  showrecurthis(value:string){
+    this.showrecur = value;
+  };
+
 
   ngOnInit(): void {
     this.http.get('assets/docs/calendarpolicy.html', {

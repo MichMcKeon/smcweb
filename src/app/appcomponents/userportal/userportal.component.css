@@ -1,70 +1,10 @@
-
-* {box-sizing: border-box}
-
-/* Set height of body and the document to 100% */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial;
-}
-
-/* Style tab links */
-.tablinks {
-    background-color: #003ca6;
-  color: white;
+.column {
   float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 1px 1px;
-  font-size: 17px;
-  
-}
-
-.tab{
-  background-color: #003ca6;
-  display:inline-flex;
-  width:100vw;
+  min-width:13%;
+  max-width:15%;
+  text-align: center;
   justify-content: center;
-  align-items: center;
-
+  margin-top:5px;
+  margin-bottom:5px;
+  margin:auto;
 }
-
-/* Style the tab content (and add height:100% for full page content) */
-.tabcontent {
-  color: white;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
-}
-
-#Home {background-color: red;}
-#News {background-color: green;}
-#Contact {background-color: blue;}
-#About {background-color: orange;}
-
-@media only screen and (min-width: 768px) and (max-width: 1920px) {
-    .btn {
-        width: 80px;
-        height: 80px;
-        padding: 1px;
-        margin-top:3px;
-    }}
-    
-    @media only screen  and (max-width: 769px) {
-        .btn {
-            width: 50px;
-            height: auto;
-            padding: 1px;
-            margin-top:0px;
-        }    
-      
-    }
-    
-    
-    .tooltip {
-        background: #003ca6;
-        font-size:12px;
-        text-align:center;
-     
-      }
