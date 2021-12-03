@@ -30,6 +30,22 @@ eventtype='';
 showcontacts = '';
 showrecur='';
 
+date = new Date();
+firstDayMonth = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+lastDayMonth = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
+DayMonth = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
+Day1Monthwekkday = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+
+calendarmonth:any;
+days = Array.from(Array(this.DayMonth).keys()).map(x  => new Date(this.date.getFullYear(), this.date.getMonth(), x + 1));
+week1end= 1 + (7 - this.Day1Monthwekkday );
+week2end= this.week1end + 7 ;
+week3end= this.week2end + 7 ;
+week4end= this.week3end + 7 ;
+week5end= this.week4end + 7 ;
+
+
+
 constructor(private sfportalrequestsService:SfportalrequestsService, private  http:HttpClient) { }
 
 showcontentthis(value:string){
@@ -48,11 +64,11 @@ this.sfportalrequestsService.geteventthisportal(this.portal )
 showevents(value:string){
     this.showevent = value;
 
-this.sfportalrequestsService.gethourthisportal(value )
-.subscribe((response) =>{
- console.log('portalhours',response);
- this.hours = response;
-});
+//this.sfportalrequestsService.gethourthisportal(value )
+//.subscribe((response) =>{
+// console.log('portalhours',response);
+// this.hours = response;
+//});
   };
 
   showeventtype(value:string){
@@ -104,6 +120,13 @@ console.log('portalday',this.portalday);
 .subscribe((response) =>{
  console.log('userportal',response);
  this.usersportal = response;
+
+
+this.sfportalrequestsService.gethourthisportal(this.portal )
+.subscribe((response) =>{
+ console.log('portalhours',response);
+ this.hours = response;
+});
 });
 
   }

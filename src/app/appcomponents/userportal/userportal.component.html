@@ -1,33 +1,84 @@
 <div>
-  {{firstDayMonth}}  // {{DayMonth}}  //  {{Day1Monthwekkday}}  // {{date}}
+  {{firstDayMonth}}  // {{DayMonth}}  //  {{Day1Monthwekkday}}  // {{week1end}}
   </div>
+<div>{{week1end}}  {{week2end}}  {{week3end}}  {{week4end}}  {{week5end}}</div>
 
 
-
-  <div id="calendar" *ngIf="calendarmonth" [innerHTML]="calendarmonth">
-
-    </div>
-    <div class="grid ml-2 mr-2 h-100">
+    <div class="row primarybgd text-white">
       
-          <div class="column p-3 primarybgd text-white">Monday
-           
-         
-             
-                <ul class="container-fluid"   *ngFor="let weekdays of weekdays">   
-                  <li class="container-fluid"   *ngIf="weekdays.getDay() == 1">
-                    {{weekdays}}  {{weekdays | date:'EEEE'}} </li></ul>
-                    
-
-
-          </div>
-          <div class="column p-3 primarybgd text-white">Tuesday</div>
-          <div class="column p-3 primarybgd text-white">Wednesday</div>
-          <div class="column p-3 primarybgd text-white">Thursday</div>
-          <div class="column p-3 primarybgd text-white">Friday</div>
-          <div class="column p-3 primarybgd text-white">Saturday</div>
-          <div class="column p-3 primarybgd text-white">Sunday</div> 
+          <div class="column">Monday
+                  </div>
+          <div class="column">Tuesday
+                 </div>
+          <div class="column">Wednesday
+              </div>
+          <div class="column">Thursday
+             </div>
+          <div class="column">Friday
+              </div>
+          <div class="column">Saturday
+            </div>
+          <div class="column">Sunday
+             </div> 
 
             </div>
+  
+            <div class="grid" style="--bs-columns: 7; --bs-gap: 1rem;">
+      
+              <div class="g-col-1">
+                    <ul class="container-fluid"   *ngFor="let days of days">   
+                      <li class="container-fluid"   *ngIf="days.getDay() == 1  && week1end > days.getDate() ">
+                        <div class="card">  
+                          <div class="card-header">   <span class="badge  secondbgd">     {{days | date:'dd'}} </span>
+                  </div> </div>   </li></ul>
+              </div>
+              <div class="g-col-1">
+                <ul class="container-fluid"   *ngFor="let days of days">   
+                  <li class="container-fluid"   *ngIf="days.getDay() == 2 && week1end > days.getDate()">
+                    <div class="card"> 
+                      <div class="card-header"> <span class="badge  secondbgd">     {{days | date:'dd'}} </span>
+             </div>    </div> </li></ul>
+              </div>
+              <div class="g-col-1">
+                <ul class="container-fluid"   *ngFor="let days of days">   
+                  <li class="container-fluid"   *ngIf="days.getDay() == 3 && week1end >= days.getDate()">
+                    <div class="card">
+                      <div class="card-header">  <span class="badge secondbgd"> {{days | date:'dd'}} </span>
+                </div>    </div></li></ul>
+              </div>
+              <div class="g-col-1">
+                <ul class="container-fluid"   *ngFor="let days of days">   
+                  <li class="container-fluid"   *ngIf="days.getDay() == 4 && week1end >= days.getDate()">
+                    <div class="card">  
+                      <div class="card-header">    <span class="badge  secondbgd"> {{days | date:'dd'}} </span>
+             </div>       </div></li></ul>
+              </div>
+              <div class="g-col-1">
+                <ul class="container-fluid"   *ngFor="let days of days">   
+                  <li class="container-fluid"   *ngIf="days.getDay() == 5 && week1end >= days.getDate()">
+                    <div class="card">  
+                      <div class="card-header">     <span class="badge  secondbgd">     {{days | date:'dd'}} </span>
+                 </div>   </div></li></ul>
+              </div>
+              <div class="g-col-1">
+                <ul class="container-fluid"   *ngFor="let days of days">   
+                  <li class="container-fluid"   *ngIf="days.getDay() == 6 && week1end >= days.getDate()">
+              <div class="card">      
+                <div class="card-header"> 
+                  <span class="badge rounded-pill secondbgd">     {{days | date:'dd'}} </span>
+             </div> </div></li></ul>
+              </div>
+              <div class="g-col-1"> 
+                <ul  class="container-fluid"  *ngFor="let days of days">   
+                  <li  *ngIf="days.getDay() == 0 && week1end >= days.getDate()">
+                      <div class="card"> 
+                        <div class="card-header"> 
+                   <span class="badge secondbgd">     {{days | date:'dd'}} </span>
+                    
+                  </div>  </div></li></ul></div>
+             
+    
+                </div>
          
                 
              

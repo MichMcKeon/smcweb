@@ -26,7 +26,13 @@ export class UserportalComponent implements  OnInit {
 
 calendarmonth:any;
  days = Array.from(Array(this.DayMonth).keys()).map(x  => new Date(this.date.getFullYear(), this.date.getMonth(), x + 1));
- weekdays= Array.from(this.days)
+ week1end= 1 + (7 - this.Day1Monthwekkday );
+ week2end= this.week1end + 7 ;
+ week3end= this.week2end + 7 ;
+ week4end= this.week3end + 7 ;
+ week5end= this.week4end + 7 ;
+ 
+
 // [1, 2, 3, 4, 5]
   
 constructor(private route:ActivatedRoute, private http:HttpClient, private sfportalrequestsService:SfportalrequestsService) { }
