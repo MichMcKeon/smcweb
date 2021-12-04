@@ -1,10 +1,293 @@
+* {
+    box-sizing: border-box;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1920px) {
+.column {
+   
+    min-width:13%;
+    max-width:15%;
+    text-align: center;
+    
+    margin-top:5px;
+    margin-bottom:5px;
+    margin:auto;
+   
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }}
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+  @media screen and (max-width: 600px) {
+   /*  .column {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+      margin-top:2px;
+    }*/
+  } 
+.flexedblue{
+    background-color: #003ca6;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
+  }
+  .flexedgrey{
+    background-color:#808080;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
+  }
+  .flexed{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
+  }
+  .flexedblack{
+    background-color:black;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
+  }
+  .flexedsilver{
+    background-color:#e2e3e7;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    max-width:100%;
+    flex-direction: row;
+        flex-basis: 100%;
+  }
+  .tablinks {
+    background-color: #e2e3e7;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1px 1px;
+  font-size: 17px;
+  max-width:100%;
+  
+}
+
+.tablinksblack {
+    background-color:black;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1px 1px;
+  font-size: 17px;
+  max-width:100%;
+  
+}
 
 
-<div>
-    <div class="row">
-.primarybgd {
-    <div class="col-sm-4 p-3  text-white">.col</div>
-.primarybgd {
-    <div class="col-sm-8 p-3  text-white">.col</div>
-      </div>
-</div>
+  @media only screen and (min-width: 768px) and (max-width: 1920px) {
+    .btn {
+        width: 80px;
+        height: 80px;
+        padding: 1px;
+        margin-top:3px;
+    }
+    .btn1 {
+        width: 40px;
+        height: 40px;
+        padding: 1px;
+        margin-top:3px;
+    }
+    .f{
+        font-size:16px;
+    }
+    .flexedgrey1{
+        background-color:#808080;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:100vw;
+        max-width:100%;
+        flex-direction: row;
+        flex-basis: 100%;
+      }
+
+    .flexedblack1{
+        background-color:black;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:1000vw;
+        max-width:100%;
+        flex-direction: row;
+        flex-basis: 100%;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .flexedsilver1{
+        background-color:#e2e3e7;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width:1000vw;
+        max-width:100%;
+        flex-direction: row;
+        flex-basis: 100%;
+        margin-left:auto;
+        margin-right:auto;
+       
+      }
+     
+      .vstackitem {
+        background-color:#e2e3e7;
+        display: block;
+       
+
+        align-self: stretch;
+        width:100%;
+        margin-left:1px;
+        margin-right:1px;
+        flex-direction: column;
+        flex-basis: 100%;
+}
+.stackimg {
+    float:left;
+  width:100%;
+  height:100%;
+  max-height:10vh;
+  padding-left:4px;
+  padding-right:4px;
+  padding-top:4px;
+  padding-bottom:4px;
+    max-width:10vw;
+    margin-top:1px;
+    margin-bottom:1px;
+    margin-left:10px;
+    margin-right:10px;
+ border:solid 5px black;
+ background-color:black;
+}
+
+.stackimg1 {
+    float:right;
+    width:100%;
+    height:100%;
+    max-height:10vh;
+    padding-left:4px;
+    padding-right:4px;
+    padding-top:4px;
+    padding-bottom:4px;
+      max-width:10vw;
+      margin-top:1px;
+      margin-bottom:1px;
+      margin-left:10px;
+      margin-right:10px;
+  
+}
+}
+    
+    @media only screen  and (max-width: 769px) {
+        .btn {
+            width: 50px;
+            height: auto;
+            padding: 1px;
+            margin-top:0px;
+        }    
+        .btn1 {
+            width: 20px;
+            height: auto;
+        }  
+        .f{
+            font-size:12px;
+        }
+        .imagehide{
+            display:none;
+        }
+        .flexedgrey1{
+            background-color:#808080;
+            display:block;
+            align-items: center;
+            justify-content: center;
+            width:100vw;
+            max-width:100%;
+            flex-direction: row;
+        flex-basis: 100%;
+          }
+
+        .flexedblack1{
+            background-color:black;
+            display:block;
+            align-items: center;
+            justify-content: center;
+            width:100vw;
+            max-width:100%;
+            flex-direction: row;
+        flex-basis: 100%;
+          }
+          .vstackitem {
+              float:left;
+              background-color:#e2e3e7;
+            display: block;
+         width:100vw;
+            align-self: stretch;
+            max-width:100%;
+            flex-direction: row;
+        flex-basis: 100%;
+          }
+
+          .stackimg {
+            float:left;
+          width:100%;
+          height:100%;
+          max-height:15vh;
+          padding-left:4px;
+          padding-right:4px;
+          padding-top:4px;
+          padding-bottom:4px;
+            max-width:15vw;
+            margin-top:5px;
+            margin-bottom:5px;
+            margin-left:10px;
+            margin-right:10px;
+         border:solid 5px black;
+         background-color:black;
+        }
+   
+   
+        .stackimg1 {
+            float:left;
+            width:100%;
+            height:100%;
+            max-height:15vh;
+            padding-left:4px;
+            padding-right:4px;
+            padding-top:4px;
+            padding-bottom:4px;
+              max-width:5vw;
+              margin-top:5px;
+              margin-bottom:5px;
+              margin-left:10px;
+              margin-right:10px;
+       
+        }
+   
+    }
+
+      

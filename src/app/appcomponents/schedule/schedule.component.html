@@ -21,359 +21,903 @@
 </div>
 
 
-<div class="container-fluid  mt-2 f" style="max-width:100%" *ngIf="showcontacts == 'events'">
-  <ul class="flexedblack1 mb-2 mt-2" style="max-width:100%" *ngFor="let event of events">
- <li class="f mb-1" style="max-width:100%" *ngIf="event.Portal_Id__c && event.Portal_Id__c == portalid "> 
-    <button class="f tablinksblack is-ghost pt-2 mb-1"   #showevent value="{{event.Id}}" name="{{event.Display_Name__c}}" (click)="showevents(showevent.value);showeventtype(showevent.name);showcontentthis('items')">{{event.Display_Name__c}}</button></li>
- </ul></div>
-      
- 
-
-    <div   *ngIf="showcontacts == 'items'">
-      <a #showrecur  (click)="showrecurthis('weekly')"> <div class="flexed blackborder mb-2 mt-2 pl-2 pt-2 pb-2 f" > WEEKLY EVENTS</div></a>  
-   <a   #showrecur  (click)="showrecurthis('none')" > <div class="flexed blackborder  mb-2 mt-2 pl-2 pt-2 pb-2 f" >NON WEEKLY EVENTS </div></a>
-     </div>
-<div class="container-fluid" *ngIf="showcontacts == 'items' && showrecur == 'weekly'">
-        <div class="flexedblack mb-2 mt-2 pl-2 pt-2 pb-2 text-white f" style="max-width:100%" *ngIf="eventtype && eventtype != ''" >       
-           RECURRING WEEKLY    </div>
-<div class="row">
-            <div class="column">
-             <img src="./assets/icons/Mondayblue.png" class="btn">
-         
-               <ul  class="container-fluid" *ngFor="let hour of hours">
-            <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
-          
-             <div class="card blackborder">
-                <div class="card-header primarybgd text-align-center">
-                
-               <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
-               </div>
-               <div class="card-body f">
-                <p class="primarytext f"><b>{{hour.Display_Name__c}}</b> </p>
-                  <p> {{hour.Display_Description__c}}</p>
-                  <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-               </div>
-               <div class="card-footer f">
-                  <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-                    {{hour.Operating_Hours_Type__c}}</span>
-                    <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-                </div></div>
-             
-          </li></ul></div>
-          
-
-          <div class="column">
-         
-            <img src="./assets/icons/Tuesdayblue.png" class="btn">
         
-              <ul  class="container-fluid" *ngFor="let hour of hours">
-           <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
-         
-            <div class="card blackborder">
-               <div class="card-header primarybgd text-align-center">
-              <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i>  {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
-              </div>
-              <div class="card-body f">
-               <p><b>{{hour.Display_Name__c}}</b> </p>
-                 <p> {{hour.Display_Description__c}}</p>
-                 <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-              </div>
-              <div class="card-footer f">
-                 <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-                   {{hour.Operating_Hours_Type__c}}</span>
-                   <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-               </div></div>
-            
-         </li></ul></div>
-    
-         <div class="column">
-         
-          <img src="./assets/icons/Wednesdayblue.png" class="btn">
-      
-            <ul  class="container-fluid" *ngFor="let hour of hours">
-         <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
-       
-          <div class="card blackborder">
-            <div class="card-header primarybgd text-align-center">
-              <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i>  {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
-            </div>
-            <div class="card-body f">
-             <p><b>{{hour.Display_Name__c}}</b> </p>
-               <p> {{hour.Display_Description__c}}</p>
-               <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-            </div>
-            <div class="card-footer f">
-               <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-                 {{hour.Operating_Hours_Type__c}}</span>
-                 <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-             </div></div>
-          
-       </li></ul></div>
-       <div class="column">
-         
-        <img src="./assets/icons/Thursdayblue.png" class="btn">
-    
-          <ul  class="container-fluid" *ngFor="let hour of hours">
-       <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
-     
-        <div class="card blackborder">
-          <div class="card-header primarybgd text-align-center">
-            <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
-          </div>
-          <div class="card-body f">
-           <p><b>{{hour.Display_Name__c}}</b> </p>
-             <p> {{hour.Display_Description__c}}</p>
-             <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-          </div>
-          <div class="card-footer f">
-             <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-               {{hour.Operating_Hours_Type__c}}</span>
-               <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-           </div></div>
-        
-     </li></ul></div>
-  
-     <div class="column">
-         
-      <img src="./assets/icons/Fridayblue.png" class="btn">
-  
-        <ul  class="container-fluid" *ngFor="let hour of hours">
-     <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
-   
-      <div class="card blackborder">
-        <div class="card-header primarybgd text-align-center">
-          <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
-        </div>
-        <div class="card-body f">
-         <p><b>{{hour.Display_Name__c}}</b> </p>
-           <p> {{hour.Display_Description__c}}</p>
-           <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-        </div>
-        <div class="card-footer f">
-           <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-             {{hour.Operating_Hours_Type__c}}</span>
-             <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-         </div></div>
-      
-   </li></ul></div>
-  
-   <div class="column">
-         
-    <img src="./assets/icons/Saturdayblue.png" class="btn">
-
-      <ul  class="container-fluid" *ngFor="let hour of hours">
-   <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
+<div class="row secondbgd blackborder mt-0 pt-0 mb-0 pb-0">
+                                                                             
+ <div class="column "> <span><b>Monday</b></span>
+  <ul  class="container-fluid"  *ngFor="let days of days">   
+ <li class="container-fluid"  *ngIf="days.getDay() == 1 && week1end >= days.getDate()">  
+<span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                        
+<ul class="container-fluid" *ngFor="let hour of hours">  
+ <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+ <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+ <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+ <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
  
-    <div class="card blackborder">
-      <div class="card-header primarybgd text-align-center">
-        <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
-      </div>
-      <div class="card-body f">
-       <p><b>{{hour.Display_Name__c}}</b> </p>
-         <p> {{hour.Display_Description__c}}</p>
-         <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-      </div>
-      <div class="card-footer f">
-         <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-           {{hour.Operating_Hours_Type__c}}</span>
-           <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-       </div></div>
-    
- </li></ul></div>
+</li>
+  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+ <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+ <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
 
- <div class="column">
-         
-  <img src="./assets/icons/Sundayblue.png" class="btn">
-
-    <ul  class="container-fluid" *ngFor="let hour of hours">
- <li class="container-fluid" *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c == 'Weekly' && hour.Week_Day__c == 'Monday' ">
-
-  <div class="card blackborder">
-    <div class="card-header primarybgd text-align-center">
-      <span class="badge secondbgd f text-white"> <i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}}</span>
-    </div>
-    <div class="card-body f">
-     <p><b>{{hour.Display_Name__c}}</b> </p>
-       <p> {{hour.Display_Description__c}}</p>
-       <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-    </div>
-    <div class="card-footer f">
-       <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-         {{hour.Operating_Hours_Type__c}}</span>
-         <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-     </div></div>
-  
-</li></ul></div>
-
-</div></div>
-
-<div *ngIf="showcontacts == 'items' && showrecur == 'none'">
-          
-          
-<div class="flexedblack mb-2 mt-2 pl-2 pt-2 pb-2 text-white f" style="max-width:100%" *ngIf="eventtype && eventtype != ''">       
-                NON-RECURRING    </div>
-                   <ul class="container-fluid"  *ngFor="let hour of hours">
-                  <li class="container-fluid"  *ngIf="hour.Portal_Calendar_Events_Id__c && hour.Portal_Calendar_Events_Id__c == showevent && hour.Is_Recurring__c != 'Weekly' && (hour.Start_Month__c == portalmonthnext || hour.Start_Month__c == portalmonth) && hour.Start_Year__c == portalyear ">
-      
-                    <div class="row">  <div class="column "> 
-    <div class="card blackborder">
- <div class="card-header primarybgd text-align-center">
-   <span class="badge secondbgd f text-white"><i class="fas fa-calendar"></i>{{hour.Start_Day__c}}-{{hour.Start_Month__c}}-{{hour.Start_Year__c}}  {{hour.End_Day__c}}-{{hour.End_Month__c}}-{{hour.End_Year__c}}</span><br>
-   <span class="badge secondbgd f text-white"><i class="fas fa-clock"></i> {{hour.Start_Hour__c}}:{{hour.Start_Minute__c}} - {{hour.End_Hour__c}}:{{hour.End_Minute__c}} </span> 
- 
-    </div>
-   <div class="card-body f">
-   <p><b>{{hour.Display_Name__c}}</b> </p>
-     <p> {{hour.Display_Description__c}}</p>
-  <p *ngIf="hour.Presenter_Display_Name__c"> Presenter: {{hour.Presenter_Display_Name__c}} </p>  
-   </div>
-    <div class="card-footer f">
-   <span class="badge fourthbgd f text-white"  *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'">
-    {{hour.Operating_Hours_Type__c}}</span>
-  <span class="badge fourthbgd f text-white" *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c != 'Operating Hours'">{{hour.Display_Audience__c}}</span>    
-     </div></div></div>      </div> 
-     </li></ul>
-    </div>
-                    
-                 
-   
-
-  
-
-       
+</li> 
+  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+ <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+      </li> 
+    </ul></li></ul></div>
 
 
-        <div class="row primarybgd text-white">
-      
-          <div class="column">Monday
-                  </div>
-          <div class="column">Tuesday
-                 </div>
-          <div class="column">Wednesday
-              </div>
-          <div class="column">Thursday
-             </div>
-          <div class="column">Friday
-              </div>
-          <div class="column">Saturday
-            </div>
-          <div class="column">Sunday
-             </div> 
-
-            </div>
-<div class="row secondbgd h-100">
-              <div class="column">
-              <ul  class="container-fluid"  *ngFor="let days of days">   
-                <li class="container-fluid"  *ngIf="days.getDay() == 1 && week1end >= days.getDate()">  
-                     <span class="badge blackbgd" style="width:100%"> {{days | date:'dd'}} </span>
-            
-                     <ul class="container-fluid" *ngFor="let hour of hours">    
-                      <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
-                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge fourthbgd w-100" style="width:100%"> {{hour.Display_Name__c}}</span>
-                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100" style="width:100%">  {{hour.Display_Name__c}}</span>
-                     </li>
-                        <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
-                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge fourthbgd" style="width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>  
-                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd" style="width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>
-                      </li> </ul>   </li></ul> </div>
-                     
-                      <div class="column">
-                        <ul  class="container-fluid"  *ngFor="let days of days">   
-                          <li class="container-fluid"  *ngIf="days.getDay() == 2 && week1end >= days.getDate()">  
-                               <span class="badge blackbgd w-100" style="max-width:100%"> {{days | date:'dd'}} </span>
-                      
-                               <ul class="container-fluid" *ngFor="let hour of hours">    
-                                <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 2 ">
-                                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
-                                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
-                               </li>
-                                  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
-                                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>  
-                                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>
-                                </li> </ul>   </li></ul> </div>
-                                
-                                <div class="column">
-                                  <ul  class="container-fluid"  *ngFor="let days of days">   
-                                    <li class="container-fluid"  *ngIf="days.getDay() == 3 && week1end >= days.getDate()">  
-                                         <span class="badge blackbgd w-100" style="max-width:100%"> {{days | date:'dd'}} </span>
-                                
-                                         <ul class="container-fluid" *ngFor="let hour of hours">    
-                                          <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 3 ">
-                                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
-                                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
-                                         </li>
-                                            <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
-                                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>  
-                                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>
-                                          </li> </ul>   </li></ul> </div>
-                                       
-                                          <div class="column">
-                                            <ul  class="container-fluid"  *ngFor="let days of days">   
-                                              <li class="container-fluid"  *ngIf="days.getDay() == 4 && week1end >= days.getDate()">  
-                                                   <span class="badge blackbgd w-100" style="max-width:100%"> {{days | date:'dd'}} </span>
-                                          
-                                                   <ul class="container-fluid" *ngFor="let hour of hours">    
-                                                    <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 4 ">
-                                                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
-                                                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
-                                                   </li>
-                                                      <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
-                                                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>  
-                                                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>
-                                                    </li> </ul>   </li></ul> </div>
-                                             
-
-
-                                                    <div class="column">
-                                                      <ul  class="container-fluid"  *ngFor="let days of days">   
-                                                        <li class="container-fluid"  *ngIf="days.getDay() == 5 && week1end >= days.getDate()">  
-                                                             <span class="badge blackbgd w-100" style="max-width:100%"> {{days | date:'dd'}} </span>
-                                                    
-                                                             <ul class="container-fluid" *ngFor="let hour of hours">    
-                                                              <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 5 ">
-                                                                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
-                                                                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
-                                                             </li>
-                                                                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
-                                                                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>  
-                                                                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>
-                                                              </li> </ul>   </li></ul> </div>
-                                                       
-
-                                                              <div class="column">
-                                                                <ul  class="container-fluid"  *ngFor="let days of days">   
-                                                                  <li class="container-fluid"  *ngIf="days.getDay() == 6 && week1end >= days.getDate()">  
-                                                                       <span class="badge blackbgd w-100" style="max-width:100%"> {{days | date:'dd'}} </span>
-                                                              
-                                                                       <ul class="container-fluid" *ngFor="let hour of hours">    
-                                                                        <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 6 ">
-                                                                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
-                                                                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
-                                                                       </li>
-                                                                          <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
-                                                                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>  
-                                                                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge secondbgd w-100 text-wrap" style="max-width:100%"> {{hour.Start_Day__c}} {{hour.Display_Name__c}}</span>
-                                                                        </li> </ul>   </li></ul> </div>
-                                                                 
-
-
-        
-
-                                                                        <div class="column" style="max-width:100%"  >
-                                                                          <ul class="container-fluid" style="max-width:100%"  *ngFor="let days of days">   
-                                                                            <ul class="container-fluid" style="max-width:100%" *ngFor="let hour of hours"> 
-                                                                      <li  *ngIf="days.getDay() == 0 && week1end >= days.getDate()">     <button class=" button text-wrap secondbgd w-100 text-white" style="max-width:100%">  
-                                                                                {{days | date:'dd'}} </button></li>
-                                                                       
+    <div class="column"><span><b>Tuesday</b></span>
+      <ul  class="container-fluid"  *ngFor="let days of days">   
+     <li class="container-fluid"  *ngIf="days.getDay() == 2 && week1end >= days.getDate()">  
+    <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
                                                                             
-                                                                           <li *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 0 && hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'">    <button class=" button text-wrap fourthbgd w-100 text-white" style="max-width:100%" >
-                                                                                     {{hour.Display_Name__c}}</button></li>   
-                                                                                     <li *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 0 && hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'">          <button class=" button text-wrap fourthbgd w-100 text-white" style="max-width:100%" >
-                                                                                      {{hour.Display_Name__c}}</button>   </li>     
-                                                                                      <li *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'  && hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">         <button class=" button text-wrap fourthbgd w-100 text-white" style="max-width:100%" >
-                                                                               {{hour.Display_Name__c}} </button></li>   
-                                                                               <li *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'  && hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">      <button class=" button text-wrap secondbgd w-100 text-white" style="max-width:100%" >
-                                                                                {{hour.Display_Name__c}} </button>   </li>    
-                                                                             </ul>  </ul></div>
+    <ul class="container-fluid" *ngFor="let hour of hours">    
+      <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
         
+       </li>
+         <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+       
+       </li> 
+         <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+             </li> 
+        </ul></li></ul></div>
+ 
+        <div class="column"><span><b>Wednesday</b></span>
+          <ul  class="container-fluid"  *ngFor="let days of days">   
+         <li class="container-fluid"  *ngIf="days.getDay() == 3 && week1end >= days.getDate()">  
+        <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                
+        <ul class="container-fluid" *ngFor="let hour of hours">    
+          <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+            
+           </li>
+             <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+           
+           </li> 
+             <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                 </li> 
+            </ul></li></ul></div>
+
+            <div class="column"><span><b>Thursday</b></span>
+              <ul  class="container-fluid"  *ngFor="let days of days">   
+             <li class="container-fluid"  *ngIf="days.getDay() == 4 && week1end >= days.getDate()">  
+            <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                    
+            <ul class="container-fluid" *ngFor="let hour of hours"> 
+              <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
                 
+               </li>
+                 <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+               
+               </li> 
+                 <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                     </li>  
+                </ul></li></ul></div>
+    
+                <div class="column"><span><b>Friday</b></span>
+                  <ul  class="container-fluid"  *ngFor="let days of days">   
+                 <li class="container-fluid"  *ngIf="days.getDay() == 5 && week1end >= days.getDate()">  
+                <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                        
+                <ul class="container-fluid" *ngFor="let hour of hours">   
+                  <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                    
+                   </li>
+                     <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                   
+                   </li> 
+                     <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                         </li> 
+                    </ul></li></ul></div>
+      
+                    <div class="column"><span><b>Saturday</b></span>
+                      <ul  class="container-fluid"  *ngFor="let days of days">   
+                     <li class="container-fluid"  *ngIf="days.getDay() == 6 && week1end >= days.getDate()">  
+                    <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                            
+                    <ul class="container-fluid" *ngFor="let hour of hours">   
+                      <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                        
+                       </li>
+                         <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                       
+                       </li> 
+                         <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                             </li> 
+                        </ul></li></ul></div>
+
+                        <div class="column "><span><b>Sunday</b></span>
+                          <ul  class="container-fluid"  *ngFor="let days of days">   
+                         <li class="container-fluid"  *ngIf="days.getDay() == 0 && week1end >= days.getDate()">  
+                        <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                                
+                        <ul class="container-fluid" *ngFor="let hour of hours">  
+                          <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                            
+                           </li>
+                             <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                           
+                           </li> 
+                             <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                 </li> 
+                            </ul></li></ul></div>
+  
+ </div> 
+  
+ <div class="row secondbgd blackborder mt-0 pt-0 mb-0 pb-0">
+                                                                             
+  <div class="column "> <span><b>Monday</b></span>
+   <ul  class="container-fluid"  *ngFor="let days of days">   
+  <li class="container-fluid"  *ngIf="days.getDay() == 1 &&  week2end >= days.getDate() && days.getDate() > week1end">  
+ <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                         
+ <ul class="container-fluid" *ngFor="let hour of hours">  
+  <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+  
+ </li>
+   <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+ 
+ </li> 
+   <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+       </li> 
+     </ul></li></ul></div>
+ 
+ 
+     <div class="column"><span class="badge w-100  text-black mb-2 pl-2 pr-2 whitebgd " style="max-width:100%">Tuesday</span>
+       <a  class="container-fluid"  *ngFor="let days of days">   
+      <a  *ngIf="days.getDay() == 2 && week2end >= days.getDate() && days.getDate() > week1end">  
+        <span class="badge w-100  text-black mb-2 pl-2 pr-2 whitebgd " style="max-width:100%">Tuesday
+        <span class="badge pl-2 pr-2 blackbgd " style="max-width:100%"> {{days | date:'dd MMMM'}} </span></span>
+                                                                             
+     <a *ngFor="let hour of hours">    
+       <a *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+         
+       </a>
+          <a   *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+        
+          </a> 
+          <a *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+          </a> 
+            </a></a></a></div>
+  
+         <div class="column"><span><b>Wednesday</b></span>
+           <ul  class="container-fluid"  *ngFor="let days of days">   
+          <li class="container-fluid"  *ngIf="days.getDay() == 3 && week2end >= days.getDate() && days.getDate() > week1end">  
+         <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                 
+         <ul class="container-fluid" *ngFor="let hour of hours">    
+           <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+             
+            </li>
+              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+            
+            </li> 
+              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                  </li> 
+             </ul></li></ul></div>
+ 
+             <div class="column"><span><b>Thursday</b></span>
+               <ul  class="container-fluid"  *ngFor="let days of days">   
+              <li class="container-fluid"  *ngIf="days.getDay() == 4 && week2end >= days.getDate() && days.getDate() > week1end">  
+             <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                     
+             <ul class="container-fluid" *ngFor="let hour of hours"> 
+               <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                 
+                </li>
+                  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                
+                </li> 
+                  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                      </li>  
+                 </ul></li></ul></div>
+     
+                 <div class="column"><span><b>Friday</b></span>
+                   <ul  class="container-fluid"  *ngFor="let days of days">   
+                  <li class="container-fluid"  *ngIf="days.getDay() == 5 && week2end >= days.getDate() && days.getDate() > week1end">  
+                 <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                         
+                 <ul class="container-fluid" *ngFor="let hour of hours">   
+                   <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                     
+                    </li>
+                      <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                    
+                    </li> 
+                      <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                          </li> 
+                     </ul></li></ul></div>
+       
+                     <div class="column"><span><b>Saturday</b></span>
+                       <ul  class="container-fluid"  *ngFor="let days of days">   
+                      <li class="container-fluid"  *ngIf="days.getDay() == 6 && week2end >= days.getDate() && days.getDate() > week1end">  
+                     <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                             
+                     <ul class="container-fluid" *ngFor="let hour of hours">   
+                       <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                         
+                        </li>
+                          <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                        
+                        </li> 
+                          <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                              </li> 
+                         </ul></li></ul></div>
+ 
+                         <div class="column "><span><b>Sunday</b></span>
+                           <ul  class="container-fluid"  *ngFor="let days of days">   
+                          <li class="container-fluid"  *ngIf="days.getDay() == 0 && week2end >= days.getDate() && days.getDate() > week1end">  
+                         <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                                 
+                         <ul class="container-fluid" *ngFor="let hour of hours">  
+                           <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                             
+                            </li>
+                              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                            
+                            </li> 
+                              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                  </li> 
+                             </ul></li></ul></div>
+   
+  </div> 
+ 
+  <div class="row secondbgd blackborder mt-0 pt-0 mb-0 pb-0">
+                                                                             
+    <div class="column "> <span><b>Monday</b></span>
+     <ul  class="container-fluid"  *ngFor="let days of days">   
+    <li class="container-fluid"  *ngIf="days.getDay() == 1 &&  week3end >= days.getDate() && days.getDate() > week2end">  
+   <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                           
+   <ul class="container-fluid" *ngFor="let hour of hours">  
+    <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+    
+   </li>
+     <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+   
+   </li> 
+     <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+         </li> 
+       </ul></li></ul></div>
+   
+   
+       <div class="column"><span><b>Tuesday</b></span>
+         <ul  class="container-fluid"  *ngFor="let days of days">   
+        <li class="container-fluid"  *ngIf="days.getDay() == 2 && week3end >= days.getDate() && days.getDate() > week2end">  
+       <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                               
+       <ul class="container-fluid" *ngFor="let hour of hours">    
+         <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+           
+          </li>
+            <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+          
+          </li> 
+            <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                </li> 
+           </ul></li></ul></div>
+    
+           <div class="column"><span><b>Wednesday</b></span>
+             <ul  class="container-fluid"  *ngFor="let days of days">   
+            <li class="container-fluid"  *ngIf="days.getDay() == 3 && week3end >= days.getDate() && days.getDate() > week2end">  
+           <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                   
+           <ul class="container-fluid" *ngFor="let hour of hours">    
+             <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+               
+              </li>
+                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+              
+              </li> 
+                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                    </li> 
+               </ul></li></ul></div>
+   
+               <div class="column"><span><b>Thursday</b></span>
+                 <ul  class="container-fluid"  *ngFor="let days of days">   
+                <li class="container-fluid"  *ngIf="days.getDay() == 4 && week3end >= days.getDate() && days.getDate() > week2end">  
+               <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                       
+               <ul class="container-fluid" *ngFor="let hour of hours"> 
+                 <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                   
+                  </li>
+                    <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                  
+                  </li> 
+                    <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                        </li>  
+                   </ul></li></ul></div>
+       
+                   <div class="column"><span><b>Friday</b></span>
+                     <ul  class="container-fluid"  *ngFor="let days of days">   
+                    <li class="container-fluid"  *ngIf="days.getDay() == 5 && week3end >= days.getDate() && days.getDate() > week2end">  
+                   <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                           
+                   <ul class="container-fluid" *ngFor="let hour of hours">   
+                     <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                       
+                      </li>
+                        <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                      
+                      </li> 
+                        <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                            </li> 
+                       </ul></li></ul></div>
+         
+                       <div class="column"><span><b>Saturday</b></span>
+                         <ul  class="container-fluid"  *ngFor="let days of days">   
+                        <li class="container-fluid"  *ngIf="days.getDay() == 6 && week3end >= days.getDate() && days.getDate() > week2end">  
+                       <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                               
+                       <ul class="container-fluid" *ngFor="let hour of hours">   
+                         <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                           
+                          </li>
+                            <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                          
+                          </li> 
+                            <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                </li> 
+                           </ul></li></ul></div>
+   
+                           <div class="column "><span><b>Sunday</b></span>
+                             <ul  class="container-fluid"  *ngFor="let days of days">   
+                            <li class="container-fluid"  *ngIf="days.getDay() == 0 && week3end >= days.getDate() && days.getDate() > week2end">  
+                           <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                                   
+                           <ul class="container-fluid" *ngFor="let hour of hours">  
+                             <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                               
+                              </li>
+                                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                              
+                              </li> 
+                                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                    </li> 
+                               </ul></li></ul></div>
+     
+    </div> 
+    <div class="row secondbgd blackborder mt-0 pt-0 mb-0 pb-0">
+                                                                             
+      <div class="column "> <span><b>Monday</b></span>
+       <ul  class="container-fluid"  *ngFor="let days of days">   
+      <li class="container-fluid"  *ngIf="days.getDay() == 1 &&  week4end >= days.getDate() && days.getDate() > week3end">  
+     <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                             
+     <ul class="container-fluid" *ngFor="let hour of hours">  
+      <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+      
+     </li>
+       <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+     
+     </li> 
+       <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+           </li> 
+         </ul></li></ul></div>
+     
+     
+         <div class="column"><span><b>Tuesday</b></span>
+           <ul  class="container-fluid"  *ngFor="let days of days">   
+          <li class="container-fluid"  *ngIf="days.getDay() == 2 && week4end >= days.getDate() && days.getDate() > week3end">  
+         <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                 
+         <ul class="container-fluid" *ngFor="let hour of hours">    
+           <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+             
+            </li>
+              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+            
+            </li> 
+              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                  </li> 
+             </ul></li></ul></div>
+      
+             <div class="column"><span><b>Wednesday</b></span>
+               <ul  class="container-fluid"  *ngFor="let days of days">   
+              <li class="container-fluid"  *ngIf="days.getDay() == 3 && week4end >= days.getDate() && days.getDate() > week3end">  
+             <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                     
+             <ul class="container-fluid" *ngFor="let hour of hours">    
+               <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                 
+                </li>
+                  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                
+                </li> 
+                  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                      </li> 
+                 </ul></li></ul></div>
+     
+                 <div class="column"><span><b>Thursday</b></span>
+                   <ul  class="container-fluid"  *ngFor="let days of days">   
+                  <li class="container-fluid"  *ngIf="days.getDay() == 4 && week4end >= days.getDate() && days.getDate() > week3end">  
+                 <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                         
+                 <ul class="container-fluid" *ngFor="let hour of hours"> 
+                   <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                     
+                    </li>
+                      <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                      <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                    
+                    </li> 
+                      <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                          </li>  
+                     </ul></li></ul></div>
+         
+                     <div class="column"><span><b>Friday</b></span>
+                       <ul  class="container-fluid"  *ngFor="let days of days">   
+                      <li class="container-fluid"  *ngIf="days.getDay() == 5 && week4end >= days.getDate() && days.getDate() > week3end">  
+                     <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                             
+                     <ul class="container-fluid" *ngFor="let hour of hours">   
+                       <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                         
+                        </li>
+                          <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                          <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                        
+                        </li> 
+                          <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                              </li> 
+                         </ul></li></ul></div>
+           
+                         <div class="column"><span><b>Saturday</b></span>
+                           <ul  class="container-fluid"  *ngFor="let days of days">   
+                          <li class="container-fluid"  *ngIf="days.getDay() == 6 && week4end >= days.getDate() && days.getDate() > week3end">  
+                         <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                                 
+                         <ul class="container-fluid" *ngFor="let hour of hours">   
+                           <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                             
+                            </li>
+                              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                            
+                            </li> 
+                              <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                  </li> 
+                             </ul></li></ul></div>
+     
+                             <div class="column "><span><b>Sunday</b></span>
+                               <ul  class="container-fluid"  *ngFor="let days of days">   
+                              <li class="container-fluid"  *ngIf="days.getDay() == 0 && week4end >= days.getDate() && days.getDate() > week3end">  
+                             <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                                     
+                             <ul class="container-fluid" *ngFor="let hour of hours">  
+                               <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                                 
+                                </li>
+                                  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                                  <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                
+                                </li> 
+                                  <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                      </li> 
+                                 </ul></li></ul></div>
+       
+      </div>                              
+    
+      <div class="row secondbgd blackborder mt-0 pt-0 mb-0 pb-0">
+                                                                             
+        <div class="column "> <span><b>Monday</b></span>
+         <ul  class="container-fluid"  *ngFor="let days of days">   
+        <li class="container-fluid"  *ngIf="days.getDay() == 1 &&  week5end >= days.getDate() && days.getDate() > week4end">  
+       <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                               
+       <ul class="container-fluid" *ngFor="let hour of hours">  
+        <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+        
+       </li>
+         <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+       
+       </li> 
+         <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+              <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+             </li> 
+           </ul></li></ul></div>
+       
+       
+           <div class="column"><span><b>Tuesday</b></span>
+             <ul  class="container-fluid"  *ngFor="let days of days">   
+            <li class="container-fluid"  *ngIf="days.getDay() == 2 && week5end >= days.getDate() && days.getDate() > week4end">  
+           <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                   
+           <ul class="container-fluid" *ngFor="let hour of hours">    
+             <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+               
+              </li>
+                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+              
+              </li> 
+                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                    </li> 
+               </ul></li></ul></div>
+        
+               <div class="column"><span><b>Wednesday</b></span>
+                 <ul  class="container-fluid"  *ngFor="let days of days">   
+                <li class="container-fluid"  *ngIf="days.getDay() == 3 && week5end >= days.getDate() && days.getDate() > week4end">  
+               <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                       
+               <ul class="container-fluid" *ngFor="let hour of hours">    
+                 <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                   
+                  </li>
+                    <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                  
+                  </li> 
+                    <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                        </li> 
+                   </ul></li></ul></div>
+       
+                   <div class="column"><span><b>Thursday</b></span>
+                     <ul  class="container-fluid"  *ngFor="let days of days">   
+                    <li class="container-fluid"  *ngIf="days.getDay() == 4 && week5end >= days.getDate() && days.getDate() > week4end">  
+                   <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                           
+                   <ul class="container-fluid" *ngFor="let hour of hours"> 
+                     <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                       
+                      </li>
+                        <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                        <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                      
+                      </li> 
+                        <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                       <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                             <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                            </li>  
+                       </ul></li></ul></div>
+           
+                       <div class="column"><span><b>Friday</b></span>
+                         <ul  class="container-fluid"  *ngFor="let days of days">   
+                        <li class="container-fluid"  *ngIf="days.getDay() == 5 && week5end >= days.getDate() && days.getDate() > week4end">  
+                       <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                               
+                       <ul class="container-fluid" *ngFor="let hour of hours">   
+                         <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                           
+                          </li>
+                            <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                            <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                          
+                          </li> 
+                            <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                           <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                 <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                </li> 
+                           </ul></li></ul></div>
+             
+                           <div class="column"><span><b>Saturday</b></span>
+                             <ul  class="container-fluid"  *ngFor="let days of days">   
+                            <li class="container-fluid"  *ngIf="days.getDay() == 6 && week5end >= days.getDate() && days.getDate() > week4end">  
+                           <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                                   
+                           <ul class="container-fluid" *ngFor="let hour of hours">   
+                             <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                               
+                              </li>
+                                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                                <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                              
+                              </li> 
+                                <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                               <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                     <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                    </li> 
+                               </ul></li></ul></div>
+       
+                               <div class="column "><span><b>Sunday</b></span>
+                                 <ul  class="container-fluid"  *ngFor="let days of days">   
+                                <li class="container-fluid"  *ngIf="days.getDay() == 0 && week5end >= days.getDate() && days.getDate() > week4end">  
+                               <span class="badge blackbgd " style="max-width:100%"> {{days | date:'dd'}} </span>
+                                                                                                       
+                               <ul class="container-fluid" *ngFor="let hour of hours">  
+                                 <li class="container-fluid" *ngIf="hour.Is_Recurring__c == 'Weekly' && hour.WeekDay__c == 1 ">
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 fourthbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1  text-black thirdbgd w-100 text-wrap" style="max-width:100%">  {{hour.Display_Name__c}}</span>
+                                   
+                                  </li>
+                                    <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'Monthly' && hour.Start_Day__c == days.getDate()">
+                                    <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                  
+                                  </li> 
+                                    <li class="container-fluid"  *ngIf="hour.Is_Recurring__c == 'No' && hour.Start_Day__c == days.getDate() && hour.Start_Month__c == days.getMonth()+1">
+                                   <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Presentation'" class="badge mt-1 mb-1 w-100 fourthbgd text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>  
+                                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Training'" class="badge mt-1 mb-1  primarybgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                         <span *ngIf="hour.Portal_Calendar_Events_RecordTypeName__c == 'Operating Hours'" class="badge mt-1 mb-1 text-black thirdbgd w-100 text-wrap" style="max-width:100%"> {{hour.Display_Name__c}}</span>
+                                        </li> 
+                                   </ul></li></ul></div>
+         
+        </div>    
